@@ -40,6 +40,8 @@ function closeAccordionItem(closeItem) {
   accordion_mobilequote.stop()
   accordion_arrow.stop()
 
+  console.log('test')
+
   // Set all loading bar fills to 0
   $(closeItem).css('backgroundColor', 'transparent')
   $(accordion_loadingbarfill).css('width', '0px')
