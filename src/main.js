@@ -1,3 +1,4 @@
+import './styles/style.css'
 import $ from 'jquery'
 
 /*  ==========================================================================
@@ -39,8 +40,6 @@ function closeAccordionItem(closeItem) {
   accordion_mobilequote.stop()
   accordion_arrow.stop()
 
-  console.log('test')
-
   // Set all loading bar fills to 0
   $(closeItem).css('backgroundColor', 'transparent')
   $(accordion_loadingbarfill).css('width', '0px')
@@ -80,8 +79,6 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
       var current_arrow = $(openItem).find('.icon-accordion-chevron')
 
       currentItemID = current_id
-
-      console.log(current_arrow)
 
       $(openItem).css('backgroundColor', '#fff9f0')
       $(current_loadingbarfill).css('display', 'block')
