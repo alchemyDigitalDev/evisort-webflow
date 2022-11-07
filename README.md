@@ -1,4 +1,4 @@
-# ViteJs + JS + Webflow = ❤️
+# Evisort - ViteJs + JS + Webflow = ❤️
 
 This is a basic setup with [ViteJs](https://vitejs.dev/) that you can use for your Webflow website.
 `jQuery` is already installed and declared as an external dependency.
@@ -18,10 +18,12 @@ You can find a simple example of a Webflow site using this setup [here](https://
 ## How to use with Webflow
 
 ### 🇫🇷 French
-The doc is [here](https://github.com/armandsalle/vite-javascript-webflow/blob/main/HowToUse_JS_FR.md) 
+
+The doc is [here](https://github.com/armandsalle/vite-javascript-webflow/blob/main/HowToUse_JS_FR.md)
 
 ### 🇬🇧 English
-The doc is [here](https://github.com/armandsalle/vite-javascript-webflow/blob/main/HowToUse_JS_EN.md) 
+
+The doc is [here](https://github.com/armandsalle/vite-javascript-webflow/blob/main/HowToUse_JS_EN.md)
 
 <br />
 
