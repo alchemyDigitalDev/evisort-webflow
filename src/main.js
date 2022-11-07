@@ -1,4 +1,3 @@
-import './styles/style.css'
 import $ from 'jquery'
 
 /*  ==========================================================================
@@ -208,7 +207,7 @@ function accordionsInit() {
 window.addEventListener('load', accordionsInit)
 
 /*  ==========================================================================
-    Filters custom close buttons
+    Filters - custom close buttons
     ========================================================================== */
 
 $('.filter-dropdown-close').click(function () {
