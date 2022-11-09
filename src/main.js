@@ -204,14 +204,91 @@ function accordionsInit() {
 window.addEventListener('load', accordionsInit)
 
 /*  ==========================================================================
-    Filters - custom close buttons
+    Alternating text animation 
     ========================================================================== */
 
-$('.filter-dropdown-close').click(function () {
-  $('.filter-filter-dropdown').trigger('w-close')
-})
+function alternatingTextAnimate(count, maxCount) {
+  $('.pageheader-heading__alternatingtext__item--' + count).animate(
+    {
+      opacity: '0',
+    },
+    { duration: 900, queue: false }
+  )
 
-$('.filter-dropdown-view-button').click(function (e) {
-  e.preventDefault()
-  $('.filter-filter-dropdown').trigger('w-close')
-})
+  $('.pageheader-heading__alternatingtext__item--' + count).css(
+    'display',
+    'none'
+  )
+
+  count++
+  if (count > maxCount) {
+    count = 1
+  }
+
+  $('.pageheader-heading__alternatingtext__item--' + count).css(
+    'display',
+    'inline-block'
+  )
+
+  $('.pageheader-heading__alternatingtext__item--' + count).animate(
+    {
+      opacity: '1',
+    },
+    { duration: 900, queue: false }
+  )
+
+  window.setTimeout(function () {
+    alternatingTextAnimate(count, maxCount)
+  }, 3000)
+}
+
+function alternatingTextInit() {
+  console.log('init!')
+  let pageHeadings = $('.pageheader-heading')
+  if (pageHeadings) {
+    $(pageHeadings).each(function (index, pageHeading) {
+      let pageHeadingText = $(pageHeading).text()
+      let pageHeadingTextToReplace = $(pageHeading).data('replacetext')
+      let pageHeadingTextStrings = pageHeadingText.split(
+        pageHeadingTextToReplace
+      )
+      let alternatingTextWords = $(pageHeading).data('alternatingtext')
+      if (alternatingTextWords) {
+        let alternatingTextArray = alternatingTextWords.split('*')
+        alternatingTextArray = alternatingTextArray.filter(function (el) {
+          return el != ''
+        })
+        if (alternatingTextArray) {
+          $(pageHeading).html(
+            pageHeadingTextStrings[0] +
+              '<span class="pageheader-heading__alternatingtext"></span>' +
+              pageHeadingTextStrings[1]
+          )
+          $(alternatingTextArray).each(function (
+            index,
+            alternatingTextArrayItem
+          ) {
+            let itemCountNo = index + 1
+            $(pageHeading)
+              .find('.pageheader-heading__alternatingtext')
+              .append(
+                '<span class="pageheader-heading__alternatingtext__item pageheader-heading__alternatingtext__item--' +
+                  itemCountNo +
+                  '">' +
+                  alternatingTextArrayItem +
+                  '</span>'
+              )
+          })
+        }
+
+        window.setTimeout(function () {
+          $(pageHeading).addClass('loaded')
+        }, 500)
+
+        alternatingTextAnimate(0, alternatingTextArray.length)
+      }
+    })
+  }
+}
+
+window.addEventListener('load', alternatingTextInit)
