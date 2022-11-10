@@ -1,3 +1,5 @@
+/* ---- NAVIGATION ---- */
+
 /* Force 100vh on navigation for mobile, as webflow "fill height" was not working */
 @media screen and (max-width: 767px) {
   .nav-menu-wrapper {
@@ -16,20 +18,22 @@
   }
 }
 
-/* Link styling */
+/* ---- LINKS ---- */
 
 a {
   color: inherit;
 }
 
-/* Fade out disabled pagination */
+/* ---- PAGINATION ---- */
+
 .pagination.jetboost-hidden {
   visibility: inherit !important;
   pointer-events: none;
   opacity: 0.2;
 }
 
-/* Alternating text page heading */
+/* ---- ALTERNATING TEXT ANIMATION ---- */
+
 .pageheader-heading__alternatingtext {
   position: relative;
   width: 100%;
@@ -43,7 +47,7 @@ a {
   opacity: 0;
 }
 
-/* Marketo Form Styling */
+/* ---- MARKETO FORM STYLES ---- */
 
 .mktoForm {
   width: 100% !important;
@@ -257,6 +261,11 @@ a {
   margin-top: 0 !important;
 }
 
+.mktoForm .mktoLogicalField,
+.mktoForm .mktoLogicalField.mktoInvalid {
+  border: none !important;
+}
+
 /* Form Typgraphy */
 
 .mktoForm input,
@@ -302,9 +311,30 @@ a {
   letter-spacing: -0.02em;
 }
 
+.mktoForm h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+}
+
+.mktoForm h1 {
+  margin: 0 0 0.25em 0;
+  font-size: 55px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+}
+
 @media screen and (max-width: 991px) {
   .mktoForm h3 {
     font-size: 30px;
+  }
+  .mktoForm h2 {
+    font-size: 40px;
+  }
+  .mktoForm h1 {
+    font-size: 44px;
   }
 }
 
@@ -324,6 +354,13 @@ a {
   }
   .mktoForm h3 {
     font-size: 29px;
+  }
+  .mktoForm h2 {
+    font-size: 32px;
+  }
+  .mktoForm h1 {
+    font-size: 36px;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -345,6 +382,13 @@ a {
   .mktoForm h3 {
     font-size: 28px;
   }
+  .mktoForm h2 {
+    font-size: 30px;
+  }
+  .mktoForm h1 {
+    font-size: 32px;
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Form Grid */
@@ -357,8 +401,7 @@ a {
   flex-wrap: nowrap;
 }
 .mktoForm .mktoFormCol {
-  width: auto;
-  min-width: 50%;
+  width: 100%;
   float: none !important;
   margin-bottom: 8px !important;
 }
@@ -370,10 +413,14 @@ a {
   margin-bottom: 1em !important;
 }
 
-.mktoForm .mktoFormCol:first-child {
+.mktoForm fieldset.mktoFormCol:first-child {
+  padding-right: 0 !important;
+}
+
+.mktoForm .mktoFormCol {
   padding-right: 8px !important;
 }
-.mktoForm .mktoFormCol:nth-child(2) {
+.mktoForm .mktoFormCol ~ .mktoFormCol {
   padding-left: 8px !important;
 }
 
@@ -386,10 +433,10 @@ a {
     padding: 0 !important;
   }
 
-  .mktoForm .mktoFormCol:first-child {
+  .mktoForm .mktoFormCol {
     padding-right: 0px !important;
   }
-  .mktoForm .mktoFormCol:nth-child(2) {
+  .mktoForm .mktoFormCol ~ .mktoFormCol {
     padding-left: 0px !important;
   }
 }
@@ -402,10 +449,10 @@ a {
     min-width: 50%;
   }
 
-  .mktoForm .mktoFormCol:first-child {
+  .mktoForm .mktoFormCol {
     padding-right: 8px !important;
   }
-  .mktoForm .mktoFormCol:nth-child(2) {
+  .mktoForm .mktoFormCol ~ .mktoFormCol {
     padding-left: 8px !important;
   }
 }
@@ -419,19 +466,98 @@ a {
     padding: 0 !important;
   }
 
-  .mktoForm .mktoFormCol:first-child {
+  .mktoForm .mktoFormCol {
     padding-right: 0px !important;
   }
-  .mktoForm .mktoFormCol:nth-child(2) {
+  .mktoForm .mktoFormCol ~ .mktoFormCol {
     padding-left: 0px !important;
   }
 }
 
-/* CUSTOM FORM STYLES */
+/* ---- CUSTOM FORM STYLES ---- */
 
-.marketo-form---light {
-}
+/* No label forms */
 
 .marketo-form---no-labels .mktoForm .mktoLabel {
   display: none !important;
+}
+
+/* Dark background forms  */
+
+.marketo-form---dark .mktoForm {
+  color: #ffffff !important;
+}
+
+.marketo-form---dark .mktoForm button[type='submit'] {
+  background: transparent !important;
+  border: 1.75px solid #ffffff !important;
+  color: #ffffff !important;
+}
+
+.marketo-form---dark .mktoForm button[type='submit']:hover {
+  background: #3b71dc !important;
+  border-color: #3b71dc !important;
+  color: #ffffff !important;
+}
+
+/* Side by side form - used in call to action form module */
+
+.marketo-form---50-50 .mktoForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.marketo-form---50-50 .mktoForm > .mktoFormRow {
+  width: 50%;
+}
+
+.marketo-form---50-50 .mktoForm > .mktoFormRow {
+  padding-right: 12px !important;
+}
+
+.marketo-form---50-50 .mktoForm > .mktoFormRow ~ .mktoFormRow,
+.marketo-form---50-50 .mktoForm .mktoButtonRow {
+  padding-left: 12px !important;
+  padding-right: 0 !important;
+}
+
+.marketo-form---50-50 .mktoForm .mktoButtonRow {
+  width: 50%;
+}
+
+.marketo-form---50-50 .mktoForm .mktoButtonRow button {
+  width: 100%;
+  margin: 0 !important;
+}
+
+@media screen and (min-width: 1280px) {
+  .marketo-form---50-50 .mktoForm > .mktoFormRow {
+    padding-right: 24px !important;
+  }
+
+  .marketo-form---50-50 .mktoForm > .mktoFormRow ~ .mktoFormRow,
+  .marketo-form---50-50 .mktoForm .mktoButtonRow {
+    padding-left: 24px !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .marketo-form---50-50 .mktoForm > .mktoFormRow {
+    padding-right: 0px !important;
+  }
+
+  .marketo-form---50-50 .mktoForm > .mktoFormRow ~ .mktoFormRow,
+  .marketo-form---50-50 .mktoForm .mktoButtonRow {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .marketo-form---50-50 .mktoForm > .mktoFormRow {
+    width: 100%;
+  }
+  .marketo-form---50-50 .mktoForm .mktoButtonRow {
+    width: 100%;
+  }
 }
