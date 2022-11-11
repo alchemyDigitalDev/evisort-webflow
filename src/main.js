@@ -361,7 +361,6 @@ function animateStatistics(statisticModules) {
       if (strokeOffset < 10) {
         strokeOffset = 10
       }
-      console.log(strokeOffset)
       $(this)
         .find('.statistic-animation-wrap---1')
         .find('.circle-fill')
