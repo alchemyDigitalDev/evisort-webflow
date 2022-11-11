@@ -600,3 +600,28 @@ a {
 .marketo-form---subscribe .mktoForm .mktoFormCol {
   padding-right: 0 !important;
 }
+
+/* ---- STATISTIC SVGS ---- */
+
+.statistic-svg svg .dot {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* Second Stat Animation */
+.statistic-svg svg .dot-1 {
+  transform-origin: 70% 35%;
+}
+
+.statistic-svg svg .dot-2 {
+  transform-origin: 15% 70%;
+}
+
+.statistic-svg svg .dot-3 {
+  transform-origin: 65% 90%;
+}
+
+/* Third Stat Animation */
+.statistic-svg svg .fill {
+  stroke-dashoffset: 100;
+}

@@ -16,6 +16,20 @@ window.addEventListener('resize', resize)
 window.addEventListener('load', resize)
 
 /*  ==========================================================================
+    Check if element is in view
+    ========================================================================== */
+
+function isScrolledIntoView(elem) {
+  var docViewTop = $(window).scrollTop()
+  var docViewBottom = docViewTop + $(window).height()
+
+  var elemTop = $(elem).offset().top
+  var elemBottom = elemTop + 100
+
+  return elemBottom <= docViewBottom && elemTop >= docViewTop
+}
+
+/*  ==========================================================================
     Acccordion Module Animation 
     ========================================================================== */
 
@@ -243,7 +257,6 @@ function alternatingTextAnimate(count, maxCount) {
 }
 
 function alternatingTextInit() {
-  console.log('init!')
   let pageHeadings = $('.pageheader-heading')
   if (pageHeadings) {
     $(pageHeadings).each(function (index, pageHeading) {
@@ -292,3 +305,129 @@ function alternatingTextInit() {
 }
 
 window.addEventListener('load', alternatingTextInit)
+
+/*  ==========================================================================
+		Statistics animations
+    ========================================================================== */
+
+function statisticsInit() {
+  let statisticModules = $('.module---statistics')
+
+  $(statisticModules).each(function () {
+    // Setup items ready for animation
+    $(this)
+      .find('.counter')
+      .each(function () {
+        $(this).data('counter', $(this).text())
+        $(this).text(0)
+      })
+  })
+
+  animateStatistics(statisticModules)
+
+  $(window).scroll(function () {
+    // Trigger animations on scroll
+    animateStatistics(statisticModules)
+  })
+}
+
+function animateStatistics(statisticModules) {
+  $(statisticModules).each(function () {
+    if (isScrolledIntoView($(this)) && !$(this).hasClass('loaded')) {
+      $(this).addClass('loaded')
+      $(this)
+        .find('.counter')
+        .each(function () {
+          $(this)
+            .prop('Counter', 0)
+            .animate(
+              {
+                Counter: $(this).data('counter'),
+              },
+              {
+                duration: 2000,
+                easing: 'swing',
+                step: function (now) {
+                  $(this).text(Math.ceil(now))
+                },
+              }
+            )
+        })
+      // First stat SVG animation
+      let statPercentage = $(this)
+        .find('.statistic-animation-wrap---1')
+        .find('.counter')
+        .data('counter')
+      let strokeOffset = 100 - parseInt(statPercentage)
+      if (strokeOffset < 10) {
+        strokeOffset = 10
+      }
+      console.log(strokeOffset)
+      $(this)
+        .find('.statistic-animation-wrap---1')
+        .find('.circle-fill')
+        .animate({ 'stroke-dashoffset': strokeOffset }, 2000)
+
+      // Second stat SVG animation
+      $(this)
+        .find('.statistic-animation-wrap---2')
+        .find('.dot-1')
+        .animate(
+          {
+            opacity: 1,
+          },
+          {
+            step: function (now) {
+              $(this).css('transform', 'scale(' + now + ')')
+            },
+            duration: 1000,
+          }
+        )
+      $(this)
+        .find('.statistic-animation-wrap---2')
+        .find('.dot-2')
+        .delay(400)
+        .animate(
+          {
+            opacity: 1,
+          },
+          {
+            step: function (now) {
+              $(this).css('transform', 'scale(' + now + ')')
+            },
+            duration: 1000,
+          }
+        )
+      $(this)
+        .find('.statistic-animation-wrap---2')
+        .find('.dot-3')
+        .delay(800)
+        .animate(
+          {
+            opacity: 1,
+          },
+          {
+            step: function (now) {
+              $(this).css('transform', 'scale(' + now + ')')
+            },
+            duration: 1000,
+          }
+        )
+      // Thirds stat SVG animation
+      $(this)
+        .find('.statistic-animation-wrap---3')
+        .find('.fill-1')
+        .animate({ 'stroke-dashoffset': '0' }, 1000)
+      $(this)
+        .find('.statistic-animation-wrap---3')
+        .find('.fill-2')
+        .animate({ 'stroke-dashoffset': '30' }, 1000)
+      $(this)
+        .find('.statistic-animation-wrap---3')
+        .find('.fill-3')
+        .animate({ 'stroke-dashoffset': '65' }, 1000)
+    }
+  })
+}
+
+window.addEventListener('load', statisticsInit)
