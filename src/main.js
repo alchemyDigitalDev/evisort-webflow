@@ -1,5 +1,4 @@
 import './styles/style.css'
-import * as $ from 'jquery'
 
 /*  ==========================================================================
 		JS For browser resize to get a vh value that works on mobile - used for mobile nav height
@@ -9,7 +8,7 @@ import * as $ from 'jquery'
 function resize() {
   // We execute the same script as before
   let vh = window.innerHeight * 0.01
-  document.documentElement.style.setProperty('--vh', `${vh}px`)
+  document.documentElement.style.setProperty('--vh', `jQuery{vh}px`)
 }
 
 window.addEventListener('resize', resize)
@@ -20,10 +19,10 @@ window.addEventListener('load', resize)
     ========================================================================== */
 
 function isScrolledIntoView(elem) {
-  var docViewTop = $(window).scrollTop()
-  var docViewBottom = docViewTop + $(window).height()
+  var docViewTop = jQuery(window).scrollTop()
+  var docViewBottom = docViewTop + jQuery(window).height()
 
-  var elemTop = $(elem).offset().top
+  var elemTop = jQuery(elem).offset().top
   var elemBottom = elemTop + 100
 
   return elemBottom <= docViewBottom && elemTop >= docViewTop
@@ -37,15 +36,17 @@ const accordionItemTime = 5000
 let currentItemID = 1
 
 function closeAccordionItem(closeItem) {
-  var accordion_loadingbar = $(closeItem).find('.accordion-item-loading-bar')
-  var accordion_loadingbarfill = $(closeItem).find(
+  var accordion_loadingbar = jQuery(closeItem).find(
+    '.accordion-item-loading-bar'
+  )
+  var accordion_loadingbarfill = jQuery(closeItem).find(
     '.accordion-item-loading-bar-fill'
   )
-  var accordion_content = $(closeItem).find('.accordion-item-content')
-  var accordion_mobilequote = $(closeItem).find(
+  var accordion_content = jQuery(closeItem).find('.accordion-item-content')
+  var accordion_mobilequote = jQuery(closeItem).find(
     '.accordion-tile-quote-wrap---mobile'
   )
-  var accordion_arrow = $(closeItem).find('.icon-accordion-chevron')
+  var accordion_arrow = jQuery(closeItem).find('.icon-accordion-chevron')
 
   // Stop animations
   accordion_loadingbar.stop()
@@ -55,19 +56,19 @@ function closeAccordionItem(closeItem) {
   accordion_arrow.stop()
 
   // Set all loading bar fills to 0
-  $(closeItem).css('backgroundColor', 'transparent')
-  $(accordion_loadingbarfill).css('width', '0px')
-  $(accordion_content).css('max-height', '0px')
-  $(accordion_loadingbar).css('height', '1px')
-  $(accordion_loadingbar).css('backgroundColor', 'rgba(0,0,0,0.2)')
-  $(accordion_loadingbarfill).css('display', 'none')
-  $(accordion_mobilequote).css('max-height', '0px')
-  $(accordion_arrow).css('transform', 'none')
+  jQuery(closeItem).css('backgroundColor', 'transparent')
+  jQuery(accordion_loadingbarfill).css('width', '0px')
+  jQuery(accordion_content).css('max-height', '0px')
+  jQuery(accordion_loadingbar).css('height', '1px')
+  jQuery(accordion_loadingbar).css('backgroundColor', 'rgba(0,0,0,0.2)')
+  jQuery(accordion_loadingbarfill).css('display', 'none')
+  jQuery(accordion_mobilequote).css('max-height', '0px')
+  jQuery(accordion_arrow).css('transform', 'none')
 }
 
 function showAccordionItem(accordion_items, openItem, userClicked = false) {
   // Hide other accordion items
-  $(accordion_items)
+  jQuery(accordion_items)
     .not(openItem)
     .each(function (index, accordion_item) {
       closeAccordionItem(accordion_item)
@@ -75,64 +76,70 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
     .promise()
     .done(function () {
       // Show current one
-      var current_loadingbar = $(openItem).find('.accordion-item-loading-bar')
-      var current_loadingbarfill = $(openItem).find(
+      var current_loadingbar = jQuery(openItem).find(
+        '.accordion-item-loading-bar'
+      )
+      var current_loadingbarfill = jQuery(openItem).find(
         '.accordion-item-loading-bar-fill'
       )
-      var current_content = $(openItem).find('.accordion-item-content')
-      var current_id = $(openItem).data('accordion-id')
-      var current_quote = $(openItem)
+      var current_content = jQuery(openItem).find('.accordion-item-content')
+      var current_id = jQuery(openItem).data('accordion-id')
+      var current_quote = jQuery(openItem)
         .closest('.module---accordion')
         .find(
           '.accordion-tile-quote-wrap---desktop.accordion-tile-quote-wrap-' +
             current_id
         )
-      var current_quote_mobile = $(openItem).find(
+      var current_quote_mobile = jQuery(openItem).find(
         '.accordion-tile-quote-wrap---mobile'
       )
-      var current_arrow = $(openItem).find('.icon-accordion-chevron')
+      var current_arrow = jQuery(openItem).find('.icon-accordion-chevron')
 
       currentItemID = current_id
 
-      $(openItem).css('backgroundColor', '#fff9f0')
-      $(current_loadingbarfill).css('display', 'block')
-      $(current_loadingbar).css('backgroundColor', '#83a8f8')
-      $(current_loadingbar).animate({ height: '10px' }, 100)
-      $(current_content).animate({ 'max-height': '750px' }, 750)
-      $(current_quote_mobile).animate({ 'max-height': '750px' }, 750)
-      $(current_arrow).css('transform', 'rotate(-180deg)')
+      jQuery(openItem).css('backgroundColor', '#fff9f0')
+      jQuery(current_loadingbarfill).css('display', 'block')
+      jQuery(current_loadingbar).css('backgroundColor', '#83a8f8')
+      jQuery(current_loadingbar).animate({ height: '10px' }, 100)
+      jQuery(current_content).animate({ 'max-height': '750px' }, 750)
+      jQuery(current_quote_mobile).animate({ 'max-height': '750px' }, 750)
+      jQuery(current_arrow).css('transform', 'rotate(-180deg)')
 
       // Hide other quotes
-      $(openItem)
+      jQuery(openItem)
         .closest('.module---accordion')
         .find('.accordion-tile-quote-wrap---desktop')
         .css('display', 'none')
       // Show this quote
-      $(current_quote).css('display', 'block')
+      jQuery(current_quote).css('display', 'block')
 
       if (userClicked) {
-        $(current_loadingbarfill).animate({ width: '100%' }, 0)
+        jQuery(current_loadingbarfill).animate({ width: '100%' }, 0)
       } else {
-        $(current_loadingbarfill).animate({ width: '100%' }, accordionItemTime)
+        jQuery(current_loadingbarfill).animate(
+          { width: '100%' },
+          accordionItemTime
+        )
       }
     })
 }
 
 function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
-  var accordionTop = $(accordion).offset().top - $(window).height()
-  var accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
-  var accordion_items = $(accordion).find('.accordion-item')
+  var accordionTop = jQuery(accordion).offset().top - jQuery(window).height()
+  var accordionBottom =
+    jQuery(accordion).offset().top + jQuery(accordion).outerHeight()
+  var accordion_items = jQuery(accordion).find('.accordion-item')
 
   if (
-    $(window).scrollTop() > accordionTop &&
-    !$(accordion).hasClass('playing')
+    jQuery(window).scrollTop() > accordionTop &&
+    !jQuery(accordion).hasClass('playing')
   ) {
     // Check if it's in viewport
     // Start animation
-    $(accordion).addClass('playing')
+    jQuery(accordion).addClass('playing')
 
     if (accordion_items) {
-      $(accordion_items).each(function (index, accordion_item) {
+      jQuery(accordion_items).each(function (index, accordion_item) {
         closeAccordionItem(accordion_item)
         var currentTimeoutTime = accordionItemTime * index
         if (screenWidth >= 992) {
@@ -142,7 +149,7 @@ function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
             }, currentTimeoutTime)
           )
         }
-        $(accordion_item).click(function () {
+        jQuery(accordion_item).click(function () {
           // Pause autoplaying timeouts
           for (var i = 0; i < itemsTimeout.length; i++) {
             clearTimeout(itemsTimeout[i])
@@ -157,33 +164,33 @@ function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
       }
     }
   } else if (
-    $(window).scrollTop() > accordionBottom &&
-    !$(accordion).hasClass('stopped')
+    jQuery(window).scrollTop() > accordionBottom &&
+    !jQuery(accordion).hasClass('stopped')
   ) {
     // Check if it's in viewport
-    $(accordion).addClass('stopped')
+    jQuery(accordion).addClass('stopped')
     // Pause autoplaying timeouts
     for (var i = 0; i < itemsTimeout.length; i++) {
       clearTimeout(itemsTimeout[i])
     }
-    $(accordion_items[currentItemID - 1])
+    jQuery(accordion_items[currentItemID - 1])
       .find('.accordion-item-loading-bar-fill')
       .stop()
-    $(accordion_items[currentItemID - 1])
+    jQuery(accordion_items[currentItemID - 1])
       .find('.accordion-item-loading-bar-fill')
       .css('width', '100%')
   }
 }
 
 function accordionsInit() {
-  const accordions = $('.module---accordion')
+  const accordions = jQuery('.module---accordion')
   let screenWidth = window.innerWidth
   let itemsTimeout = []
 
   if (accordions) {
-    $(accordions).each(function (index, accordion) {
+    jQuery(accordions).each(function (index, accordion) {
       // Start accordion animation
-      $(window).on('scroll', function () {
+      jQuery(window).on('scroll', function () {
         startAccordionAnimation(accordion, screenWidth, itemsTimeout)
       })
 
@@ -191,19 +198,19 @@ function accordionsInit() {
     })
   }
 
-  $(window).on('resize', function () {
+  jQuery(window).on('resize', function () {
     screenWidth = window.innerWidth
-    $(accordions).each(function (index, accordion) {
-      if ($(accordion).hasClass('playing') && screenWidth < 992) {
+    jQuery(accordions).each(function (index, accordion) {
+      if (jQuery(accordion).hasClass('playing') && screenWidth < 992) {
         // if resizing down to mobile, then pause animation and show current
         for (var i = 0; i < itemsTimeout.length; i++) {
           clearTimeout(itemsTimeout[i])
         }
 
-        $('.accordion-item-loading-bar-fill').stop()
-        $('.accordion-item-loading-bar-fill').css('width', '0px')
+        jQuery('.accordion-item-loading-bar-fill').stop()
+        jQuery('.accordion-item-loading-bar-fill').css('width', '0px')
 
-        var accordion_items = $(accordion).find('.accordion-item')
+        var accordion_items = jQuery(accordion).find('.accordion-item')
 
         showAccordionItem(
           accordion_items,
@@ -222,14 +229,14 @@ window.addEventListener('load', accordionsInit)
     ========================================================================== */
 
 function alternatingTextAnimate(count, maxCount) {
-  $('.pageheader-heading__alternatingtext__item--' + count).animate(
+  jQuery('.pageheader-heading__alternatingtext__item--' + count).animate(
     {
       opacity: '0',
     },
     { duration: 900, queue: false }
   )
 
-  $('.pageheader-heading__alternatingtext__item--' + count).css(
+  jQuery('.pageheader-heading__alternatingtext__item--' + count).css(
     'display',
     'none'
   )
@@ -239,12 +246,12 @@ function alternatingTextAnimate(count, maxCount) {
     count = 1
   }
 
-  $('.pageheader-heading__alternatingtext__item--' + count).css(
+  jQuery('.pageheader-heading__alternatingtext__item--' + count).css(
     'display',
     'inline-block'
   )
 
-  $('.pageheader-heading__alternatingtext__item--' + count).animate(
+  jQuery('.pageheader-heading__alternatingtext__item--' + count).animate(
     {
       opacity: '1',
     },
@@ -257,32 +264,32 @@ function alternatingTextAnimate(count, maxCount) {
 }
 
 function alternatingTextInit() {
-  let pageHeadings = $('.pageheader-heading')
+  let pageHeadings = jQuery('.pageheader-heading')
   if (pageHeadings) {
-    $(pageHeadings).each(function (index, pageHeading) {
-      let pageHeadingText = $(pageHeading).text()
-      let pageHeadingTextToReplace = $(pageHeading).data('replacetext')
+    jQuery(pageHeadings).each(function (index, pageHeading) {
+      let pageHeadingText = jQuery(pageHeading).text()
+      let pageHeadingTextToReplace = jQuery(pageHeading).data('replacetext')
       let pageHeadingTextStrings = pageHeadingText.split(
         pageHeadingTextToReplace
       )
-      let alternatingTextWords = $(pageHeading).data('alternatingtext')
+      let alternatingTextWords = jQuery(pageHeading).data('alternatingtext')
       if (alternatingTextWords) {
         let alternatingTextArray = alternatingTextWords.split('*')
         alternatingTextArray = alternatingTextArray.filter(function (el) {
           return el != ''
         })
         if (alternatingTextArray) {
-          $(pageHeading).html(
+          jQuery(pageHeading).html(
             pageHeadingTextStrings[0] +
               '<span class="pageheader-heading__alternatingtext"></span>' +
               pageHeadingTextStrings[1]
           )
-          $(alternatingTextArray).each(function (
+          jQuery(alternatingTextArray).each(function (
             index,
             alternatingTextArrayItem
           ) {
             let itemCountNo = index + 1
-            $(pageHeading)
+            jQuery(pageHeading)
               .find('.pageheader-heading__alternatingtext')
               .append(
                 '<span class="pageheader-heading__alternatingtext__item pageheader-heading__alternatingtext__item--' +
@@ -295,7 +302,7 @@ function alternatingTextInit() {
         }
 
         window.setTimeout(function () {
-          $(pageHeading).addClass('loaded')
+          jQuery(pageHeading).addClass('loaded')
         }, 500)
 
         alternatingTextAnimate(0, alternatingTextArray.length)
@@ -311,50 +318,50 @@ window.addEventListener('load', alternatingTextInit)
     ========================================================================== */
 
 function statisticsInit() {
-  let statisticModules = $('.module---statistics')
+  let statisticModules = jQuery('.module---statistics')
 
-  $(statisticModules).each(function () {
+  jQuery(statisticModules).each(function () {
     // Setup items ready for animation
-    $(this)
+    jQuery(this)
       .find('.counter')
       .each(function () {
-        $(this).data('counter', $(this).text())
-        $(this).text(0)
+        jQuery(this).data('counter', jQuery(this).text())
+        jQuery(this).text(0)
       })
   })
 
   animateStatistics(statisticModules)
 
-  $(window).scroll(function () {
+  jQuery(window).scroll(function () {
     // Trigger animations on scroll
     animateStatistics(statisticModules)
   })
 }
 
 function animateStatistics(statisticModules) {
-  $(statisticModules).each(function () {
-    if (isScrolledIntoView($(this)) && !$(this).hasClass('loaded')) {
-      $(this).addClass('loaded')
-      $(this)
+  jQuery(statisticModules).each(function () {
+    if (isScrolledIntoView(jQuery(this)) && !jQuery(this).hasClass('loaded')) {
+      jQuery(this).addClass('loaded')
+      jQuery(this)
         .find('.counter')
         .each(function () {
-          $(this)
+          jQuery(this)
             .prop('Counter', 0)
             .animate(
               {
-                Counter: $(this).data('counter'),
+                Counter: jQuery(this).data('counter'),
               },
               {
                 duration: 2000,
                 easing: 'swing',
                 step: function (now) {
-                  $(this).text(Math.ceil(now))
+                  jQuery(this).text(Math.ceil(now))
                 },
               }
             )
         })
       // First stat SVG animation
-      let statPercentage = $(this)
+      let statPercentage = jQuery(this)
         .find('.statistic-animation-wrap---1')
         .find('.counter')
         .data('counter')
@@ -363,13 +370,13 @@ function animateStatistics(statisticModules) {
         strokeOffset = 10
       }
       console.log(strokeOffset)
-      $(this)
+      jQuery(this)
         .find('.statistic-animation-wrap---1')
         .find('.circle-fill')
         .animate({ 'stroke-dashoffset': strokeOffset }, 2000)
 
       // Second stat SVG animation
-      $(this)
+      jQuery(this)
         .find('.statistic-animation-wrap---2')
         .find('.dot-1')
         .animate(
@@ -378,12 +385,12 @@ function animateStatistics(statisticModules) {
           },
           {
             step: function (now) {
-              $(this).css('transform', 'scale(' + now + ')')
+              jQuery(this).css('transform', 'scale(' + now + ')')
             },
             duration: 1000,
           }
         )
-      $(this)
+      jQuery(this)
         .find('.statistic-animation-wrap---2')
         .find('.dot-2')
         .delay(400)
@@ -393,12 +400,12 @@ function animateStatistics(statisticModules) {
           },
           {
             step: function (now) {
-              $(this).css('transform', 'scale(' + now + ')')
+              jQuery(this).css('transform', 'scale(' + now + ')')
             },
             duration: 1000,
           }
         )
-      $(this)
+      jQuery(this)
         .find('.statistic-animation-wrap---2')
         .find('.dot-3')
         .delay(800)
@@ -408,21 +415,21 @@ function animateStatistics(statisticModules) {
           },
           {
             step: function (now) {
-              $(this).css('transform', 'scale(' + now + ')')
+              jQuery(this).css('transform', 'scale(' + now + ')')
             },
             duration: 1000,
           }
         )
       // Thirds stat SVG animation
-      $(this)
+      jQuery(this)
         .find('.statistic-animation-wrap---3')
         .find('.fill-1')
         .animate({ 'stroke-dashoffset': '0' }, 1000)
-      $(this)
+      jQuery(this)
         .find('.statistic-animation-wrap---3')
         .find('.fill-2')
         .animate({ 'stroke-dashoffset': '30' }, 1000)
-      $(this)
+      jQuery(this)
         .find('.statistic-animation-wrap---3')
         .find('.fill-3')
         .animate({ 'stroke-dashoffset': '65' }, 1000)
