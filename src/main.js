@@ -1,5 +1,5 @@
 import './styles/style.css'
-import $ from 'jquery'
+//import $ from 'jquery'
 
 /*  ==========================================================================
 		JS For browser resize to get a vh value that works on mobile - used for mobile nav height
