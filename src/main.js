@@ -15,6 +15,18 @@ window.addEventListener('resize', resize)
 window.addEventListener('load', resize)
 
 /*  ==========================================================================
+		JS to detech touch devices
+		========================================================================== */
+
+function is_touch_enabled() {
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    navigator.msMaxTouchPoints > 0
+  )
+}
+
+/*  ==========================================================================
     Check if element is in view
     ========================================================================== */
 
@@ -429,3 +441,92 @@ function animateStatistics(statisticModules) {
 }
 
 window.addEventListener('load', statisticsInit)
+
+/*  ==========================================================================
+		Product Feature hover animations
+    ========================================================================== */
+
+function productFeaturesInit() {
+  let productFeaturesModules = $('.module---product-features')
+
+  if (productFeaturesModules) {
+    $(productFeaturesModules).each(function () {
+      let featureTiles = $('.tile-icon---product-features')
+      if (featureTiles) {
+        $(featureTiles).each(function () {
+          let gifImageWrap = $(this).find('.tile-hover-gif')
+          let gifImage = $(this).find('.tile-hover-gif-image')
+          let gifImageSRC = $(gifImage).attr('src')
+          // Setup image src as data attribute
+          $(gifImage).data('gif-image', gifImageSRC)
+          // Set image src to blank to star with
+          $(gifImage).attr('src', '')
+          if (!is_touch_enabled()) {
+            $(this).hover(
+              function () {
+                // on hover set the image src back to the GIF to make it play
+                $(gifImageWrap).show()
+                $(gifImage).attr(
+                  'src',
+                  gifImageSRC + '?rnd=' + Math.random() + ''
+                )
+              },
+              function () {
+                $(gifImageWrap).hide()
+                $(gifImage).attr('src', '')
+              }
+            )
+          }
+        })
+      }
+    })
+  }
+}
+
+window.addEventListener('load', productFeaturesInit)
+
+/*  ==========================================================================
+		Udnerline header animations
+    ========================================================================== */
+
+function animateUnderlines(headingUnderlines) {
+  $(headingUnderlines).each(function () {
+    let headingUnderlineContent = $(this).data('underline')
+    let headingContent = $(this).text()
+    if (headingContent.includes(headingUnderlineContent)) {
+      if (isScrolledIntoView($(this)) && !$(this).hasClass('loaded')) {
+        $(this).addClass('loaded')
+      }
+    }
+  })
+}
+
+function underlineAnimInit() {
+  let headingUnderlines = $('[data-underline]')
+  if (headingUnderlines) {
+    $(headingUnderlines).each(function () {
+      let headingUnderlineContent = $(this).data('underline')
+      let headingContent = $(this).text()
+      if (headingContent.includes(headingUnderlineContent)) {
+        let headingContentStrings = headingContent.split(
+          headingUnderlineContent,
+          2
+        )
+        $(this).html(
+          headingContentStrings[0] +
+            '<span class="headingunderline">' +
+            headingUnderlineContent +
+            '</span>' +
+            headingContentStrings[1]
+        )
+        animateUnderlines(headingUnderlines)
+        $(window).scroll(function () {
+          // Trigger animations on scroll
+          animateUnderlines(headingUnderlines)
+        })
+      }
+    })
+  }
+}
+
+window.addEventListener('load', underlineAnimInit)

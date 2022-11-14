@@ -625,3 +625,46 @@ a {
 .statistic-svg svg .fill {
   stroke-dashoffset: 100;
 }
+
+/* ---- PRODUCT FEATURE GIFS - Remove hover so you can click link ---- */
+
+.tile-hover-gif {
+  pointer-events: none !important;
+}
+
+/* ---- HEADING UNDERLINES ANIMATION ---- */
+
+/*  OPTION TWO - no curved edges */
+.headingunderline {
+  background: linear-gradient(
+    270deg,
+    transparent 0%,
+    transparent 50%,
+    #fa826c 50%,
+    #ffc1ae 100%
+  );
+  background-size: 200% 0.4em;
+  background-position: 100% bottom;
+  background-repeat: no-repeat;
+  transition: background-position 500ms ease-in-out;
+}
+[data-underline].loaded .headingunderline {
+  background-position: 0% bottom;
+}
+
+/*  OPTION TWO - curved doesnt work on mobile */
+/* .headingunderline {
+  position: relative;
+}
+
+.headingunderline:before {
+  content: '';
+  position: absolute;
+  width: calc(100% + 0.3em);
+  height: 0.4em;
+  bottom: 0;
+  left: -0.15em;
+  z-index: -1;
+  border-radius: 2em;
+  background: linear-gradient(270deg, #fa826c 0%, #ffc1ae 100%);
+} */
