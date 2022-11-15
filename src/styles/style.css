@@ -668,3 +668,218 @@ a {
   border-radius: 2em;
   background: linear-gradient(270deg, #fa826c 0%, #ffc1ae 100%);
 } */
+
+/* ---- CAREERS LIST ---- */
+
+.careers-list .career-department {
+  margin-bottom: 3rem;
+}
+
+.careers-list .career-department:last-child {
+  margin-bottom: 0;
+}
+
+.careers-list .department-heading {
+  margin-top: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.careers-list .career-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.careers-list .career-item:last-child {
+  margin-bottom: 0;
+}
+
+.careers-list .career-title {
+  font-weight: 700;
+  text-decoration: none;
+  width: 50%;
+  padding-right: 1.5em;
+  box-sizing: border-box;
+}
+
+.careers-list .career-info {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.careers-list .career-location {
+  padding-right: 1.5em;
+}
+
+.careers-list .button {
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .careers-list .career-item {
+    flex-wrap: wrap;
+  }
+  .careers-list .career-title {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 0.75em;
+  }
+  .careers-list .career-info {
+    width: 100%;
+    padding-right: 0;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .careers-list .career-location {
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .careers-list .button {
+    width: 100%;
+    margin-top: 0.75em;
+    text-align: center;
+  }
+}
+
+/* ---- TILES CAROUSEL ---- */
+
+/* .module---tiles-slider {
+  position: relative;
+}
+
+.module---tiles-slider:before,
+.module---tiles-slider:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50px;
+  background-color: red;
+} */
+
+.tiles-carousel.owl-carousel .owl-stage-outer {
+  overflow: visible;
+  padding-bottom: calc(3.5rem + 24px);
+}
+
+.tiles-carousel.owl-carousel .owl-item {
+  opacity: 0.5;
+  transition: opacity 250ms ease-in-out, transform 350ms ease-in-out;
+}
+
+.tiles-carousel.owl-carousel .owl-item.active {
+  opacity: 1;
+}
+
+.tiles-carousel.owl-carousel .owl-nav {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.tiles-carousel.owl-carousel .owl-nav button.owl-prev,
+.tiles-carousel.owl-carousel .owl-nav button.owl-next {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  text-align: center;
+  background-color: black !important;
+  color: white !important;
+  border-radius: 5px;
+  transition: background-color 200ms ease-in-out;
+  z-index: 4;
+}
+
+.tiles-carousel.owl-carousel .owl-nav button.owl-prev:hover,
+.tiles-carousel.owl-carousel .owl-nav button.owl-next:hover {
+  background-color: #3b71dc !important;
+}
+
+.owl-nav .owl-nav__icon {
+  font-family: 'Fa solid 900', sans-serif;
+  font-weight: 400;
+  display: block;
+}
+
+.tiles-carousel.owl-carousel .owl-nav button.owl-prev .owl-nav__icon {
+  transform: rotate(180deg);
+}
+
+.tiles-carousel.owl-carousel .owl-dots {
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  height: 3.5rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiles-carousel.owl-carousel .owl-dots .owl-dot {
+  width: 3em;
+  height: 4px;
+  background-color: white;
+  margin: 0 0.25em;
+  transition: background-color 200ms ease-in-out;
+}
+
+.tiles-carousel.owl-carousel .owl-dots .owl-dot.active {
+  background-color: #3b71dc !important;
+}
+
+@media screen and (min-width: 1280px) {
+  .tiles-carousel.owl-carousel .owl-item {
+    transform: scale(0.95);
+  }
+  .tiles-carousel.owl-carousel .owl-item.active {
+    transform: scale(1);
+  }
+  .tiles-carousel.owl-carousel .owl-nav {
+    margin-top: 48px;
+  }
+  .tiles-carousel.owl-carousel .owl-stage-outer {
+    padding-bottom: calc(3.5rem + 48px);
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .module---tiles-slider .module-gradient {
+    width: 15%;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .tiles-carousel.owl-carousel .owl-dots .owl-dot {
+    width: 1em;
+  }
+}
+
+/* ---- PRODUCT FEATURES ROW ---- */
+
+@media screen and (max-width: 991px) {
+  .grid---product-feature-row .tile-small-vertical {
+    transform: none !important;
+  }
+}
+
+/* ---- STICKY NAV ---- */
+
+.sticky-nav-gradient {
+  pointer-events: none;
+}

@@ -1,4 +1,6 @@
 import './styles/style.css'
+import 'owl.carousel/dist/assets/owl.carousel.css'
+import 'owl.carousel'
 
 /*  ==========================================================================
 		JS For browser resize to get a vh value that works on mobile - used for mobile nav height
@@ -486,7 +488,7 @@ function productFeaturesInit() {
 window.addEventListener('load', productFeaturesInit)
 
 /*  ==========================================================================
-		Udnerline header animations
+		Underline header animations
     ========================================================================== */
 
 function animateUnderlines(headingUnderlines) {
@@ -530,3 +532,121 @@ function underlineAnimInit() {
 }
 
 window.addEventListener('load', underlineAnimInit)
+
+/*  ==========================================================================
+		Careers - Get Jobs from Lever
+    ========================================================================== */
+
+function groupJobsByDepartment(list) {
+  return list.reduce((acc, item) => {
+    var text = item.text
+    var hostedUrl = item.hostedUrl
+    var applyUrl = item.applyUrl
+    var department = item && item.categories ? item.categories.department : ''
+    var location = item && item.categories ? item.categories.location : ''
+
+    acc[department] = [
+      ...(acc[department] || []),
+      {
+        text,
+        location,
+        hostedUrl,
+        applyUrl,
+      },
+    ]
+    return acc
+  }, {})
+}
+
+function listHTML(name, list) {
+  var itemHTML = '<div class="career-department">'
+  itemHTML += '<h3 class="department-heading heading-3">' + name + '</h3>'
+
+  itemHTML += '<div class="career-listitems">'
+  for (var i = 0; i < list.length; i++) {
+    itemHTML += '<div class="career-item">'
+    itemHTML +=
+      '<a class="career-title" target="_blank" href="' +
+      list[i].hostedUrl +
+      '" rel="noopener noreferrer">'
+    itemHTML +=
+      list[i].text.indexOf('(') > -1
+        ? list[i].text.substring(0, list[i].text.indexOf('('))
+        : list[i].text
+    itemHTML += '</a>'
+    itemHTML += '<div class="career-info">'
+    itemHTML += '<div class="career-location">'
+    itemHTML += '<div>' + list[i].location + '</div>'
+    itemHTML += '</div>'
+    itemHTML +=
+      '<a class="button button---primary" target="_blank" href="' +
+      list[i].applyUrl +
+      '" rel="noopener noreferrer">Apply</a>'
+    itemHTML += '</div>'
+    itemHTML += '</div>'
+  }
+  itemHTML += '</div>'
+
+  itemHTML += '</div>'
+
+  return itemHTML
+}
+$.ajax({
+  url: 'https://api.lever.co/v0/postings/evisort-2',
+  data: {
+    skip: 0,
+    limit: 1000,
+    mode: 'json',
+  },
+  success: function (jobPosts) {
+    var postionsGroupByDepartment = groupJobsByDepartment(jobPosts)
+    var departmentNames = Object.keys(postionsGroupByDepartment).sort((a, b) =>
+      a > b ? 1 : -1
+    )
+    var list = ''
+    for (var i = 0; i < departmentNames.length; i++) {
+      list += listHTML(
+        departmentNames[i],
+        postionsGroupByDepartment[departmentNames[i]]
+      )
+    }
+    $('.careers-list').html(list)
+  },
+})
+
+/*  ==========================================================================
+		Tile Carousel
+    ========================================================================== */
+
+function tileCarouselsInit() {
+  let tileCarousels = $('.tiles-carousel')
+  if (tileCarousels) {
+    $(tileCarousels).each(function () {
+      $(this).owlCarousel({
+        items: 1,
+        margin: 48,
+        nav: true,
+        navText: [
+          "<span class='owl-nav__icon'></span>",
+          "<span class='owl-nav__icon'></span>",
+        ],
+        dots: true,
+        loop: true,
+        autoHeight: true,
+        responsive: {
+          0: {
+            margin: 16,
+          },
+          767: {
+            margin: 24,
+          },
+          1280: {
+            margin: 48,
+          },
+        },
+      })
+    })
+  }
+}
+
+window.addEventListener('load', tileCarouselsInit)

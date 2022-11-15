@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "gsap": "^3.9.1",
+    "owl.carousel": "^2.3.4",
     "yarn": "^1.22.19"
   }
 }
