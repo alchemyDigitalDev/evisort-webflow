@@ -1,6 +1,21 @@
 import './styles/style.css'
 import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
+gsap.registerPlugin(ScrollTrigger)
+
+/*  ==========================================================================
+		Debounce function to use for resizes
+		========================================================================== */
+
+function debounce(func) {
+  var timer
+  return function (event) {
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(func, 100, event)
+  }
+}
 
 /*  ==========================================================================
 		JS For browser resize to get a vh value that works on mobile - used for mobile nav height
@@ -33,11 +48,11 @@ function is_touch_enabled() {
     ========================================================================== */
 
 function isScrolledIntoView(elem) {
-  var docViewTop = $(window).scrollTop()
-  var docViewBottom = docViewTop + $(window).height()
+  let docViewTop = $(window).scrollTop()
+  let docViewBottom = docViewTop + $(window).height()
 
-  var elemTop = $(elem).offset().top
-  var elemBottom = elemTop + 100
+  let elemTop = $(elem).offset().top
+  let elemBottom = elemTop + 100
 
   return elemBottom <= docViewBottom && elemTop >= docViewTop
 }
@@ -50,15 +65,15 @@ const accordionItemTime = 5000
 let currentItemID = 1
 
 function closeAccordionItem(closeItem) {
-  var accordion_loadingbar = $(closeItem).find('.accordion-item-loading-bar')
-  var accordion_loadingbarfill = $(closeItem).find(
+  let accordion_loadingbar = $(closeItem).find('.accordion-item-loading-bar')
+  let accordion_loadingbarfill = $(closeItem).find(
     '.accordion-item-loading-bar-fill'
   )
-  var accordion_content = $(closeItem).find('.accordion-item-content')
-  var accordion_mobilequote = $(closeItem).find(
+  let accordion_content = $(closeItem).find('.accordion-item-content')
+  let accordion_mobilequote = $(closeItem).find(
     '.accordion-tile-quote-wrap---mobile'
   )
-  var accordion_arrow = $(closeItem).find('.icon-accordion-chevron')
+  let accordion_arrow = $(closeItem).find('.icon-accordion-chevron')
 
   // Stop animations
   accordion_loadingbar.stop()
@@ -88,22 +103,22 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
     .promise()
     .done(function () {
       // Show current one
-      var current_loadingbar = $(openItem).find('.accordion-item-loading-bar')
-      var current_loadingbarfill = $(openItem).find(
+      let current_loadingbar = $(openItem).find('.accordion-item-loading-bar')
+      let current_loadingbarfill = $(openItem).find(
         '.accordion-item-loading-bar-fill'
       )
-      var current_content = $(openItem).find('.accordion-item-content')
-      var current_id = $(openItem).data('accordion-id')
-      var current_quote = $(openItem)
+      let current_content = $(openItem).find('.accordion-item-content')
+      let current_id = $(openItem).data('accordion-id')
+      let current_quote = $(openItem)
         .closest('.module---accordion')
         .find(
           '.accordion-tile-quote-wrap---desktop.accordion-tile-quote-wrap-' +
             current_id
         )
-      var current_quote_mobile = $(openItem).find(
+      let current_quote_mobile = $(openItem).find(
         '.accordion-tile-quote-wrap---mobile'
       )
-      var current_arrow = $(openItem).find('.icon-accordion-chevron')
+      let current_arrow = $(openItem).find('.icon-accordion-chevron')
 
       currentItemID = current_id
 
@@ -132,9 +147,9 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
 }
 
 function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
-  var accordionTop = $(accordion).offset().top - $(window).height()
-  var accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
-  var accordion_items = $(accordion).find('.accordion-item')
+  let accordionTop = $(accordion).offset().top - $(window).height()
+  let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
+  let accordion_items = $(accordion).find('.accordion-item')
 
   if (
     $(window).scrollTop() > accordionTop &&
@@ -147,7 +162,7 @@ function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
     if (accordion_items) {
       $(accordion_items).each(function (index, accordion_item) {
         closeAccordionItem(accordion_item)
-        var currentTimeoutTime = accordionItemTime * index
+        let currentTimeoutTime = accordionItemTime * index
         if (screenWidth >= 992) {
           itemsTimeout.push(
             setTimeout(function () {
@@ -157,7 +172,7 @@ function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
         }
         $(accordion_item).click(function () {
           // Pause autoplaying timeouts
-          for (var i = 0; i < itemsTimeout.length; i++) {
+          for (let i = 0; i < itemsTimeout.length; i++) {
             clearTimeout(itemsTimeout[i])
           }
 
@@ -176,7 +191,7 @@ function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
     // Check if it's in viewport
     $(accordion).addClass('stopped')
     // Pause autoplaying timeouts
-    for (var i = 0; i < itemsTimeout.length; i++) {
+    for (let i = 0; i < itemsTimeout.length; i++) {
       clearTimeout(itemsTimeout[i])
     }
     $(accordion_items[currentItemID - 1])
@@ -209,14 +224,14 @@ function accordionsInit() {
     $(accordions).each(function (index, accordion) {
       if ($(accordion).hasClass('playing') && screenWidth < 992) {
         // if resizing down to mobile, then pause animation and show current
-        for (var i = 0; i < itemsTimeout.length; i++) {
+        for (let i = 0; i < itemsTimeout.length; i++) {
           clearTimeout(itemsTimeout[i])
         }
 
         $('.accordion-item-loading-bar-fill').stop()
         $('.accordion-item-loading-bar-fill').css('width', '0px')
 
-        var accordion_items = $(accordion).find('.accordion-item')
+        let accordion_items = $(accordion).find('.accordion-item')
 
         showAccordionItem(
           accordion_items,
@@ -539,11 +554,11 @@ window.addEventListener('load', underlineAnimInit)
 
 function groupJobsByDepartment(list) {
   return list.reduce((acc, item) => {
-    var text = item.text
-    var hostedUrl = item.hostedUrl
-    var applyUrl = item.applyUrl
-    var department = item && item.categories ? item.categories.department : ''
-    var location = item && item.categories ? item.categories.location : ''
+    let text = item.text
+    let hostedUrl = item.hostedUrl
+    let applyUrl = item.applyUrl
+    let department = item && item.categories ? item.categories.department : ''
+    let location = item && item.categories ? item.categories.location : ''
 
     acc[department] = [
       ...(acc[department] || []),
@@ -559,11 +574,11 @@ function groupJobsByDepartment(list) {
 }
 
 function listHTML(name, list) {
-  var itemHTML = '<div class="career-department">'
+  let itemHTML = '<div class="career-department">'
   itemHTML += '<h3 class="department-heading heading-3">' + name + '</h3>'
 
   itemHTML += '<div class="career-listitems">'
-  for (var i = 0; i < list.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     itemHTML += '<div class="career-item">'
     itemHTML +=
       '<a class="career-title" target="_blank" href="' +
@@ -599,12 +614,12 @@ $.ajax({
     mode: 'json',
   },
   success: function (jobPosts) {
-    var postionsGroupByDepartment = groupJobsByDepartment(jobPosts)
-    var departmentNames = Object.keys(postionsGroupByDepartment).sort((a, b) =>
+    let postionsGroupByDepartment = groupJobsByDepartment(jobPosts)
+    let departmentNames = Object.keys(postionsGroupByDepartment).sort((a, b) =>
       a > b ? 1 : -1
     )
-    var list = ''
-    for (var i = 0; i < departmentNames.length; i++) {
+    let list = ''
+    for (let i = 0; i < departmentNames.length; i++) {
       list += listHTML(
         departmentNames[i],
         postionsGroupByDepartment[departmentNames[i]]
@@ -650,3 +665,146 @@ function tileCarouselsInit() {
 }
 
 window.addEventListener('load', tileCarouselsInit)
+
+/*  ==========================================================================
+    Radithemes Module Horizontal Scroll
+    ========================================================================== */
+
+const pinnedScrollModules = document.querySelectorAll('.module---pinned-slides')
+
+function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
+  if (window.innerWidth > 768) {
+    let biggestSlide = 0
+
+    // Set slides back to auto height so we can detect the natural heights
+    pinnedSlides.forEach(function (slide) {
+      slide.style.minHeight = 'auto'
+    })
+    setTimeout(function () {
+      pinnedSlides.forEach(function (slide) {
+        // check if each slide is bigger than others
+        biggestSlide =
+          slide.offsetHeight > biggestSlide ? slide.offsetHeight : biggestSlide
+        // Now we have the biggest height, make the slides all 100% - if we do this before then we cant get the biggest height
+        slide.style.minHeight = '100%'
+      })
+
+      console.log(biggestSlide)
+
+      pinnedScrollModule.querySelector('.pinned-slides').style.height =
+        biggestSlide + 'px'
+    }, 100)
+  } else {
+    pinnedScrollModule.querySelector('.pinned-slides').style.height = 'auto'
+  }
+}
+
+function pinnedScrollInit() {
+  if (!pinnedScrollModules) {
+    return
+  }
+
+  pinnedScrollModules.forEach(function (elem) {
+    let pinnedSlides = elem.querySelectorAll('.pinned-slide')
+    let pinnedSlidesWrap = elem.querySelector('.pinned-slides')
+    let biggestSlide = 0
+    pinnedSlides.forEach(function (slide) {
+      biggestSlide =
+        slide.offsetHeight > biggestSlide ? slide.offsetHeight : biggestSlide
+      /* Now we have the biggest height, make the slides all 100% - if we do this before then we cant get the biggest height */
+      slide.style.minHeight = '100%'
+    })
+
+    elem.querySelector('.pinned-slides').style.height = biggestSlide + 'px'
+
+    ScrollTrigger.matchMedia({
+      // desktop
+      '(min-width: 768px)': function () {
+        // Remove carousel if enabled
+        $(pinnedSlidesWrap).trigger('destroy.owl.carousel')
+        pinnedSlidesWrap.classList.remove('owl-carousel')
+
+        // Setup pinned scroll...
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: elem.querySelector('.pinned-trigger'),
+            pin: true,
+            markers: true,
+            scrub: 1,
+            start: '50% 50%',
+            end: '+='.pinnedSlides * 1000,
+            toggleActions: 'play pause play reset',
+          },
+        })
+
+        pinnedSlides.forEach((elem, i) => {
+          if (i == 0) {
+            tl.to(
+              elem,
+              {
+                opacity: 1,
+                duration: 1,
+              },
+              '+=20'
+            )
+          } else {
+            tl.to(elem, {
+              opacity: 1,
+              duration: 1,
+            })
+          }
+
+          tl.to(elem.querySelector('.pinned-scroll-image-wrap'), {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+          })
+          if (i < pinnedSlides.length - 1) {
+            tl.to(
+              elem.querySelector('.pinned-scroll-image-wrap'),
+              {
+                opacity: 0,
+                duration: 1,
+              },
+              '+=20'
+            )
+          }
+        })
+      },
+      '(max-width: 768px)': function () {
+        // Setup Owl Carousel
+        pinnedSlidesWrap.classList.add('owl-carousel')
+        $(pinnedSlidesWrap).owlCarousel({
+          items: 1,
+          margin: 48,
+          nav: false,
+          dots: false,
+          loop: false,
+          autoHeight: true,
+          responsive: {
+            0: {
+              margin: 16,
+            },
+            767: {
+              margin: 24,
+            },
+            1280: {
+              margin: 48,
+            },
+          },
+        })
+      },
+    })
+
+    pinnedScrollResize(elem, pinnedSlides)
+
+    window.addEventListener(
+      'resize',
+      debounce(function () {
+        pinnedScrollResize(elem, pinnedSlides)
+      })
+    )
+  })
+} // pinnedScrollInit();
+
+window.addEventListener('load', pinnedScrollInit)

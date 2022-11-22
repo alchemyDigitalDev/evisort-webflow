@@ -635,7 +635,7 @@ a {
 /* ---- HEADING UNDERLINES ANIMATION ---- */
 
 /*  OPTION TWO - no curved edges */
-.headingunderline {
+/* .headingunderline {
   background: linear-gradient(
     270deg,
     transparent 0%,
@@ -650,24 +650,28 @@ a {
 }
 [data-underline].loaded .headingunderline {
   background-position: 0% bottom;
-}
+} */
 
 /*  OPTION TWO - curved doesnt work on mobile */
-/* .headingunderline {
+.headingunderline {
   position: relative;
 }
 
 .headingunderline:before {
   content: '';
   position: absolute;
-  width: calc(100% + 0.3em);
+  width: 0;
   height: 0.4em;
   bottom: 0;
   left: -0.15em;
   z-index: -1;
   border-radius: 2em;
+  transition: width 500ms ease-in-out;
   background: linear-gradient(270deg, #fa826c 0%, #ffc1ae 100%);
-} */
+}
+[data-underline].loaded .headingunderline:before {
+  width: calc(100% + 0.3em);
+}
 
 /* ---- CAREERS LIST ---- */
 
@@ -751,21 +755,6 @@ a {
 }
 
 /* ---- TILES CAROUSEL ---- */
-
-/* .module---tiles-slider {
-  position: relative;
-}
-
-.module---tiles-slider:before,
-.module---tiles-slider:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 50px;
-  background-color: red;
-} */
 
 .tiles-carousel.owl-carousel .owl-stage-outer {
   overflow: visible;
@@ -882,4 +871,61 @@ a {
 
 .sticky-nav-gradient {
   pointer-events: none;
+}
+
+/* ---- PINNED SLIDES ---- */
+
+.module---pinned-slides .pinned-trigger {
+  width: 100% !important;
+}
+
+.module---pinned-slides .pin-spacer {
+  width: 100% !important;
+}
+
+.module---pinned-slides .pinned-slide {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  min-height: 100%;
+}
+
+.module---pinned-slides .pinned-slide .pinned-scroll-image-wrap {
+  scale: 0.95;
+}
+
+.module---pinned-slides .pinned-slide---1 {
+  opacity: 1 !important;
+}
+
+.module---pinned-slides .pinned-slide---1 .pinned-scroll-image-wrap {
+  transform: scale(1) !important;
+  scale: 1 !important;
+}
+
+@media screen and (max-width: 767px) {
+  .module---pinned-slides {
+    overflow: hidden;
+  }
+  .module---pinned-slides .pinned-slides .owl-stage-outer {
+    will-change: height;
+    overflow: visible;
+  }
+  .module---pinned-slides .pinned-slides .owl-stage {
+    overflow: hidden;
+    height: 100% !important;
+  }
+
+  .module---pinned-slides .pinned-slide {
+    position: relative;
+    top: auto;
+    min-height: auto;
+    opacity: 1 !important;
+  }
+
+  .module---pinned-slides .pinned-slide .pinned-scroll-image-wrap {
+    transform: scale(1) !important;
+    scale: 1 !important;
+  }
 }
