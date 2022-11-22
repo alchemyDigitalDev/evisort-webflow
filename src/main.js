@@ -689,8 +689,6 @@ function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
         slide.style.minHeight = '100%'
       })
 
-      console.log(biggestSlide)
-
       pinnedScrollModule.querySelector('.pinned-slides').style.height =
         biggestSlide + 'px'
     }, 100)
@@ -729,7 +727,7 @@ function pinnedScrollInit() {
           scrollTrigger: {
             trigger: elem.querySelector('.pinned-trigger'),
             pin: true,
-            markers: true,
+            markers: false,
             scrub: 1,
             start: '50% 50%',
             end: '+='.pinnedSlides * 1000,
