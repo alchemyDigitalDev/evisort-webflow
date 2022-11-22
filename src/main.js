@@ -698,6 +698,8 @@ function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
 }
 
 function pinnedScrollInit() {
+  console.log('pinned init!')
+
   if (!pinnedScrollModules) {
     return
   }
@@ -727,7 +729,7 @@ function pinnedScrollInit() {
           scrollTrigger: {
             trigger: elem.querySelector('.pinned-trigger'),
             pin: true,
-            markers: false,
+            markers: true, // only enable for debugging
             scrub: 1,
             start: '50% 50%',
             end: '+='.pinnedSlides * 1000,
