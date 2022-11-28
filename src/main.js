@@ -806,3 +806,130 @@ function pinnedScrollInit() {
 } // pinnedScrollInit();
 
 window.addEventListener('load', pinnedScrollInit)
+
+/*  ==========================================================================
+    Glossary Links
+    ========================================================================== */
+
+function glossaryLinksInit() {
+  let glossaryLinks = $('.module---single-page a[href*="/glossary/"]')
+  if (glossaryLinks) {
+    $(glossaryLinks).each(function () {
+      $(this).addClass('glossary-link')
+      $(this).wrapInner('<span class="glossary-link__text"></span>')
+      $(this).append('<span class="glossary-link__icon"></span>')
+      console.log('glossary link found!')
+    })
+  }
+}
+
+window.addEventListener('load', glossaryLinksInit)
+
+/*  ==========================================================================
+    Resource access forms
+    ========================================================================== */
+
+// eslint-disable-next-line no-unused-vars
+function createCookie(name, value, days) {
+  var expires
+  if (days) {
+    var date = new Date()
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+    expires = '; expires=' + date.toGMTString()
+  } else {
+    expires = ''
+  }
+  document.cookie = name + '=' + value + expires + '; path=/'
+}
+
+// eslint-disable-next-line no-unused-vars
+function getCookie(c_name) {
+  if (document.cookie.length > 0) {
+    let c_start = document.cookie.indexOf(c_name + '=')
+    if (c_start != -1) {
+      c_start = c_start + c_name.length + 1
+      let c_end = document.cookie.indexOf(';', c_start)
+      if (c_end == -1) {
+        c_end = document.cookie.length
+      }
+      return unescape(document.cookie.substring(c_start, c_end))
+    }
+  }
+  return ''
+}
+
+function getParameterByName(name, url = window.location.href) {
+  name = name.replace(/[[\]]/g, '\\$&')
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url)
+  if (!results) return null
+  if (!results[2]) return ''
+  return decodeURIComponent(results[2].replace(/\+/g, ' '))
+}
+
+const resourceFulfilmentFolder = 'thank-you'
+const resourceFolder = 'resources'
+
+function setResourceAccess() {
+  if (window.location.href.indexOf('/' + resourceFolder + '/') > -1) {
+    let resourceFulfilmentSlug = document.querySelector(
+      '.resource-fulfilment-slug'
+    ).value
+
+    let resourceSlug = document.querySelector('.resource-slug').value
+    let resourceAccessCookie = getCookie('evisort-resource-access')
+    console.log(resourceAccessCookie)
+    if (getParameterByName('access')) {
+      // user has been redirected by form to get access.. set the cookie
+      console.log('check access!')
+      if (resourceAccessCookie) {
+        resourceAccessCookie = JSON.parse(resourceAccessCookie)
+        if (!resourceAccessCookie.includes(resourceSlug)) {
+          resourceAccessCookie.push(resourceSlug)
+        }
+      } else {
+        resourceAccessCookie = [resourceSlug]
+      }
+      let resourceAccessStr = JSON.stringify(resourceAccessCookie)
+      createCookie('evisort-resource-access', resourceAccessStr)
+      console.log('give user access!')
+      window.location.href =
+        '/' + resourceFulfilmentFolder + '/' + resourceFulfilmentSlug
+    } else {
+      // Page has loaded for first time .. check if users has access cookie
+      console.log('test')
+      if (resourceAccessCookie) {
+        resourceAccessCookie = JSON.parse(resourceAccessCookie)
+        if (resourceAccessCookie.includes(resourceSlug)) {
+          console.log('user already has access!')
+          window.location.href =
+            '/' + resourceFulfilmentFolder + '/' + resourceFulfilmentSlug
+        }
+      }
+    }
+  }
+}
+
+window.addEventListener('load', setResourceAccess)
+
+function checkResourceAccess() {
+  if (window.location.href.indexOf('/' + resourceFulfilmentFolder + '/') > -1) {
+    console.log('check access!')
+    let resourceSlug = document.querySelector('.resource-slug').value
+    let resourceAccessCookie = getCookie('evisort-resource-access')
+    if (resourceAccessCookie) {
+      resourceAccessCookie = JSON.parse(resourceAccessCookie)
+      if (!resourceAccessCookie.includes(resourceSlug)) {
+        // user does not have access... redirect them back to the resource page
+        window.location.href = '/' + resourceFolder + '/' + resourceSlug
+      } else {
+        console.log('user has access!')
+      }
+    } else {
+      // No cookie, so user does not have access... redirect them back to the resource page
+      window.location.href = '/' + resourceFolder + '/' + resourceSlug
+    }
+  }
+}
+
+window.addEventListener('load', checkResourceAccess)

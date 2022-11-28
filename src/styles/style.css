@@ -22,6 +22,23 @@
 
 a {
   color: inherit;
+  text-decoration-color: #3b71dc;
+}
+
+a.glossary-link {
+  text-decoration: none;
+}
+
+a.glossary-link .glossary-link__text {
+  text-decoration: underline;
+  text-decoration-color: #3b71dc;
+}
+
+a.glossary-link .glossary-link__icon:before {
+  content: '\f05a';
+  font-family: 'Fa 300', sans-serif;
+  margin-left: 0.2em;
+  color: #3b71dc;
 }
 
 /* ---- PAGINATION ---- */
@@ -514,12 +531,17 @@ a {
 
 .marketo-form---50-50 .mktoForm {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
 .marketo-form---50-50 .mktoForm > .mktoFormRow {
   width: 50%;
+}
+
+.marketo-form---50-50 .mktoForm > .mktoFormRow:nth-child(3) {
+  padding-bottom: 6rem !important;
 }
 
 .marketo-form---50-50 .mktoForm > .mktoFormRow {
@@ -534,11 +556,17 @@ a {
 
 .marketo-form---50-50 .mktoForm .mktoButtonRow {
   width: 50%;
+  display: block;
+  height: 6rem;
+  margin-top: -6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .marketo-form---50-50 .mktoForm .mktoButtonRow button {
   width: 100%;
-  margin: 0 !important;
+  margin: 0 0 30px 0 !important;
 }
 
 @media screen and (min-width: 1280px) {
@@ -569,6 +597,11 @@ a {
   }
   .marketo-form---50-50 .mktoForm .mktoButtonRow {
     width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
+  .marketo-form---50-50 .mktoForm > .mktoFormRow:nth-child(3) {
+    padding-bottom: 0 !important;
   }
 }
 
