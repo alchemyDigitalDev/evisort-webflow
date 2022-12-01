@@ -727,7 +727,7 @@ function pinnedScrollInit() {
           scrollTrigger: {
             trigger: elem.querySelector('.pinned-trigger'),
             pin: true,
-            markers: true, // only enable for debugging
+            markers: false, // only enable for debugging
             scrub: 1,
             start: '50% 50%',
             end: '+='.pinnedSlides * 10000,
