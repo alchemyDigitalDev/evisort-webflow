@@ -865,6 +865,10 @@ a.glossary-link .glossary-link__icon:before {
   background-color: #3b71dc !important;
 }
 
+.module---tiles-slider .module-gradient {
+  pointer-events: none;
+}
+
 @media screen and (min-width: 1280px) {
   .tiles-carousel.owl-carousel .owl-item {
     transform: scale(0.95);
@@ -882,7 +886,7 @@ a.glossary-link .glossary-link__icon:before {
 
 @media screen and (min-width: 1700px) {
   .module---tiles-slider .module-gradient {
-    width: 15%;
+    width: 10%;
   }
 }
 
