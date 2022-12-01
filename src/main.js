@@ -727,10 +727,10 @@ function pinnedScrollInit() {
           scrollTrigger: {
             trigger: elem.querySelector('.pinned-trigger'),
             pin: true,
-            markers: false, // only enable for debugging
+            markers: true, // only enable for debugging
             scrub: 1,
             start: '50% 50%',
-            end: '+='.pinnedSlides * 1000,
+            end: '+='.pinnedSlides * 10000,
             toggleActions: 'play pause play reset',
           },
         })
@@ -762,6 +762,14 @@ function pinnedScrollInit() {
               elem.querySelector('.pinned-scroll-image-wrap'),
               {
                 opacity: 0,
+                duration: 1,
+              },
+              '+=20'
+            )
+          } else {
+            tl.to(
+              elem.querySelector('.pinned-scroll-image-wrap'),
+              {
                 duration: 1,
               },
               '+=20'
