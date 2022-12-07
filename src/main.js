@@ -722,6 +722,8 @@ function pinnedScrollInit() {
         $(pinnedSlidesWrap).trigger('destroy.owl.carousel')
         pinnedSlidesWrap.classList.remove('owl-carousel')
 
+        let endPoint = pinnedSlides.length * 1000
+
         // Setup pinned scroll...
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -730,7 +732,7 @@ function pinnedScrollInit() {
             markers: false, // only enable for debugging
             scrub: 1,
             start: '50% 50%',
-            end: '+='.pinnedSlides * 10000,
+            end: '+=' + endPoint,
             toggleActions: 'play pause play reset',
           },
         })
