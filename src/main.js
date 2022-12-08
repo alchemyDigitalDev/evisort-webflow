@@ -300,11 +300,19 @@ function alternatingTextInit() {
           return el != ''
         })
         if (alternatingTextArray) {
-          $(pageHeading).html(
-            pageHeadingTextStrings[0] +
-              '<span class="pageheader-heading__alternatingtext"></span>' +
-              pageHeadingTextStrings[1]
-          )
+          if (pageHeadingTextStrings[1]) {
+            $(pageHeading).html(
+              pageHeadingTextStrings[0] +
+                ' <span class="pageheader-heading__alternatingtext"></span> ' +
+                pageHeadingTextStrings[1]
+            )
+          } else {
+            $(pageHeading).html(
+              pageHeadingTextStrings[0] +
+                ' <span class="pageheader-heading__alternatingtext"></span> '
+            )
+          }
+
           $(alternatingTextArray).each(function (
             index,
             alternatingTextArrayItem
