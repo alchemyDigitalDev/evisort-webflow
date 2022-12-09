@@ -124,7 +124,18 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
 
       $(openItem).css('backgroundColor', '#fff9f0')
       $(current_loadingbarfill).css('display', 'block')
-      $(current_loadingbar).css('backgroundColor', '#83a8f8')
+      if (
+        $(
+          current_loadingbar.hasClass(
+            'accordion-item-loading-bar-evisort-red-tint'
+          )
+        )
+      ) {
+        $(current_loadingbar).css('backgroundColor', '#ffc1ae')
+      } else {
+        $(current_loadingbar).css('backgroundColor', '#83a8f8')
+      }
+
       $(current_loadingbar).animate({ height: '10px' }, 100)
       $(current_content).animate({ 'max-height': '750px' }, 750)
       $(current_quote_mobile).animate({ 'max-height': '750px' }, 750)
