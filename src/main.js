@@ -977,17 +977,12 @@ function createGlossaryGrid() {
       glossaryArray[firstLetter].push(glossaryLink.outerHTML)
     })
 
-    console.log(glossaryArray)
-
     for (let key in glossaryArray) {
-      console.log(key)
       let letterList = document.querySelectorAll(
         ".glossary-list-list[data-letter='" + key + "']"
       )
-      console.log(letterList)
       if (glossaryArray[key].length && letterList.length) {
         for (let itemKey in glossaryArray[key]) {
-          console.log(glossaryArray[key][itemKey])
           letterList[0].innerHTML +=
             '<div class="glossary-item">' +
             glossaryArray[key][itemKey] +
