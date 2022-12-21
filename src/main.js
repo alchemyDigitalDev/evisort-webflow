@@ -125,10 +125,8 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
       $(openItem).css('backgroundColor', '#fff9f0')
       $(current_loadingbarfill).css('display', 'block')
       if (
-        $(
-          current_loadingbar.hasClass(
-            'accordion-item-loading-bar-evisort-red-tint'
-          )
+        $(current_loadingbar).hasClass(
+          'accordion-item-loading-bar-evisort-red-tint'
         )
       ) {
         $(current_loadingbar).css('backgroundColor', '#ffc1ae')
@@ -725,11 +723,24 @@ function pinnedScrollInit() {
     let pinnedSlides = elem.querySelectorAll('.pinned-slide')
     let pinnedSlidesWrap = elem.querySelector('.pinned-slides')
     let biggestSlide = 0
-    pinnedSlides.forEach(function (slide) {
+    pinnedSlides.forEach(function (slide, i) {
       biggestSlide =
         slide.offsetHeight > biggestSlide ? slide.offsetHeight : biggestSlide
       /* Now we have the biggest height, make the slides all 100% - if we do this before then we cant get the biggest height */
       slide.style.minHeight = '100%'
+
+      // Add slide dots
+      let slideDotsHtml = ''
+      pinnedSlides.forEach(function (slide, j) {
+        if (i == j) {
+          slideDotsHtml += "<div class='pinned-slide-dot active'></div>"
+        } else {
+          slideDotsHtml += "<div class='pinned-slide-dot'></div>"
+        }
+      })
+      slide.querySelector('.pinned-slide-content').innerHTML +=
+        "<div class='pinned-slide-dots'>" + slideDotsHtml + '</div>'
+      // for each slide append a dot to dots div
     })
 
     elem.querySelector('.pinned-slides').style.height = biggestSlide + 'px'
@@ -765,12 +776,12 @@ function pinnedScrollInit() {
                 duration: 1,
               },
               '+=20'
-            )
+            ).set(elem, { css: { zIndex: 100 } })
           } else {
             tl.to(elem, {
               opacity: 1,
               duration: 1,
-            })
+            }).set(elem, { css: { zIndex: 100 } })
           }
 
           tl.to(elem.querySelector('.pinned-scroll-image-wrap'), {
@@ -896,69 +907,95 @@ function getParameterByName(name, url = window.location.href) {
   return decodeURIComponent(results[2].replace(/\+/g, ' '))
 }
 
-const resourceFulfilmentFolder = 'thank-you'
 const resourceFolder = 'resources'
 
-function setResourceAccess() {
-  if (window.location.href.indexOf('/' + resourceFolder + '/') > -1) {
-    let resourceFulfilmentSlug = document.querySelector(
-      '.resource-fulfilment-slug'
-    ).value
-
-    let resourceSlug = document.querySelector('.resource-slug').value
-    let resourceAccessCookie = getCookie('evisort-resource-access')
-    console.log(resourceAccessCookie)
-    if (getParameterByName('access')) {
-      // user has been redirected by form to get access.. set the cookie
-      console.log('check access!')
-      if (resourceAccessCookie) {
-        resourceAccessCookie = JSON.parse(resourceAccessCookie)
-        if (!resourceAccessCookie.includes(resourceSlug)) {
-          resourceAccessCookie.push(resourceSlug)
-        }
-      } else {
-        resourceAccessCookie = [resourceSlug]
-      }
-      let resourceAccessStr = JSON.stringify(resourceAccessCookie)
-      createCookie('evisort-resource-access', resourceAccessStr)
-      console.log('give user access!')
-      window.location.href =
-        '/' + resourceFulfilmentFolder + '/' + resourceFulfilmentSlug
-    } else {
-      // Page has loaded for first time .. check if users has access cookie
-      console.log('test')
-      if (resourceAccessCookie) {
-        resourceAccessCookie = JSON.parse(resourceAccessCookie)
-        if (resourceAccessCookie.includes(resourceSlug)) {
-          console.log('user already has access!')
-          window.location.href =
-            '/' + resourceFulfilmentFolder + '/' + resourceFulfilmentSlug
-        }
-      }
-    }
-  }
-}
-
-window.addEventListener('load', setResourceAccess)
-
 function checkResourceAccess() {
-  if (window.location.href.indexOf('/' + resourceFulfilmentFolder + '/') > -1) {
-    console.log('check access!')
-    let resourceSlug = document.querySelector('.resource-slug').value
-    let resourceAccessCookie = getCookie('evisort-resource-access')
-    if (resourceAccessCookie) {
-      resourceAccessCookie = JSON.parse(resourceAccessCookie)
-      if (!resourceAccessCookie.includes(resourceSlug)) {
-        // user does not have access... redirect them back to the resource page
+  if (window.location.href.indexOf('/' + resourceFolder + '/') > -1) {
+    // check if it has a gated area e.g. if its a gated resource
+    console.log($('.is-gated-resource').val())
+    if ($('.is-gated-resource').val() == 'true') {
+      console.log('check access!')
+      let resourceSlug = document.querySelector('.resource-slug').value
+      let resourceAccessCookie = getCookie('evisort-resource-access')
+      if (resourceAccessCookie) {
+        resourceAccessCookie = JSON.parse(resourceAccessCookie)
+        console.log(resourceAccessCookie)
+        console.log(resourceSlug)
+        if (!resourceAccessCookie.includes(resourceSlug)) {
+          // user does not have access... hide content & show form
+          $('.resource-gate').show()
+          $('.resource-ungated').remove()
+        } else {
+          console.log('user has access!')
+          $('.resource-ungated').show()
+          $('.resource-gate').remove()
+        }
+      } else if (getParameterByName('access')) {
+        if (resourceAccessCookie) {
+          resourceAccessCookie = JSON.parse(resourceAccessCookie)
+          if (!resourceAccessCookie.includes(resourceSlug)) {
+            resourceAccessCookie.push(resourceSlug)
+          }
+        } else {
+          resourceAccessCookie = [resourceSlug]
+        }
+        let resourceAccessStr = JSON.stringify(resourceAccessCookie)
+        createCookie('evisort-resource-access', resourceAccessStr)
+        console.log('give user access!')
         window.location.href = '/' + resourceFolder + '/' + resourceSlug
       } else {
-        console.log('user has access!')
+        // No cookie, so user does not have access... redirect them back to the resource page
+        $('.resource-gate').show()
+        $('.resource-ungated').remove()
       }
     } else {
-      // No cookie, so user does not have access... redirect them back to the resource page
-      window.location.href = '/' + resourceFolder + '/' + resourceSlug
+      // This resource is ungated - so show content
+      $('.resource-ungated').show()
+      $('.resource-gate').remove()
     }
   }
 }
 
 window.addEventListener('load', checkResourceAccess)
+
+/*  ==========================================================================
+    Resource access forms
+    ========================================================================== */
+
+function createGlossaryGrid() {
+  if (document.querySelector('.hidden-glossary-list')) {
+    let glossaryArray = {}
+    let glossaryLinks = document
+      .querySelector('.hidden-glossary-list')
+      .querySelectorAll('.glossary-link')
+    glossaryLinks.forEach(function (glossaryLink) {
+      let linkText = glossaryLink.querySelector('.text-block-2').textContent
+      let firstLetter = linkText[0].toLowerCase()
+      if (glossaryArray[firstLetter] == undefined) {
+        glossaryArray[firstLetter] = []
+      }
+      glossaryArray[firstLetter].push(glossaryLink.outerHTML)
+    })
+
+    console.log(glossaryArray)
+
+    for (let key in glossaryArray) {
+      console.log(key)
+      let letterList = document.querySelectorAll(
+        ".glossary-list-list[data-letter='" + key + "']"
+      )
+      console.log(letterList)
+      if (glossaryArray[key].length && letterList.length) {
+        for (let itemKey in glossaryArray[key]) {
+          console.log(glossaryArray[key][itemKey])
+          letterList[0].innerHTML +=
+            '<div class="glossary-item">' +
+            glossaryArray[key][itemKey] +
+            '</div>'
+        }
+      }
+    }
+  }
+}
+
+window.addEventListener('load', createGlossaryGrid)

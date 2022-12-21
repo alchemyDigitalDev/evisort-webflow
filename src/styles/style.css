@@ -930,6 +930,7 @@ a.glossary-link .glossary-link__icon:before {
 
 .module---pinned-slides .pinned-slide .pinned-scroll-image-wrap {
   scale: 0.95;
+  z-index: 1;
 }
 
 .module---pinned-slides .pinned-slide---1 {
@@ -939,6 +940,24 @@ a.glossary-link .glossary-link__icon:before {
 .module---pinned-slides .pinned-slide---1 .pinned-scroll-image-wrap {
   transform: scale(1) !important;
   scale: 1 !important;
+}
+
+.module---pinned-slides .pinned-slide-dots {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.module---pinned-slides .pinned-slide-dots .pinned-slide-dot {
+  height: 1em;
+  width: 3px;
+  margin: 3px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.module---pinned-slides .pinned-slide-dots .pinned-slide-dot.active {
+  background-color: #000;
 }
 
 @media screen and (max-width: 767px) {
@@ -964,5 +983,8 @@ a.glossary-link .glossary-link__icon:before {
   .module---pinned-slides .pinned-slide .pinned-scroll-image-wrap {
     transform: scale(1) !important;
     scale: 1 !important;
+  }
+  .module---pinned-slides .pinned-slide-dots {
+    display: none;
   }
 }
