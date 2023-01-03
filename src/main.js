@@ -65,6 +65,7 @@ const accordionItemTime = 5000
 let currentItemID = 1
 
 function closeAccordionItem(closeItem) {
+  $(closeItem).addClass('accordion-item---closed')
   let accordion_loadingbar = $(closeItem).find('.accordion-item-loading-bar')
   let accordion_loadingbarfill = $(closeItem).find(
     '.accordion-item-loading-bar-fill'
@@ -103,6 +104,7 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
     .promise()
     .done(function () {
       // Show current one
+      $(openItem).removeClass('accordion-item---closed')
       let current_loadingbar = $(openItem).find('.accordion-item-loading-bar')
       let current_loadingbarfill = $(openItem).find(
         '.accordion-item-loading-bar-fill'

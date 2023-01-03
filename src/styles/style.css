@@ -988,3 +988,9 @@ a.glossary-link .glossary-link__icon:before {
     display: none;
   }
 }
+
+/* Accordion Items */
+
+.accordion-item---closed {
+  cursor: pointer;
+}
