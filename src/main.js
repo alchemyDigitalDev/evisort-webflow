@@ -61,7 +61,7 @@ function isScrolledIntoView(elem) {
     Acccordion Module Animation 
     ========================================================================== */
 
-const accordionItemTime = 5000
+const accordionItemTime = 7500
 let currentItemID = 1
 
 function closeAccordionItem(closeItem) {
