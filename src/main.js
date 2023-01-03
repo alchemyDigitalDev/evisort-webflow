@@ -280,7 +280,7 @@ function alternatingTextAnimate(count, maxCount) {
 
   $('.pageheader-heading__alternatingtext__item--' + count).css(
     'display',
-    'inline-block'
+    'inline'
   )
 
   $('.pageheader-heading__alternatingtext__item--' + count).animate(
@@ -996,3 +996,81 @@ function createGlossaryGrid() {
 }
 
 window.addEventListener('load', createGlossaryGrid)
+
+/*  ==========================================================================
+    Marquee - Infinite Scroll
+    ========================================================================== */
+
+const default_animation_speed = 1.5
+const el_class = 'marquee---animating'
+const inner_class = 'marquee__wrap'
+
+function marquee__resize($el) {
+  // Check if element has custom speed or default
+  var animation_speed = default_animation_speed
+  if ($el.data('speed')) {
+    animation_speed = $el.data('speed')
+  } else {
+    animation_speed = default_animation_speed
+  }
+
+  // Set animation time
+  var linelength = $('.' + inner_class, $el).width()
+  var distance = linelength
+  var speed = animation_speed * 0.01
+  var duration = distance / speed
+  var delay = 0 - duration / 3
+
+  $el.find('.' + inner_class).css('animation-duration', duration + 'ms')
+  $el
+    .find('.' + inner_class + ':first-child()')
+    .css('animation-delay', delay + 'ms')
+  $el
+    .find('.' + inner_class + ':nth-child(2)')
+    .css('animation-delay', delay * 2 + 'ms')
+  $el
+    .find('.' + inner_class + ':nth-child(3)')
+    .css('animation-delay', delay * 3 + 'ms')
+  $el
+    .find('.' + inner_class + ':nth-child(4)')
+    .css('animation-delay', delay * 4 + 'ms')
+  $el
+    .find('.' + inner_class + ':nth-child(5)')
+    .css('animation-delay', delay * 5 + 'ms')
+}
+
+function marquee__init($el) {
+  // Setup two scroll wraps (duplicate the HTML)
+  $el.wrapInner("<div class='" + inner_class + "'></div>")
+  $el
+    .find('.' + inner_class)
+    .clone()
+    .appendTo($el)
+  $el
+    .find('.' + inner_class + ':first-child()')
+    .clone()
+    .appendTo($el)
+  $el
+    .find('.' + inner_class + ':first-child()')
+    .clone()
+    .appendTo($el)
+
+  // Setup animation times
+  marquee__resize($el)
+
+  // Once everything is set up, add "loaded" class
+  $el.addClass(el_class + '--loaded')
+}
+
+function setupMarquee() {
+  $('.' + el_class).each(function () {
+    marquee__init($(this))
+  })
+  $(window).resize(function () {
+    $('.' + el_class).each(function () {
+      marquee__resize($(this))
+    })
+  })
+}
+
+window.addEventListener('load', setupMarquee)
