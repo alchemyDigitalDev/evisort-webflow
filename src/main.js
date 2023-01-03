@@ -686,7 +686,7 @@ function tileCarouselsInit() {
 window.addEventListener('load', tileCarouselsInit)
 
 /*  ==========================================================================
-    Radithemes Module Horizontal Scroll
+    Pinned Slides Module
     ========================================================================== */
 
 const pinnedScrollModules = document.querySelectorAll('.module---pinned-slides')
