@@ -971,8 +971,9 @@ function createGlossaryGrid() {
       .querySelector('.hidden-glossary-list')
       .querySelectorAll('.glossary-link')
     glossaryLinks.forEach(function (glossaryLink) {
-      let linkText = glossaryLink.querySelector('.text-block-2').textContent
-      let firstLetter = linkText[0].toLowerCase()
+      let firstLetter = glossaryLink
+        .querySelector('.first-letter')
+        .value.toLowerCase()
       if (glossaryArray[firstLetter] == undefined) {
         glossaryArray[firstLetter] = []
       }
