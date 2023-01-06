@@ -1042,7 +1042,6 @@ a.glossary-link .glossary-link__icon:before {
   animation: scroll_1 30s linear -24s infinite;
   -moz-animation: scroll_1 30s linear -24s infinite;
   -o-animation: scroll_1 30s linear -24s infinite;
-  margin-left: -50vw;
 }
 .marquee__wrap:nth-child(2) {
   animation: scroll_2 30s linear -18s infinite;
