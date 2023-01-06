@@ -1022,15 +1022,8 @@ a.glossary-link .glossary-link__icon:before {
   opacity: 1;
 }
 
-.marquee__tile {
-  width: 12em;
-  height: 100%;
-  white-space: normal;
-}
-
 .marquee__wrap {
   padding: 0;
-  width: 100%;
   display: inline-block;
   /* align-items: center; */
   white-space: nowrap;
@@ -1072,15 +1065,15 @@ a.glossary-link .glossary-link__icon:before {
 }
 
 @media screen and (max-width: 767px) {
-  .marquee__wrap {
+  /* .marquee__wrap {
     width: 150%;
-  }
+  } */
 }
 
 @media screen and (max-width: 479px) {
-  .marquee__wrap {
+  /* .marquee__wrap {
     width: 250%;
-  }
+  } */
 }
 
 @keyframes scroll_1 {
