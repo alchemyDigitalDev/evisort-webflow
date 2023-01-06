@@ -1125,3 +1125,19 @@ a.glossary-link .glossary-link__icon:before {
 .glossary-anchor {
   height: calc(100% + 13rem);
 }
+
+/* Navbar button highlight on scroll */
+
+.navbar-wrapper .button-outline.button-light {
+  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+
+.navbar-wrapper .button-outline.button-light.highlight {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.navbar-wrapper .button-outline.button-light.highlight:hover {
+  background-color: #3b71dc;
+  color: #ffffff;
+}

@@ -160,12 +160,11 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
 function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
   let accordionTop = $(accordion).offset().top - $(window).height()
   let accordionHeight = $(accordion).height()
-  let windowHeight = $(window).height()
   let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
   let accordion_items = $(accordion).find('.accordion-item')
 
   if (
-    $(window).scrollTop() > accordionTop + accordionHeight - windowHeight / 2 &&
+    $(window).scrollTop() > accordionTop + accordionHeight * 0.75 &&
     !$(accordion).hasClass('playing')
   ) {
     // Check if it's in viewport
@@ -1077,3 +1076,18 @@ function setupMarquee() {
 }
 
 window.addEventListener('load', setupMarquee)
+
+function ctaColourChangeInit() {
+  if ($('.navbar-wrapper .button-outline.button-light').length) {
+    if ($(window).scrollTop() > 50) {
+      $('.navbar-wrapper .button-outline.button-light').addClass('highlight')
+    } else {
+      $('.navbar-wrapper .button-outline.button-light').removeClass('highlight')
+    }
+  }
+}
+
+$(window).scroll(function () {
+  // Trigger animations on scroll
+  ctaColourChangeInit()
+})
