@@ -159,11 +159,13 @@ function showAccordionItem(accordion_items, openItem, userClicked = false) {
 
 function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
   let accordionTop = $(accordion).offset().top - $(window).height()
+  let accordionHeight = $(accordion).height()
+  let windowHeight = $(window).height()
   let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
   let accordion_items = $(accordion).find('.accordion-item')
 
   if (
-    $(window).scrollTop() > accordionTop &&
+    $(window).scrollTop() > accordionTop + accordionHeight - windowHeight / 2 &&
     !$(accordion).hasClass('playing')
   ) {
     // Check if it's in viewport
@@ -215,7 +217,7 @@ function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
 }
 
 function accordionsInit() {
-  const accordions = $('.module---accordion')
+  const accordions = $('.module---accordion .grid')
   let screenWidth = window.innerWidth
   let itemsTimeout = []
 
