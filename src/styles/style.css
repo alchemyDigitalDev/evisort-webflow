@@ -1017,11 +1017,11 @@ a.glossary-link .glossary-link__icon:before {
   white-space: nowrap;
   max-width: 100%;
   opacity: 0;
-  transition: opacity 250ms ease-in-out;
 }
 
 .marquee---animating.marquee---animating--loaded {
   opacity: 1;
+  transition: opacity 250ms ease-in-out;
 }
 
 .marquee__wrap {
