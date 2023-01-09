@@ -688,6 +688,8 @@ a.glossary-link .glossary-link__icon:before {
 /*  OPTION TWO - curved doesnt work on mobile */
 .headingunderline {
   position: relative;
+  display: inline-block;
+  margin-left: 0.2em;
 }
 
 .headingunderline:before {
@@ -892,7 +894,7 @@ a.glossary-link .glossary-link__icon:before {
 
 @media screen and (max-width: 479px) {
   .tiles-carousel.owl-carousel .owl-dots .owl-dot {
-    width: 1em;
+    width: 0.5em;
   }
 }
 
