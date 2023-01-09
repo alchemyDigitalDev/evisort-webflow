@@ -865,7 +865,6 @@ function glossaryLinksInit() {
       $(this).addClass('glossary-link')
       $(this).wrapInner('<span class="glossary-link__text"></span>')
       $(this).append('<span class="glossary-link__icon"></span>')
-      console.log('glossary link found!')
     })
   }
 }
@@ -919,21 +918,16 @@ const resourceFolder = 'resources'
 function checkResourceAccess() {
   if (window.location.href.indexOf('/' + resourceFolder + '/') > -1) {
     // check if it has a gated area e.g. if its a gated resource
-    console.log($('.is-gated-resource').val())
     if ($('.is-gated-resource').val() == 'true') {
-      console.log('check access!')
       let resourceSlug = document.querySelector('.resource-slug').value
       let resourceAccessCookie = getCookie('evisort-resource-access')
       if (resourceAccessCookie) {
         resourceAccessCookie = JSON.parse(resourceAccessCookie)
-        console.log(resourceAccessCookie)
-        console.log(resourceSlug)
         if (!resourceAccessCookie.includes(resourceSlug)) {
           // user does not have access... hide content & show form
           $('.resource-gate').show()
           $('.resource-ungated').remove()
         } else {
-          console.log('user has access!')
           $('.resource-ungated').show()
           $('.resource-gate').remove()
         }
@@ -948,7 +942,6 @@ function checkResourceAccess() {
         }
         let resourceAccessStr = JSON.stringify(resourceAccessCookie)
         createCookie('evisort-resource-access', resourceAccessStr)
-        console.log('give user access!')
         window.location.href = '/' + resourceFolder + '/' + resourceSlug
       } else {
         // No cookie, so user does not have access... redirect them back to the resource page
