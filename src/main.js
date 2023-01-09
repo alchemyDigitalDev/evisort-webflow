@@ -1,6 +1,6 @@
 import './styles/style.css'
 import 'owl.carousel/dist/assets/owl.carousel.css'
-import 'owl.carousel/dist/owl.carousel.min.js'
+import '/node_modules/owl.carousel/dist/owl.carousel.min.js'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
 
