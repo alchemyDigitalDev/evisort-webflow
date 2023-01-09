@@ -713,8 +713,6 @@ window.addEventListener('load', tileCarouselsInit)
     Pinned Slides Module
     ========================================================================== */
 
-const pinnedScrollModules = document.querySelectorAll('.module---pinned-slides')
-
 function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
   if (window.innerWidth > 768) {
     let biggestSlide = 0
@@ -746,6 +744,10 @@ function pinnedScrollInit() {
   // if (!pinnedScrollModules) {
   //   return
   // }
+
+  const pinnedScrollModules = document.querySelectorAll(
+    '.module---pinned-slides'
+  )
 
   pinnedScrollModules.forEach(function (elem) {
     let pinnedSlides = elem.querySelectorAll('.pinned-slide')
