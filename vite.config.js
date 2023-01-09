@@ -13,7 +13,7 @@ export default defineConfig({
     },
   },
   build: {
-    minify: false,
+    minify: true,
     manifest: true,
     rollupOptions: {
       input: './src/main.js',
