@@ -487,44 +487,46 @@ window.addEventListener('load', statisticsInit)
 		Product Feature hover animations
     ========================================================================== */
 
-function productFeaturesInit() {
-  let productFeaturesModules = $('.module---product-features')
+// Disabled for now, as client is currently using static images - can be re-enabled when gifs are added.
 
-  if (productFeaturesModules) {
-    $(productFeaturesModules).each(function () {
-      let featureTiles = $('.tile-icon---product-features')
-      if (featureTiles) {
-        $(featureTiles).each(function () {
-          let gifImageWrap = $(this).find('.tile-hover-gif')
-          let gifImage = $(this).find('.tile-hover-gif-image')
-          let gifImageSRC = $(gifImage).attr('src')
-          // Setup image src as data attribute
-          $(gifImage).data('gif-image', gifImageSRC)
-          // Set image src to blank to star with
-          $(gifImage).attr('src', '')
-          if (!is_touch_enabled()) {
-            $(this).hover(
-              function () {
-                // on hover set the image src back to the GIF to make it play
-                $(gifImageWrap).show()
-                $(gifImage).attr(
-                  'src',
-                  gifImageSRC + '?rnd=' + Math.random() + ''
-                )
-              },
-              function () {
-                $(gifImageWrap).hide()
-                $(gifImage).attr('src', '')
-              }
-            )
-          }
-        })
-      }
-    })
-  }
-}
+// function productFeaturesInit() {
+//   let productFeaturesModules = $('.module---product-features')
 
-window.addEventListener('load', productFeaturesInit)
+//   if (productFeaturesModules) {
+//     $(productFeaturesModules).each(function () {
+//       let featureTiles = $('.tile-icon---product-features')
+//       if (featureTiles) {
+//         $(featureTiles).each(function () {
+//           let gifImageWrap = $(this).find('.tile-hover-gif')
+//           let gifImage = $(this).find('.tile-hover-gif-image')
+//           let gifImageSRC = $(gifImage).attr('src')
+//           // Setup image src as data attribute
+//           $(gifImage).data('gif-image', gifImageSRC)
+//           // Set image src to blank to star with
+//           $(gifImage).attr('src', '')
+//           if (!is_touch_enabled()) {
+//             $(this).hover(
+//               function () {
+//                 // on hover set the image src back to the GIF to make it play
+//                 $(gifImageWrap).show()
+//                 $(gifImage).attr(
+//                   'src',
+//                   gifImageSRC + '?rnd=' + Math.random() + ''
+//                 )
+//               },
+//               function () {
+//                 $(gifImageWrap).hide()
+//                 $(gifImage).attr('src', '')
+//               }
+//             )
+//           }
+//         })
+//       }
+//     })
+//   }
+// }
+
+// window.addEventListener('load', productFeaturesInit)
 
 /*  ==========================================================================
 		Underline header animations
@@ -723,6 +725,7 @@ function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
 
 function pinnedScrollInit() {
   console.log('init pinned slides')
+  console.log(pinnedScrollModules)
   if (!pinnedScrollModules) {
     return
   }
