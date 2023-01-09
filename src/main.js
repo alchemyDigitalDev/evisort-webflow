@@ -1,8 +1,11 @@
+/* 
+Access-Control-Allow-Origin: * */
+
 import './styles/style.css'
 
-// import gsap from 'gsap'
-// import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
-// gsap.registerPlugin(ScrollTrigger)
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
+gsap.registerPlugin(ScrollTrigger)
 
 import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel'
