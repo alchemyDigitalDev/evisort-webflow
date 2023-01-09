@@ -1,9 +1,11 @@
 import './styles/style.css'
+
+// import gsap from 'gsap'
+// import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
+// gsap.registerPlugin(ScrollTrigger)
+
 import 'owl.carousel/dist/assets/owl.carousel.css'
 import 'owl.carousel'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
-gsap.registerPlugin(ScrollTrigger)
 
 /*  ==========================================================================
 		Debounce function to use for resizes
