@@ -1,9 +1,11 @@
 import './styles/style.css'
 import 'owl.carousel/dist/assets/owl.carousel.css'
+
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
+import $ from 'jquery'
 
-import owlCarousel from './node_modules/owl.carousel/dist/owl.carousel.min.js'
+import 'owl.carousel'
 
 gsap.registerPlugin(ScrollTrigger)
 
