@@ -748,6 +748,8 @@ function pinnedScrollInit() {
       })
       slide.querySelector('.pinned-slide-content').innerHTML +=
         "<div class='pinned-slide-dots'>" + slideDotsHtml + '</div>'
+
+      console.log('foreach')
       // for each slide append a dot to dots div
     })
 
@@ -759,6 +761,8 @@ function pinnedScrollInit() {
         // Remove carousel if enabled
         $(pinnedSlidesWrap).trigger('destroy.owl.carousel')
         pinnedSlidesWrap.classList.remove('owl-carousel')
+
+        console.log('match media')
 
         let endPoint = pinnedSlides.length * 1000
 
