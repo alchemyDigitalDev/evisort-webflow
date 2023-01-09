@@ -722,6 +722,7 @@ function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
 }
 
 function pinnedScrollInit() {
+  console.log('init pinned slides')
   if (!pinnedScrollModules) {
     return
   }
