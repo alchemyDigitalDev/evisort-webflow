@@ -1,10 +1,8 @@
 import './styles/style.css'
+// import 'owl.carousel/dist/assets/owl.carousel.css'
+// import 'owl.carousel'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
-import $ from 'jquery'
-import 'owl.carousel/dist/assets/owl.carousel.css'
-import 'owl.carousel'
-
 gsap.registerPlugin(ScrollTrigger)
 
 /*  ==========================================================================
@@ -816,26 +814,26 @@ function pinnedScrollInit() {
       },
       '(max-width: 768px)': function () {
         // Setup Owl Carousel
-        pinnedSlidesWrap.classList.add('owl-carousel')
-        $(pinnedSlidesWrap).owlCarousel({
-          items: 1,
-          margin: 48,
-          nav: false,
-          dots: false,
-          loop: false,
-          autoHeight: true,
-          responsive: {
-            0: {
-              margin: 16,
-            },
-            767: {
-              margin: 24,
-            },
-            1280: {
-              margin: 48,
-            },
-          },
-        })
+        // pinnedSlidesWrap.classList.add('owl-carousel')
+        // $(pinnedSlidesWrap).owlCarousel({
+        //   items: 1,
+        //   margin: 48,
+        //   nav: false,
+        //   dots: false,
+        //   loop: false,
+        //   autoHeight: true,
+        //   responsive: {
+        //     0: {
+        //       margin: 16,
+        //     },
+        //     767: {
+        //       margin: 24,
+        //     },
+        //     1280: {
+        //       margin: 48,
+        //     },
+        //   },
+        // })
       },
     })
 
