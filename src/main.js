@@ -530,10 +530,10 @@ function productFeaturesInit() {
             $(this).hover(
               function () {
                 // on hover set the image src back to the GIF to make it play
-                $(gifImageWrap).show()
+                $(gifImageWrap).fadeIn(250)
               },
               function () {
-                $(gifImageWrap).hide()
+                $(gifImageWrap).fadeOut(250)
               }
             )
           }
