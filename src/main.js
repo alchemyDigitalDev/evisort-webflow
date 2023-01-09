@@ -1030,12 +1030,12 @@ function marquee__resize($el) {
   $el
     .find('.' + inner_class + ':nth-child(3)')
     .css('animation-delay', delay * 3 + 'ms')
-  $el
-    .find('.' + inner_class + ':nth-child(4)')
-    .css('animation-delay', delay * 4 + 'ms')
-  $el
-    .find('.' + inner_class + ':nth-child(5)')
-    .css('animation-delay', delay * 5 + 'ms')
+  // $el
+  //   .find('.' + inner_class + ':nth-child(4)')
+  //   .css('animation-delay', delay * 4 + 'ms')
+  // $el
+  //   .find('.' + inner_class + ':nth-child(5)')
+  //   .css('animation-delay', delay * 5 + 'ms')
 }
 
 function marquee__init($el) {
@@ -1049,10 +1049,10 @@ function marquee__init($el) {
     .find('.' + inner_class + ':first-child()')
     .clone()
     .appendTo($el)
-  $el
-    .find('.' + inner_class + ':first-child()')
-    .clone()
-    .appendTo($el)
+  // $el
+  //   .find('.' + inner_class + ':first-child()')
+  //   .clone()
+  //   .appendTo($el)
 
   // Setup animation times
   marquee__resize($el)

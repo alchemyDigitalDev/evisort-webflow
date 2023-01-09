@@ -1062,11 +1062,11 @@ a.glossary-link .glossary-link__icon:before {
   -moz-animation: scroll_3 30s linear -12s infinite;
   -o-animation: scroll_3 30s linear -12s infinite;
 }
-.marquee__wrap:nth-child(4) {
+/* .marquee__wrap:nth-child(4) {
   animation: scroll_4 30s linear -6s infinite;
   -moz-animation: scroll_4 30s linear -6s infinite;
   -o-animation: scroll_4 30s linear -6s infinite;
-}
+} */
 
 .module---marquee:hover .marquee---animating .marquee__wrap {
   animation-play-state: paused;
@@ -1117,7 +1117,7 @@ a.glossary-link .glossary-link__icon:before {
   }
 }
 
-@keyframes scroll_4 {
+/* @keyframes scroll_4 {
   0% {
     -webkit-transform: translate3d(100vw, 0, 0) translate3d(-300%, 0, 0);
     transform: translate3d(100vw, 0, 0) translate3d(-300%, 0, 0);
@@ -1126,7 +1126,7 @@ a.glossary-link .glossary-link__icon:before {
     -webkit-transform: translate3d(100vw, 0, 0) translate3d(-600%, 0, 0);
     transform: translate3d(100vw, 0, 0) translate3d(-600%, 0, 0);
   }
-}
+} */
 
 /* Glossary */
 
