@@ -743,9 +743,9 @@ function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
 function pinnedScrollInit() {
   console.log('init pinned slides')
   console.log(pinnedScrollModules)
-  if (!pinnedScrollModules) {
-    return
-  }
+  // if (!pinnedScrollModules) {
+  //   return
+  // }
 
   pinnedScrollModules.forEach(function (elem) {
     let pinnedSlides = elem.querySelectorAll('.pinned-slide')
