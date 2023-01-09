@@ -1047,7 +1047,7 @@ a.glossary-link .glossary-link__icon:before {
   perspective: 1000;
 }
 
-/* .marquee__wrap:first-child {
+.marquee__wrap:nth-child(1) {
   animation: scroll_1 30s linear -24s infinite;
   -moz-animation: scroll_1 30s linear -24s infinite;
   -o-animation: scroll_1 30s linear -24s infinite;
@@ -1066,7 +1066,7 @@ a.glossary-link .glossary-link__icon:before {
   animation: scroll_4 30s linear -6s infinite;
   -moz-animation: scroll_4 30s linear -6s infinite;
   -o-animation: scroll_4 30s linear -6s infinite;
-} */
+}
 
 .module---marquee:hover .marquee---animating .marquee__wrap {
   animation-play-state: paused;
