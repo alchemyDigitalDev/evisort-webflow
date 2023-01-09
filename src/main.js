@@ -41,13 +41,13 @@ window.addEventListener('load', resize)
 
 // Re-enable when product features GIF hover is enabled
 
-// function is_touch_enabled() {
-//   return (
-//     'ontouchstart' in window ||
-//     navigator.maxTouchPoints > 0 ||
-//     navigator.msMaxTouchPoints > 0
-//   )
-// }
+function is_touch_enabled() {
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    navigator.msMaxTouchPoints > 0
+  )
+}
 
 /*  ==========================================================================
     Check if element is in view
@@ -489,46 +489,60 @@ window.addEventListener('load', statisticsInit)
 		Product Feature hover animations
     ========================================================================== */
 
-// Disabled for now, as client is currently using static images - can be re-enabled when gifs are added.
+function productFeaturesInit() {
+  let productFeaturesModules = $('.module---product-features')
 
-// function productFeaturesInit() {
-//   let productFeaturesModules = $('.module---product-features')
+  if (productFeaturesModules) {
+    $(productFeaturesModules).each(function () {
+      let featureTiles = $('.tile-icon---product-features')
+      if (featureTiles) {
+        $(featureTiles).each(function () {
+          let gifImageWrap = $(this).find('.tile-hover-gif')
+          let gifImage = $(this).find('.tile-hover-gif-image')
 
-//   if (productFeaturesModules) {
-//     $(productFeaturesModules).each(function () {
-//       let featureTiles = $('.tile-icon---product-features')
-//       if (featureTiles) {
-//         $(featureTiles).each(function () {
-//           let gifImageWrap = $(this).find('.tile-hover-gif')
-//           let gifImage = $(this).find('.tile-hover-gif-image')
-//           let gifImageSRC = $(gifImage).attr('src')
-//           // Setup image src as data attribute
-//           $(gifImage).data('gif-image', gifImageSRC)
-//           // Set image src to blank to star with
-//           $(gifImage).attr('src', '')
-//           if (!is_touch_enabled()) {
-//             $(this).hover(
-//               function () {
-//                 // on hover set the image src back to the GIF to make it play
-//                 $(gifImageWrap).show()
-//                 $(gifImage).attr(
-//                   'src',
-//                   gifImageSRC + '?rnd=' + Math.random() + ''
-//                 )
-//               },
-//               function () {
-//                 $(gifImageWrap).hide()
-//                 $(gifImage).attr('src', '')
-//               }
-//             )
-//           }
-//         })
-//       }
-//     })
-//   }
-// }
+          // Disabled for now, as client is currently using static images - can be re-enabled when gifs are added.
 
-// window.addEventListener('load', productFeaturesInit)
+          // let gifImageSRC = $(gifImage).attr('src')
+          // // Setup image src as data attribute
+          // $(gifImage).data('gif-image', gifImageSRC)
+          // // Set image src to blank to star with
+          // $(gifImage).attr('src', '')
+          // if (!is_touch_enabled()) {
+          //   $(this).hover(
+          //     function () {
+          //       // on hover set the image src back to the GIF to make it play
+          //       $(gifImageWrap).show()
+          //       $(gifImage).attr(
+          //         'src',
+          //         gifImageSRC + '?rnd=' + Math.random() + ''
+          //       )
+          //     },
+          //     function () {
+          //       $(gifImageWrap).hide()
+          //       $(gifImage).attr('src', '')
+          //     }
+          //   )
+          // }
+
+          // Temporary static version...
+          if (!is_touch_enabled()) {
+            $(this).hover(
+              function () {
+                // on hover set the image src back to the GIF to make it play
+                $(gifImageWrap).show()
+              },
+              function () {
+                $(gifImageWrap).hide()
+              }
+            )
+          }
+        })
+      }
+    })
+  }
+}
+
+window.addEventListener('load', productFeaturesInit)
 
 /*  ==========================================================================
 		Underline header animations
