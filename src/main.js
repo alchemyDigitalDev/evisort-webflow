@@ -39,13 +39,15 @@ window.addEventListener('load', resize)
 		JS to detech touch devices
 		========================================================================== */
 
-function is_touch_enabled() {
-  return (
-    'ontouchstart' in window ||
-    navigator.maxTouchPoints > 0 ||
-    navigator.msMaxTouchPoints > 0
-  )
-}
+// Re-enable when product features GIF hover is enabled
+
+// function is_touch_enabled() {
+//   return (
+//     'ontouchstart' in window ||
+//     navigator.maxTouchPoints > 0 ||
+//     navigator.msMaxTouchPoints > 0
+//   )
+// }
 
 /*  ==========================================================================
     Check if element is in view
