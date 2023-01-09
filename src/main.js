@@ -1,6 +1,5 @@
 import './styles/style.css'
 import 'owl.carousel/dist/assets/owl.carousel.css'
-
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
 import $ from 'jquery'
@@ -494,7 +493,6 @@ function productFeaturesInit() {
 
   if (productFeaturesModules) {
     $(productFeaturesModules).each(function () {
-      console.log('each product feature')
       let featureTiles = $('.tile-icon---product-features')
       if (featureTiles) {
         $(featureTiles).each(function () {
@@ -739,15 +737,13 @@ function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
 }
 
 function pinnedScrollInit() {
-  console.log('init pinned slides')
-  console.log(pinnedScrollModules)
-  // if (!pinnedScrollModules) {
-  //   return
-  // }
-
   const pinnedScrollModules = document.querySelectorAll(
     '.module---pinned-slides'
   )
+
+  if (!pinnedScrollModules) {
+    return
+  }
 
   pinnedScrollModules.forEach(function (elem) {
     let pinnedSlides = elem.querySelectorAll('.pinned-slide')
@@ -771,7 +767,6 @@ function pinnedScrollInit() {
       slide.querySelector('.pinned-slide-content').innerHTML +=
         "<div class='pinned-slide-dots'>" + slideDotsHtml + '</div>'
 
-      console.log('foreach')
       // for each slide append a dot to dots div
     })
 
@@ -783,8 +778,6 @@ function pinnedScrollInit() {
         // Remove carousel if enabled
         $(pinnedSlidesWrap).trigger('destroy.owl.carousel')
         pinnedSlidesWrap.classList.remove('owl-carousel')
-
-        console.log('match media')
 
         let endPoint = pinnedSlides.length * 1000
 
