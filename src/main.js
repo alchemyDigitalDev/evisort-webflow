@@ -494,14 +494,15 @@ function productFeaturesInit() {
 
   if (productFeaturesModules) {
     $(productFeaturesModules).each(function () {
+      console.log('each product feature')
       let featureTiles = $('.tile-icon---product-features')
       if (featureTiles) {
         $(featureTiles).each(function () {
           let gifImageWrap = $(this).find('.tile-hover-gif')
-          let gifImage = $(this).find('.tile-hover-gif-image')
 
           // Disabled for now, as client is currently using static images - can be re-enabled when gifs are added.
 
+          // let gifImage = $(this).find('.tile-hover-gif-image')
           // let gifImageSRC = $(gifImage).attr('src')
           // // Setup image src as data attribute
           // $(gifImage).data('gif-image', gifImageSRC)
