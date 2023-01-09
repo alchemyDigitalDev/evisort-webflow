@@ -1012,6 +1012,13 @@ a.glossary-link .glossary-link__icon:before {
 
 /* Marquee / infinite scroll */
 
+.marquee {
+  webkit-box-pack: unset;
+  -webkit-justify-content: unset;
+  -ms-flex-pack: unset;
+  justify-content: normal;
+}
+
 .marquee---animating {
   position: relative;
   white-space: nowrap;
