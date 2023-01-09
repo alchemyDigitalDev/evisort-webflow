@@ -1140,3 +1140,26 @@ a.glossary-link .glossary-link__icon:before {
   background-color: #3b71dc;
   color: #ffffff;
 }
+
+/* Cookie banner & link */
+
+.ot-sdk-show-settings {
+  border: none !important;
+  font-size: 12px !important;
+}
+
+#onetrust-consent-sdk
+  #onetrust-pc-sdk
+  button:not(#clear-filters-handler):not(.ot-close-icon):not(#filter-btn-handler):not(.ot-remove-objection-handler):not(.ot-obj-leg-btn-handler):not([aria-expanded]):not(.ot-link-btn),
+#onetrust-consent-sdk
+  #onetrust-pc-sdk
+  .ot-leg-btn-container
+  .ot-active-leg-btn {
+  background-color: #3b71dc;
+}
+
+@media screen and (max-width: 479px) {
+  .ot-sdk-show-settings {
+    font-size: 11px !important;
+  }
+}
