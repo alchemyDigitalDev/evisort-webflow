@@ -949,7 +949,7 @@ window.onload = function () {
     return decodeURIComponent(results[2].replace(/\+/g, ' '))
   }
 
-  const resourceFolder = 'resources'
+  const resourceFolder = 'resource'
 
   function checkResourceAccess() {
     if (window.location.href.indexOf('/' + resourceFolder + '/') > -1) {
