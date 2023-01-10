@@ -787,8 +787,6 @@ window.onload = function () {
         // for each slide append a dot to dots div
       })
 
-      console.log(biggestSlide)
-
       elem.querySelector('.pinned-slides').style.height = biggestSlide + 'px'
 
       ScrollTrigger.matchMedia({
@@ -886,7 +884,6 @@ window.onload = function () {
       window.addEventListener(
         'resize',
         debounce(function () {
-          console.log('debounce resize!')
           pinnedScrollResize(elem, pinnedSlides)
         })
       )
