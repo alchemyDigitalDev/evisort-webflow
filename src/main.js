@@ -971,6 +971,8 @@ window.onload = function () {
             $('.resource-gate').remove()
           }
         } else if (getParameterByName('access')) {
+          console.log('access')
+          console.log(resourceSlug)
           if (resourceAccessCookie) {
             resourceAccessCookie = JSON.parse(resourceAccessCookie)
             if (!resourceAccessCookie.includes(resourceSlug)) {
