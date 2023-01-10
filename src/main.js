@@ -772,18 +772,6 @@ function pinnedScrollInit() {
 
     elem.querySelector('.pinned-slides').style.height = biggestSlide + 'px'
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: elem.querySelector('.pinned-trigger'),
-        pin: true,
-        markers: false, // only enable for debugging
-        scrub: 1,
-        start: '50% 50%',
-        end: '+=' + endPoint,
-        toggleActions: 'play pause play reset',
-      },
-    })
-
     ScrollTrigger.matchMedia({
       // desktop
       '(min-width: 768px)': function () {
