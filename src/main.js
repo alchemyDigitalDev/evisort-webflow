@@ -765,7 +765,11 @@ window.onload = function () {
       let biggestSlide = 0
       pinnedSlides.forEach(function (slide, i) {
         biggestSlide =
-          slide.offsetHeight > biggestSlide ? slide.offsetHeight : biggestSlide
+          slide.document.querySelector('.flex-grid-item:first-child')
+            .offsetHeight > biggestSlide
+            ? slide.document.querySelector('.flex-grid-item:first-child')
+                .offsetHeight
+            : biggestSlide
         /* Now we have the biggest height, make the slides all 100% - if we do this before then we cant get the biggest height */
         slide.style.minHeight = '100%'
 
@@ -881,6 +885,7 @@ window.onload = function () {
         'resize',
         debounce(function () {
           pinnedScrollResize(elem, pinnedSlides)
+          console.log('debounce resize!')
         })
       )
     })
