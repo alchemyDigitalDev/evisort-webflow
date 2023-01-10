@@ -736,13 +736,6 @@ function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
   }
 }
 
-ScrollTrigger.matchMedia({
-  // desktop
-  '(min-width: 768px)': function () {
-    console.log('hello there!')
-  },
-})
-
 function pinnedScrollInit() {
   const pinnedScrollModules = document.querySelectorAll(
     '.module---pinned-slides'
