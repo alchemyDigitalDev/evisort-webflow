@@ -1172,3 +1172,10 @@ a.glossary-link .glossary-link__icon:before {
     font-size: 11px !important;
   }
 }
+
+/* Hero Inline Wistia Embed */
+
+.hero-inline-image-wrap .wistia_responsive_padding {
+  padding-top: 0% !important;
+  height: 100%;
+}
