@@ -981,7 +981,7 @@ window.onload = function () {
             $('.resource-gate').show()
             $('.resource-ungated').remove()
           } else {
-            $('.resource-ungated').show()
+            $('.resource-ungated').removeClass('w-condition-invisible')
             $('.resource-gate').remove()
           }
         } else {
@@ -991,7 +991,7 @@ window.onload = function () {
         }
       } else {
         // This resource is ungated - so show content
-        $('.resource-ungated').show()
+        $('.resource-ungated').removeClass('w-condition-invisible')
         $('.resource-gate').remove()
       }
     }
