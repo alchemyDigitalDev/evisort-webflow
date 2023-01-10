@@ -810,6 +810,7 @@ window.onload = function () {
               start: '50% 50%',
               end: '+=' + endPoint,
               toggleActions: 'play pause play reset',
+              invalidateOnRefresh: true,
             },
           })
 
@@ -885,8 +886,8 @@ window.onload = function () {
       window.addEventListener(
         'resize',
         debounce(function () {
-          pinnedScrollResize(elem, pinnedSlides)
           console.log('debounce resize!')
+          pinnedScrollResize(elem, pinnedSlides)
         })
       )
     })
