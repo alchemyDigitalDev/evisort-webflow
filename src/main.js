@@ -960,17 +960,7 @@ window.onload = function () {
         console.log('check resource access 3')
         let resourceSlug = document.querySelector('.resource-slug').value
         let resourceAccessCookie = getCookie('evisort-resource-access')
-        if (resourceAccessCookie) {
-          resourceAccessCookie = JSON.parse(resourceAccessCookie)
-          if (!resourceAccessCookie.includes(resourceSlug)) {
-            // user does not have access... hide content & show form
-            $('.resource-gate').show()
-            $('.resource-ungated').remove()
-          } else {
-            $('.resource-ungated').show()
-            $('.resource-gate').remove()
-          }
-        } else if (getParameterByName('access')) {
+        if (getParameterByName('access')) {
           console.log('access')
           console.log(resourceSlug)
           if (resourceAccessCookie) {
@@ -984,6 +974,16 @@ window.onload = function () {
           let resourceAccessStr = JSON.stringify(resourceAccessCookie)
           createCookie('evisort-resource-access', resourceAccessStr)
           window.location.href = '/' + resourceFolder + '/' + resourceSlug
+        } else if (resourceAccessCookie) {
+          resourceAccessCookie = JSON.parse(resourceAccessCookie)
+          if (!resourceAccessCookie.includes(resourceSlug)) {
+            // user does not have access... hide content & show form
+            $('.resource-gate').show()
+            $('.resource-ungated').remove()
+          } else {
+            $('.resource-ungated').show()
+            $('.resource-gate').remove()
+          }
         } else {
           // No cookie, so user does not have access... redirect them back to the resource page
           $('.resource-gate').show()
