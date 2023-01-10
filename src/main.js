@@ -952,9 +952,12 @@ window.onload = function () {
   const resourceFolder = 'resource'
 
   function checkResourceAccess() {
+    console.log('check resource access')
     if (window.location.href.indexOf('/' + resourceFolder + '/') > -1) {
+      console.log('check resource access 2')
       // check if it has a gated area e.g. if its a gated resource
       if ($('.is-gated-resource').val() == 'true') {
+        console.log('check resource access 3')
         let resourceSlug = document.querySelector('.resource-slug').value
         let resourceAccessCookie = getCookie('evisort-resource-access')
         if (resourceAccessCookie) {
