@@ -1,12 +1,14 @@
+/* eslint no-undef */
+
 import './styles/style.css'
 import 'owl.carousel/dist/assets/owl.carousel.css'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
+// import gsap from 'gsap'
+// import { ScrollTrigger } from 'gsap/ScrollTrigger.js'
 import $ from 'jquery'
 
 import 'owl.carousel'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger) // eslint-disable-line
 /*  ==========================================================================
         Debounce function to use for resizes
         ========================================================================== */
