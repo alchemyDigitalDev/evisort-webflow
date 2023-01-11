@@ -866,7 +866,7 @@ window.onload = function () {
             autoHeight: true,
             responsive: {
               0: {
-                margin: 16,
+                margin: 10,
               },
               767: {
                 margin: 24,
