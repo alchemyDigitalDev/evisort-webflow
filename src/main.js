@@ -1150,6 +1150,7 @@ window.onload = function () {
 
   function checkforactivesort() {
     if ($('.filter-sort-dropdown-item.jetboost-sort-active').length) {
+      $('.filter-sort-dropdown-item').removeClass('alchemy-active')
       $('.filter-sort-dropdown-item.jetboost-sort-active').addClass(
         'alchemy-active'
       )
