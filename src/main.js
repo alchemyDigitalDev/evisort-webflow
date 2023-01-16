@@ -1143,9 +1143,11 @@ window.onload = function () {
       $('.filter-sort-dropdown-item')
         .not(this)
         .addClass('jetboost-sort-unactive')
+      console.log('active?')
     } else {
       $(this).addClass('jetboost-sort-unactive')
       $('.filter-sort-dropdown-item').not(this).addClass('jetboost-sort-active')
+      console.log('unactive?')
     }
   })
 }
