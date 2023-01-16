@@ -1147,4 +1147,14 @@ window.onload = function () {
       $(this).addClass('alchemy-active')
     }
   })
+
+  function checkforactivesort() {
+    if ($('.filter-sort-dropdown-item.jetboost-sort-active').length) {
+      $('.filter-sort-dropdown-item.jetboost-sort-active').addClass(
+        'alchemy-active'
+      )
+    }
+  }
+
+  checkforactivesort()
 }
