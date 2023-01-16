@@ -1139,15 +1139,7 @@ window.onload = function () {
       ========================================================================== */
 
   $('.filter-sort-dropdown-item').click(function () {
-    if ($(this).hasClass('jetboost-sort-active')) {
-      $('.filter-sort-dropdown-item')
-        .not(this)
-        .addClass('jetboost-sort-unactive')
-      console.log('active?')
-    } else {
-      $(this).addClass('jetboost-sort-unactive')
-      $('.filter-sort-dropdown-item').not(this).addClass('jetboost-sort-active')
-      console.log('unactive?')
-    }
+    $('.filter-sort-dropdown-item').removeClass('alchemy-active')
+    $(this).addClass('alchemy-active')
   })
 }

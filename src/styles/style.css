@@ -1182,6 +1182,10 @@ a.glossary-link .glossary-link__icon:before {
 
 /* Amend sort selection */
 
-.filter-sort-dropdown-item.jetboost-sort-unactive {
+.filter-sort-dropdown-item {
   opacity: 0.7 !important;
+}
+
+.filter-sort-dropdown-item.alchemy-active {
+  opacity: 1 !important;
 }
