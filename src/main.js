@@ -1158,6 +1158,4 @@ window.onload = function () {
   }
 
   checkforactivesort()
-
-  console.log('test development -> main')
 }
