@@ -814,14 +814,10 @@ window.onload = function () {
 
           pinnedSlides.forEach((elem, i) => {
             if (i == 0) {
-              tl.to(
-                elem,
-                {
-                  opacity: 1,
-                  duration: 1,
-                }
-                //'+=20'
-              ).set(elem, { css: { zIndex: 100 } })
+              tl.to(elem, {
+                opacity: 1,
+                duration: 1,
+              }).set(elem, { css: { zIndex: 100 } })
             } else {
               tl.to(elem, {
                 opacity: 1,
