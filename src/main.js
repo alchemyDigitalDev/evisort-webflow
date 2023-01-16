@@ -1159,5 +1159,5 @@ window.onload = function () {
 
   checkforactivesort()
 
-  console.log('test development')
+  console.log('test development -> main')
 }
