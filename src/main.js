@@ -1133,4 +1133,19 @@ window.onload = function () {
     // Trigger animations on scroll
     ctaColourChangeInit()
   })
+
+  /*  ==========================================================================
+      Sort button unactive classes - as jetboost doesnt do this as default 
+      ========================================================================== */
+
+  $('.filter-sort-dropdown-item').click(function () {
+    if ($(this).hasClass('jetboost-sort-active')) {
+      $('.filter-sort-dropdown-item')
+        .not(this)
+        .addClass('jetboost-sort-unactive')
+    } else {
+      $(this).addClass('jetboost-sort-unactive')
+      $('.filter-sort-dropdown-item').not(this).addClass('jetboost-sort-active')
+    }
+  })
 }

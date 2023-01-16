@@ -1179,3 +1179,9 @@ a.glossary-link .glossary-link__icon:before {
   padding-top: 0% !important;
   height: 100%;
 }
+
+/* Amend sort selection */
+
+.filter-sort-dropdown-item.jetboost-sort-unactive {
+  opacity: 0.7 !important;
+}
