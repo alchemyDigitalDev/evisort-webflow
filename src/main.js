@@ -1139,7 +1139,12 @@ window.onload = function () {
       ========================================================================== */
 
   $('.filter-sort-dropdown-item').click(function () {
-    $('.filter-sort-dropdown-item').removeClass('alchemy-active')
-    $(this).addClass('alchemy-active')
+    if ($(this).hasClass('alchemy-active')) {
+      $('.filter-sort-dropdown-item').addClass('alchemy-active')
+      $(this).removeClass('alchemy-active')
+    } else {
+      $('.filter-sort-dropdown-item').removeClass('alchemy-active')
+      $(this).addClass('alchemy-active')
+    }
   })
 }
