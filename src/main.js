@@ -819,8 +819,8 @@ window.onload = function () {
                 {
                   opacity: 1,
                   duration: 1,
-                },
-                '+=20'
+                }
+                //'+=20'
               ).set(elem, { css: { zIndex: 100 } })
             } else {
               tl.to(elem, {
