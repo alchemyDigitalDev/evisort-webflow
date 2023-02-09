@@ -796,7 +796,7 @@ window.onload = function () {
           $(pinnedSlidesWrap).trigger('destroy.owl.carousel')
           pinnedSlidesWrap.classList.remove('owl-carousel')
 
-          let endPoint = pinnedSlides.length * 1000
+          let endPoint = pinnedSlides.length * 500
 
           // Setup pinned scroll...
           const tl = gsap.timeline({
