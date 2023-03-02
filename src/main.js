@@ -689,7 +689,6 @@ window.onload = function () {
     let tileCarousels = $('.tiles-carousel')
     if (tileCarousels) {
       $(tileCarousels).each(function () {
-        console.log('paul')
         $(this).owlCarousel({
           items: 1,
           margin: 48,
@@ -719,9 +718,11 @@ window.onload = function () {
   }
 
   function customPager(this_owl) {
+    console.log('paul')
     $.each($(this_owl).find('.owl-dot'), function (i) {
-      var paginationLinks = $('.owl-controls .owl-dots .owl-dot span')
-      $(paginationLinks[i]).append('Carousel Next Image ' + [i])
+      console.log('paul' + i)
+      var paginationLinks = $('.owl-dots .owl-dot span')
+      $(paginationLinks[i]).append('Carousel Next Image ' + i)
     })
   }
 
