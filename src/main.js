@@ -700,6 +700,7 @@ window.onload = function () {
           dots: true,
           loop: true,
           autoHeight: true,
+					onInitialized : customPager($(this)),
           responsive: {
             0: {
               margin: 16,
@@ -712,9 +713,17 @@ window.onload = function () {
             },
           },
         })
+				
       })
     }
   }
+
+	function customPager(this_owl) {
+		$.each($(this_owl).find('.owl-dot'), function (i) {
+				var paginationLinks = $('.owl-controls .owl-dots .owl-dot span');
+				$(paginationLinks[i]).append("Carousel Next Image " + [i]);
+		});
+}
 
   //window.addEventListener('load', tileCarouselsInit)
   tileCarouselsInit()
