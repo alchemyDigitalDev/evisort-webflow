@@ -714,7 +714,7 @@ window.onload = function () {
           },
         })
 
-        $(this).on('initialized.owl.carousel', function (event) {
+        $(this).on('initialized.owl.carousel', function () {
           console.log('join')
         })
       })
