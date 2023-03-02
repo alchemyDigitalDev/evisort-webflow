@@ -713,6 +713,10 @@ window.onload = function () {
             },
           },
         })
+
+        $(this).on('initialized.owl.carousel', function (event) {
+          console.log('join')
+        })
       })
     }
   }
