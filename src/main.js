@@ -713,21 +713,19 @@ window.onload = function () {
             },
           },
         })
-
-        $(this).on('initialized.owl.carousel', function () {
-          console.log('join')
-        })
       })
     }
   }
 
   function customPager(this_owl) {
-    console.log('paul')
-    $.each($(this_owl).find('.owl-dot'), function (i) {
-      console.log('paul' + i)
-      var paginationLinks = $('.owl-dots .owl-dot span')
-      $(paginationLinks[i]).append('Carousel Next Image ' + i)
-    })
+    setTimeout(function () {
+      var dots = $(this_owl).find('.owl-dot')
+      $(dots).each(function (i) {
+        var paginationLinks = $('.owl-dots .owl-dot')
+        var number = i + 1
+        $(paginationLinks[i]).prop('title', 'Carousel Next Image ' + number)
+      })
+    }, 100)
   }
 
   //window.addEventListener('load', tileCarouselsInit)
