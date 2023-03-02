@@ -689,6 +689,7 @@ window.onload = function () {
     let tileCarousels = $('.tiles-carousel')
     if (tileCarousels) {
       $(tileCarousels).each(function () {
+        console.log('paul')
         $(this).owlCarousel({
           items: 1,
           margin: 48,
@@ -700,7 +701,7 @@ window.onload = function () {
           dots: true,
           loop: true,
           autoHeight: true,
-					onInitialized : customPager($(this)),
+          onInitialized: customPager($(this)),
           responsive: {
             0: {
               margin: 16,
@@ -713,17 +714,16 @@ window.onload = function () {
             },
           },
         })
-				
       })
     }
   }
 
-	function customPager(this_owl) {
-		$.each($(this_owl).find('.owl-dot'), function (i) {
-				var paginationLinks = $('.owl-controls .owl-dots .owl-dot span');
-				$(paginationLinks[i]).append("Carousel Next Image " + [i]);
-		});
-}
+  function customPager(this_owl) {
+    $.each($(this_owl).find('.owl-dot'), function (i) {
+      var paginationLinks = $('.owl-controls .owl-dots .owl-dot span')
+      $(paginationLinks[i]).append('Carousel Next Image ' + [i])
+    })
+  }
 
   //window.addEventListener('load', tileCarouselsInit)
   tileCarouselsInit()
