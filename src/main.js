@@ -1167,3 +1167,63 @@ window.onload = function () {
 
   checkforactivesort()
 }
+
+/*  ==========================================================================
+          Accessibility Title attribute
+          ========================================================================== */
+
+function accessibilityTitlesInit() {
+  let tiles = $('.tile')
+
+  if (tiles) {
+    $(tiles).each(function () {
+      var tile = $(this)
+      // For accessibility grab the Headings and apply as titles on the links
+      let title = ''
+      let tileContentHeading = $(tile).find('.tile-content-heading')
+      let tileVerticalHeading = $(tile).find('.tile-small-vertical-heading')
+
+      if ($(tileContentHeading).length > 0) {
+        title = $(tile).find('.tile-content-heading').text()
+      } else if ($(tileVerticalHeading).length > 0) {
+        title = $(tile).find('.tile-small-vertical-heading').text()
+      }
+
+      if (title) {
+        let tileLink = $(tile).find('.tile-cover-link')
+        if ($(tileLink).attr('href') != '' && $(tileLink).attr('href') != '#') {
+          $(tileLink).prop('title', 'Read more about ' + title)
+        }
+      }
+    })
+  }
+
+  let listGridItems = $('.logo-grid-item')
+
+  if (listGridItems) {
+    $(listGridItems).each(function () {
+      var listGridItem = $(this)
+      // For accessibility grab the Headings and apply as titles on the links
+      let listGridImageAlt = $(listGridItem)
+        .find('.logo-grid-image')
+        .attr('alt')
+
+      if (listGridImageAlt) {
+        let listGridItemLink = $(listGridItem).find('.link-block')
+
+        if (
+          $(listGridItemLink).attr('href') != '' &&
+          $(listGridItemLink).attr('href') != '#'
+        ) {
+          $(listGridItemLink).prop(
+            'title',
+            'Read more about ' + listGridImageAlt
+          )
+        }
+      }
+    })
+  }
+}
+
+//window.addEventListener('load', accessibilityTitlesInit)
+accessibilityTitlesInit()
