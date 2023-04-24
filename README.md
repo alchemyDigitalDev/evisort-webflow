@@ -33,7 +33,7 @@
 - Test your changes by viewing the development site https://evisort-d288ab-c6c65eaf2b154aa0786bb278.webflow.io/
 
 - **Deploying to production**
-- To push changes to production, its similar to development, push them to the "master" branch in github
+- To push changes to production, its similar to development, push them to the "main" branch in github
 - This will then be detected by netlify and pushed to https://evisort.alchemy.construction/main.js
 - To check if changes have deployed you can login to our netlify account via our dev@ github account
 - You can then view your changes on https://www.evisort.com/
