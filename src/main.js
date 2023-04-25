@@ -169,60 +169,89 @@ window.onload = function () {
   }
 
   function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
+    let accordion_items = $(accordion).find('.accordion-item')
+
+    // Start animation
+    $(accordion).addClass('playing')
+
+    if (accordion_items) {
+      $(accordion_items).each(function (index, accordion_item) {
+        closeAccordionItem(accordion_item)
+        let currentTimeoutTime = accordionItemTime * index
+        if (screenWidth >= 992) {
+          itemsTimeout.push(
+            setTimeout(function () {
+              showAccordionItem(accordion_items, accordion_item)
+            }, currentTimeoutTime)
+          )
+        }
+        $(accordion_item).click(function () {
+          // Pause autoplaying timeouts
+          for (let i = 0; i < itemsTimeout.length; i++) {
+            clearTimeout(itemsTimeout[i])
+          }
+
+          showAccordionItem(accordion_items, accordion_item, true)
+        })
+      })
+
+      if (screenWidth < 992) {
+        showAccordionItem(accordion_items, accordion_items[0], true)
+      }
+    }
+  }
+
+  function checkAccordionAnimation(accordion, screenWidth, itemsTimeout) {
     let accordionTop = $(accordion).offset().top - $(window).height()
     let accordionHeight = $(accordion).height()
     let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
     let accordion_items = $(accordion).find('.accordion-item')
 
-    if (
-      $(window).scrollTop() > accordionTop + accordionHeight * 0.75 &&
-      !$(accordion).hasClass('playing')
-    ) {
-      // Check if it's in viewport
-      // Start animation
-      $(accordion).addClass('playing')
-
-      if (accordion_items) {
-        $(accordion_items).each(function (index, accordion_item) {
-          closeAccordionItem(accordion_item)
-          let currentTimeoutTime = accordionItemTime * index
-          if (screenWidth >= 992) {
-            itemsTimeout.push(
-              setTimeout(function () {
-                showAccordionItem(accordion_items, accordion_item)
-              }, currentTimeoutTime)
-            )
-          }
-          $(accordion_item).click(function () {
-            // Pause autoplaying timeouts
-            for (let i = 0; i < itemsTimeout.length; i++) {
-              clearTimeout(itemsTimeout[i])
+    // Check if it's in viewport
+    if (screenWidth >= 992) {
+      if (
+        $(window).scrollTop() > accordionTop + accordionHeight * 0.75 &&
+        !$(accordion).hasClass('playing')
+      ) {
+        // Check if it's in viewport
+        // Start animation
+        $(accordion).addClass('playing')
+        if (accordion_items) {
+          $(accordion_items).each(function (index, accordion_item) {
+            closeAccordionItem(accordion_item)
+            let currentTimeoutTime = accordionItemTime * index
+            if (screenWidth >= 992) {
+              itemsTimeout.push(
+                setTimeout(function () {
+                  showAccordionItem(accordion_items, accordion_item)
+                }, currentTimeoutTime)
+              )
             }
-
-            showAccordionItem(accordion_items, accordion_item, true)
+            $(accordion_item).click(function () {
+              // Pause autoplaying timeouts
+              for (let i = 0; i < itemsTimeout.length; i++) {
+                clearTimeout(itemsTimeout[i])
+              }
+              showAccordionItem(accordion_items, accordion_item, true)
+            })
           })
-        })
-
-        if (screenWidth < 992) {
-          showAccordionItem(accordion_items, accordion_items[0], true)
         }
+      } else if (
+        $(window).scrollTop() > accordionBottom &&
+        !$(accordion).hasClass('stopped')
+      ) {
+        $(accordion).addClass('stopped')
+        // Pause autoplaying timeouts
+        for (let i = 0; i < itemsTimeout.length; i++) {
+          clearTimeout(itemsTimeout[i])
+        }
+        $(accordion_items[currentItemID - 1])
+          .find('.accordion-item-loading-bar-fill')
+          .stop()
+        $(accordion_items[currentItemID - 1])
+          .find('.accordion-item-loading-bar-fill')
+          .css('width', '100%')
       }
-    } else if (
-      $(window).scrollTop() > accordionBottom &&
-      !$(accordion).hasClass('stopped')
-    ) {
-      // Check if it's in viewport
-      $(accordion).addClass('stopped')
-      // Pause autoplaying timeouts
-      for (let i = 0; i < itemsTimeout.length; i++) {
-        clearTimeout(itemsTimeout[i])
-      }
-      $(accordion_items[currentItemID - 1])
-        .find('.accordion-item-loading-bar-fill')
-        .stop()
-      $(accordion_items[currentItemID - 1])
-        .find('.accordion-item-loading-bar-fill')
-        .css('width', '100%')
     }
   }
 
@@ -235,9 +264,8 @@ window.onload = function () {
       $(accordions).each(function (index, accordion) {
         // Start accordion animation
         $(window).on('scroll', function () {
-          startAccordionAnimation(accordion, screenWidth, itemsTimeout)
+          checkAccordionAnimation(accordion, screenWidth, itemsTimeout)
         })
-
         startAccordionAnimation(accordion, screenWidth, itemsTimeout)
       })
     }
