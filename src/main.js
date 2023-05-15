@@ -1008,7 +1008,14 @@ window.onload = function () {
           }
           let resourceAccessStr = JSON.stringify(resourceAccessCookie)
           createCookie('evisort-resource-access', resourceAccessStr)
-          window.location.href = '/' + resourceFolder + '/' + resourceSlug
+          // update url rather redirect
+          window.history.replaceState(
+            {},
+            document.title,
+            '/' + resourceFolder + '/' + resourceSlug
+          )
+          $('.resource-ungated').removeClass('w-condition-invisible')
+          $('.resource-gate').remove()
         } else if (resourceAccessCookie) {
           resourceAccessCookie = JSON.parse(resourceAccessCookie)
           if (!resourceAccessCookie.includes(resourceSlug)) {
