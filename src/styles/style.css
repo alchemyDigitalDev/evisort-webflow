@@ -1,14 +1,15 @@
 /* ---- NAVIGATION ---- */
 
 /* Force 100vh on navigation for mobile, as webflow "fill height" was not working */
-@media screen and (max-width: 767px) {
-  .nav-menu-wrapper {
-    height: calc((var(--vh, 1vh) * 100) - 4rem) !important;
-  }
-}
+
 @media screen and (max-width: 991px) {
   .nav-menu-wrapper {
     height: calc((var(--vh, 1vh) * 100) - 4.5rem) !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .nav-menu-wrapper {
+    height: calc((var(--vh, 1vh) * 100) - 4rem) !important;
   }
 }
 /* Fix bug on nav wrapper when switching from mobile nav to desktop */
