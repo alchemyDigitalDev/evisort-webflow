@@ -927,7 +927,7 @@ window.onload = function () {
   } // pinnedScrollInit();
 
   //window.addEventListener('load', pinnedScrollInit)
-  pinnedScrollInit()
+  //pinnedScrollInit()
 
   /*  ==========================================================================
           Glossary Links
