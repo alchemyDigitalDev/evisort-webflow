@@ -915,6 +915,7 @@ a.glossary-link .glossary-link__icon:before {
 
 /* ---- PINNED SLIDES ---- */
 
+/* 
 .module---pinned-slides .pinned-trigger {
   width: 100% !important;
 }
@@ -1002,8 +1003,11 @@ a.glossary-link .glossary-link__icon:before {
   }
   .module---pinned-slides .pinned-slide-dots {
     display: none;
+  
   }
 }
+
+*/
 
 /* Accordion Items */
 
