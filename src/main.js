@@ -763,171 +763,170 @@ window.onload = function () {
           Pinned Slides Module
           ========================================================================== */
 
-  function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
-    if (window.innerWidth > 768) {
-      let biggestSlide = 0
+  // function pinnedScrollResize(pinnedScrollModule, pinnedSlides) {
+  //   if (window.innerWidth > 768) {
+  //     let biggestSlide = 0
 
-      // Set slides back to auto height so we can detect the natural heights
-      pinnedSlides.forEach(function (slide) {
-        slide.style.minHeight = 'auto'
-      })
-      setTimeout(function () {
-        pinnedSlides.forEach(function (slide) {
-          // check if each slide is bigger than others
-          biggestSlide =
-            slide.offsetHeight > biggestSlide
-              ? slide.offsetHeight
-              : biggestSlide
-          // Now we have the biggest height, make the slides all 100% - if we do this before then we cant get the biggest height
-          slide.style.minHeight = '100%'
-        })
+  //     // Set slides back to auto height so we can detect the natural heights
+  //     pinnedSlides.forEach(function (slide) {
+  //       slide.style.minHeight = 'auto'
+  //     })
+  //     setTimeout(function () {
+  //       pinnedSlides.forEach(function (slide) {
+  //         // check if each slide is bigger than others
+  //         biggestSlide =
+  //           slide.offsetHeight > biggestSlide
+  //             ? slide.offsetHeight
+  //             : biggestSlide
+  //         // Now we have the biggest height, make the slides all 100% - if we do this before then we cant get the biggest height
+  //         slide.style.minHeight = '100%'
+  //       })
 
-        pinnedScrollModule.querySelector('.pinned-slides').style.height =
-          biggestSlide + 'px'
-      }, 100)
-    } else {
-      pinnedScrollModule.querySelector('.pinned-slides').style.height = 'auto'
-    }
-  }
+  //       pinnedScrollModule.querySelector('.pinned-slides').style.height =
+  //         biggestSlide + 'px'
+  //     }, 100)
+  //   } else {
+  //     pinnedScrollModule.querySelector('.pinned-slides').style.height = 'auto'
+  //   }
+  // }
 
-  function pinnedScrollInit() {
-    const pinnedScrollModules = document.querySelectorAll(
-      '.module---pinned-slides'
-    )
+  // function pinnedScrollInit() {
+  //   const pinnedScrollModules = document.querySelectorAll(
+  //     '.module---pinned-slides'
+  //   )
 
-    if (!pinnedScrollModules) {
-      return
-    }
+  //   if (!pinnedScrollModules) {
+  //     return
+  //   }
 
-    pinnedScrollModules.forEach(function (elem) {
-      let pinnedSlides = elem.querySelectorAll('.pinned-slide')
-      let pinnedSlidesWrap = elem.querySelector('.pinned-slides')
-      let biggestSlide = 0
-      pinnedSlides.forEach(function (slide, i) {
-        biggestSlide =
-          slide.querySelector('.flex-grid-item:first-child').offsetHeight >
-          biggestSlide
-            ? slide.querySelector('.flex-grid-item:first-child').offsetHeight
-            : biggestSlide
-        /* Now we have the biggest height, make the slides all 100% - if we do this before then we cant get the biggest height */
-        slide.style.minHeight = '100%'
+  //   pinnedScrollModules.forEach(function (elem) {
+  //     let pinnedSlides = elem.querySelectorAll('.pinned-slide')
+  //     let pinnedSlidesWrap = elem.querySelector('.pinned-slides')
+  //     let biggestSlide = 0
+  //     pinnedSlides.forEach(function (slide, i) {
+  //       biggestSlide =
+  //         slide.querySelector('.flex-grid-item:first-child').offsetHeight >
+  //         biggestSlide
+  //           ? slide.querySelector('.flex-grid-item:first-child').offsetHeight
+  //           : biggestSlide
+  //       /* Now we have the biggest height, make the slides all 100% - if we do this before then we cant get the biggest height */
+  //       slide.style.minHeight = '100%'
 
-        // Add slide dots
-        let slideDotsHtml = ''
-        pinnedSlides.forEach(function (slide, j) {
-          if (i == j) {
-            slideDotsHtml += "<div class='pinned-slide-dot active'></div>"
-          } else {
-            slideDotsHtml += "<div class='pinned-slide-dot'></div>"
-          }
-        })
-        slide.querySelector('.pinned-slide-content').innerHTML +=
-          "<div class='pinned-slide-dots'>" + slideDotsHtml + '</div>'
+  //       // Add slide dots
+  //       let slideDotsHtml = ''
+  //       pinnedSlides.forEach(function (slide, j) {
+  //         if (i == j) {
+  //           slideDotsHtml += "<div class='pinned-slide-dot active'></div>"
+  //         } else {
+  //           slideDotsHtml += "<div class='pinned-slide-dot'></div>"
+  //         }
+  //       })
+  //       slide.querySelector('.pinned-slide-content').innerHTML +=
+  //         "<div class='pinned-slide-dots'>" + slideDotsHtml + '</div>'
 
-        // for each slide append a dot to dots div
-      })
+  //       // for each slide append a dot to dots div
+  //     })
 
-      elem.querySelector('.pinned-slides').style.height = biggestSlide + 'px'
+  //     elem.querySelector('.pinned-slides').style.height = biggestSlide + 'px'
 
-      ScrollTrigger.matchMedia({
-        // desktop
-        '(min-width: 768px)': function () {
-          // Remove carousel if enabled
-          $(pinnedSlidesWrap).trigger('destroy.owl.carousel')
-          pinnedSlidesWrap.classList.remove('owl-carousel')
+  //     ScrollTrigger.matchMedia({
+  //       // desktop
+  //       '(min-width: 768px)': function () {
+  //         // Remove carousel if enabled
+  //         $(pinnedSlidesWrap).trigger('destroy.owl.carousel')
+  //         pinnedSlidesWrap.classList.remove('owl-carousel')
 
-          let endPoint = pinnedSlides.length * 500
+  //         let endPoint = pinnedSlides.length * 500
 
-          // Setup pinned scroll...
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: elem.querySelector('.pinned-trigger'),
-              pin: true,
-              markers: false, // only enable for debugging
-              scrub: 1,
-              start: '50% 50%',
-              end: '+=' + endPoint,
-              toggleActions: 'play pause play reset',
-              invalidateOnRefresh: true,
-            },
-          })
+  //         // Setup pinned scroll...
+  //         const tl = gsap.timeline({
+  //           scrollTrigger: {
+  //             trigger: elem.querySelector('.pinned-trigger'),
+  //             pin: true,
+  //             markers: false, // only enable for debugging
+  //             scrub: 1,
+  //             start: '50% 50%',
+  //             end: '+=' + endPoint,
+  //             toggleActions: 'play pause play reset',
+  //             invalidateOnRefresh: true,
+  //           },
+  //         })
 
-          pinnedSlides.forEach((elem, i) => {
-            if (i == 0) {
-              tl.to(elem, {
-                opacity: 1,
-                duration: 1,
-              }).set(elem, { css: { zIndex: 100 } })
-            } else {
-              tl.to(elem, {
-                opacity: 1,
-                duration: 1,
-              }).set(elem, { css: { zIndex: 100 } })
-            }
+  //         pinnedSlides.forEach((elem, i) => {
+  //           if (i == 0) {
+  //             tl.to(elem, {
+  //               opacity: 1,
+  //               duration: 1,
+  //             }).set(elem, { css: { zIndex: 100 } })
+  //           } else {
+  //             tl.to(elem, {
+  //               opacity: 1,
+  //               duration: 1,
+  //             }).set(elem, { css: { zIndex: 100 } })
+  //           }
 
-            tl.to(elem.querySelector('.pinned-scroll-image-wrap'), {
-              opacity: 1,
-              scale: 1,
-              duration: 1,
-            })
-            if (i < pinnedSlides.length - 1) {
-              tl.to(
-                elem.querySelector('.pinned-scroll-image-wrap'),
-                {
-                  opacity: 0,
-                  duration: 1,
-                },
-                '+=20'
-              )
-            } else {
-              tl.to(
-                elem.querySelector('.pinned-scroll-image-wrap'),
-                {
-                  duration: 1,
-                },
-                '+=20'
-              )
-            }
-          })
-        },
-        '(max-width: 768px)': function () {
-          // Setup Owl Carousel
-          pinnedSlidesWrap.classList.add('owl-carousel')
-          $(pinnedSlidesWrap).owlCarousel({
-            items: 1,
-            margin: 48,
-            nav: false,
-            dots: false,
-            loop: false,
-            autoHeight: true,
-            responsive: {
-              0: {
-                margin: 10,
-              },
-              767: {
-                margin: 24,
-              },
-              1280: {
-                margin: 48,
-              },
-            },
-          })
-        },
-      })
+  //           tl.to(elem.querySelector('.pinned-scroll-image-wrap'), {
+  //             opacity: 1,
+  //             scale: 1,
+  //             duration: 1,
+  //           })
+  //           if (i < pinnedSlides.length - 1) {
+  //             tl.to(
+  //               elem.querySelector('.pinned-scroll-image-wrap'),
+  //               {
+  //                 opacity: 0,
+  //                 duration: 1,
+  //               },
+  //               '+=20'
+  //             )
+  //           } else {
+  //             tl.to(
+  //               elem.querySelector('.pinned-scroll-image-wrap'),
+  //               {
+  //                 duration: 1,
+  //               },
+  //               '+=20'
+  //             )
+  //           }
+  //         })
+  //       },
+  //       '(max-width: 768px)': function () {
+  //         // Setup Owl Carousel
+  //         pinnedSlidesWrap.classList.add('owl-carousel')
+  //         $(pinnedSlidesWrap).owlCarousel({
+  //           items: 1,
+  //           margin: 48,
+  //           nav: false,
+  //           dots: false,
+  //           loop: false,
+  //           autoHeight: true,
+  //           responsive: {
+  //             0: {
+  //               margin: 10,
+  //             },
+  //             767: {
+  //               margin: 24,
+  //             },
+  //             1280: {
+  //               margin: 48,
+  //             },
+  //           },
+  //         })
+  //       },
+  //     })
 
-      pinnedScrollResize(elem, pinnedSlides)
+  //     pinnedScrollResize(elem, pinnedSlides)
 
-      window.addEventListener(
-        'resize',
-        debounce(function () {
-          pinnedScrollResize(elem, pinnedSlides)
-        })
-      )
-    })
-  } // pinnedScrollInit();
+  //     window.addEventListener(
+  //       'resize',
+  //       debounce(function () {
+  //         pinnedScrollResize(elem, pinnedSlides)
+  //       })
+  //     )
+  //   })
+  // } // pinnedScrollInit();
 
-  //window.addEventListener('load', pinnedScrollInit)
-  //pinnedScrollInit()
+  // pinnedScrollInit()
 
   /*  ==========================================================================
           Glossary Links
