@@ -13,13 +13,13 @@ window.onload = function () {
           Debounce function to use for resizes
           ========================================================================== */
 
-  function debounce(func) {
-    var timer
-    return function (event) {
-      if (timer) clearTimeout(timer)
-      timer = setTimeout(func, 100, event)
-    }
-  }
+  // function debounce(func) {
+  //   var timer
+  //   return function (event) {
+  //     if (timer) clearTimeout(timer)
+  //     timer = setTimeout(func, 100, event)
+  //   }
+  // }
 
   /*  ==========================================================================
           JS For browser resize to get a vh value that works on mobile - used for mobile nav height
