@@ -709,6 +709,10 @@ a.glossary-link .glossary-link__icon:before {
   width: calc(100% + 0.3em);
 }
 
+.blueunderline .headingunderline:before{
+  background: linear-gradient(270deg, rgba(#4481FF, 0.2) 0%, #4481FF 100%);
+}
+
 /* ---- CAREERS LIST ---- */
 
 .careers-list .career-department {
