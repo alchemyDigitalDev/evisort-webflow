@@ -709,8 +709,8 @@ a.glossary-link .glossary-link__icon:before {
   width: calc(100% + 0.3em);
 }
 
-.blueunderline .headingunderline:before{
-  background: linear-gradient(270deg, #4481FF 0%, rgba(68, 129, 255, 0.2) 100%);
+.blueunderline .headingunderline:before {
+  background: linear-gradient(270deg, #4481ff 0%, rgba(68, 129, 255, 0.2) 100%);
 }
 
 /* ---- CAREERS LIST ---- */
@@ -915,6 +915,10 @@ a.glossary-link .glossary-link__icon:before {
   transition: opacity 250ms ease-in-out, transform 350ms ease-in-out;
 }
 
+.quotes-carousel.owl-carousel .owl-item .quote-icon {
+  width: auto !important;
+}
+
 .quotes-carousel.owl-carousel .owl-item.active {
   opacity: 1;
 }
@@ -972,13 +976,13 @@ a.glossary-link .glossary-link__icon:before {
 .quotes-carousel.owl-carousel .owl-dots .owl-dot {
   width: 3em;
   height: 4px;
-  background-color: white;
+  background-color: #000000;
   margin: 0 0.25em;
   transition: background-color 200ms ease-in-out;
 }
 
 .quotes-carousel.owl-carousel .owl-dots .owl-dot.active {
-  background-color: #3b71dc !important;
+  background-color: #4177e8 !important;
 }
 
 .module---quotes-slider .module-gradient {
