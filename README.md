@@ -39,7 +39,7 @@
 - You can then view your changes on https://www.evisort.com/
 
 - **Working locally**
-- To work locally run "npm run dev" in the root of the repo
+- To work locally run "npm mrun dev" in the root of the repo
 - This will setup a local server which will generate http://localhost:3000/dist/main.js and will update each time you save js changes
 - You will then need to change one of the webflow sites to point at your local main.js
 - To do this go to project settings -> custom code and then change the alchemy custom JS & CSS script tag to point at this local main js file
