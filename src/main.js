@@ -710,6 +710,55 @@ window.onload = function () {
   })
 
   /*  ==========================================================================
+          Quotes Carousel
+          ========================================================================== */
+
+  function quoteCarouselsInit() {
+    let quoteCarousels = $('.quotes-carousel')
+    if (quoteCarousels) {
+      $(quoteCarousels).each(function () {
+        $(this).owlCarousel({
+          items: 1,
+          margin: 48,
+          nav: true,
+          navText: [
+            "<span class='owl-nav__icon'></span>",
+            "<span class='owl-nav__icon'></span>",
+          ],
+          dots: true,
+          loop: true,
+          autoHeight: true,
+          onInitialized: quoteCustomPage($(this)),
+          responsive: {
+            0: {
+              margin: 16,
+            },
+            767: {
+              margin: 24,
+            },
+            1280: {
+              margin: 48,
+            },
+          },
+        })
+      })
+    }
+  }
+
+  function quoteCustomPage(this_owl) {
+    setTimeout(function () {
+      var dots = $(this_owl).find('.owl-dot')
+      $(dots).each(function (i) {
+        var paginationLinks = $('.owl-dots .owl-dot')
+        var number = i + 1
+        $(paginationLinks[i]).prop('title', 'Carousel Next Image ' + number)
+      })
+    }, 100)
+  }
+
+  quoteCarouselsInit()
+
+  /*  ==========================================================================
           Tile Carousel
           ========================================================================== */
 
