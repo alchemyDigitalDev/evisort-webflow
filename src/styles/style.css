@@ -710,7 +710,7 @@ a.glossary-link .glossary-link__icon:before {
 }
 
 .blueunderline .headingunderline:before{
-  background: linear-gradient(270deg, rgba(#4481FF, 0.2) 0%, #4481FF 100%);
+  background: linear-gradient(270deg, rgba(68, 129, 255, 0.2) 0%, #4481FF 100%);
 }
 
 /* ---- CAREERS LIST ---- */
