@@ -995,7 +995,7 @@ a.glossary-link .glossary-link__icon:before {
   color: #4177e8 !important;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1280px) {
   .quotes-carousel.owl-carousel .owl-item {
     transform: scale(0.95);
   }
