@@ -750,14 +750,14 @@ window.onload = function () {
       var dots = $(this_owl).find('.owl-dot')
       $(dots).each(function (i) {
         var paginationLinks = $('.owl-dots .owl-dot')
-        var number = i + 1
         var owlItems = $('.owl-item')
         console.log(owlItems)
         var dotItem = owlItems[i]
         console.log(dotItem)
         var dotItemTitle = $(dotItem).find('.quote-item').data('title')
         console.log(dotItemTitle)
-        $(paginationLinks[i]).prop('title', 'Carousel Next Image ' + number)
+        $(paginationLinks[i]).prop('title', 'Carousel Next: ' + dotItemTitle)
+        $(paginationLinks[i]).html(dotItemTitle)
       })
     }, 100)
   }

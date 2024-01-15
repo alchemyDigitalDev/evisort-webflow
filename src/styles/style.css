@@ -925,9 +925,7 @@ a.glossary-link .glossary-link__icon:before {
 
 .quotes-carousel.owl-carousel .owl-nav {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
+  bottom: 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -999,7 +997,10 @@ a.glossary-link .glossary-link__icon:before {
     transform: scale(1);
   }
   .quotes-carousel.owl-carousel .owl-nav {
-    margin-top: 48px;
+    margin-top: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
   }
   .quotes-carousel.owl-carousel .owl-stage-outer {
     padding-bottom: calc(3.5rem + 48px);
