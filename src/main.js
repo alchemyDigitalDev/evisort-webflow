@@ -757,7 +757,9 @@ window.onload = function () {
         var dotItemTitle = $(dotItem).find('.quote-item').data('title')
         console.log(dotItemTitle)
         $(paginationLinks[i]).prop('title', 'Carousel Next: ' + dotItemTitle)
-        $(paginationLinks[i]).html(dotItemTitle)
+        $(paginationLinks[i]).html(
+          '<span class="owl-dot__title">' + dotItemTitle + '</span>'
+        )
       })
     }, 100)
   }
