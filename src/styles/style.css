@@ -812,9 +812,7 @@ a.glossary-link .glossary-link__icon:before {
 
 .tiles-carousel.owl-carousel .owl-nav {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
+  bottom: 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -927,7 +925,9 @@ a.glossary-link .glossary-link__icon:before {
 
 .quotes-carousel.owl-carousel .owl-nav {
   position: absolute;
-  bottom: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   width: 100%;
   display: flex;
   align-items: center;
