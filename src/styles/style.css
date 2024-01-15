@@ -812,7 +812,9 @@ a.glossary-link .glossary-link__icon:before {
 
 .tiles-carousel.owl-carousel .owl-nav {
   position: absolute;
-  bottom: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   width: 100%;
   display: flex;
   align-items: center;
@@ -952,7 +954,7 @@ a.glossary-link .glossary-link__icon:before {
   background-color: #3b71dc !important;
 }
 
-.owl-nav .owl-nav__icon {
+.quotes-carousel .owl-nav .owl-nav__icon {
   font-family: 'Fa solid 900', sans-serif;
   font-weight: 400;
   display: block;
