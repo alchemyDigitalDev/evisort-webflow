@@ -935,9 +935,9 @@ a.glossary-link .glossary-link__icon:before {
 .quotes-carousel.owl-carousel .owl-nav button.owl-prev,
 .quotes-carousel.owl-carousel .owl-nav button.owl-next {
   position: relative;
-  width: 2.5rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
   text-align: center;
   background-color: #cccccc !important;
   color: white !important;
@@ -1009,9 +1009,17 @@ a.glossary-link .glossary-link__icon:before {
     -webkit-transform: translateY(-50%);
   }
 
+  .quotes-carousel.owl-carousel .owl-nav button.owl-prev,
+  .quotes-carousel.owl-carousel .owl-nav button.owl-next {
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+  }
+
   .quotes-carousel.owl-carousel .owl-dots {
     align-items: flex-start;
   }
+
   .quotes-carousel.owl-carousel .owl-dots .owl-dot {
     width: 25%;
   }
