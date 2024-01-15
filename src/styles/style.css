@@ -979,6 +979,7 @@ a.glossary-link .glossary-link__icon:before {
   border-top: 4px solid #000000;
   margin: 0 0.25em;
   transition: border-color 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
   text-align: left;
   font-weight: 600;
   font-size: 15px;
@@ -999,7 +1000,7 @@ a.glossary-link .glossary-link__icon:before {
   pointer-events: none;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 992px) {
   .quotes-carousel.owl-carousel .owl-item {
     transform: scale(0.95);
   }
