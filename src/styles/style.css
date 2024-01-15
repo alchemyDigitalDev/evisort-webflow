@@ -906,7 +906,6 @@ a.glossary-link .glossary-link__icon:before {
 /* ---- QUOTES CAROUSEL ---- */
 
 .quotes-carousel.owl-carousel .owl-stage-outer {
-  overflow: visible;
   padding-bottom: calc(3.5rem + 24px);
 }
 
@@ -996,10 +995,6 @@ a.glossary-link .glossary-link__icon:before {
   color: #4177e8 !important;
 }
 
-.module---quotes-slider .module-gradient {
-  pointer-events: none;
-}
-
 @media screen and (min-width: 992px) {
   .quotes-carousel.owl-carousel .owl-item {
     transform: scale(0.95);
@@ -1029,16 +1024,10 @@ a.glossary-link .glossary-link__icon:before {
     padding-bottom: calc(3.5rem + 48px);
   }
   .quotes-carousel.owl-carousel .owl-nav button.owl-prev {
-    margin-left: -2rem;
+    margin-left: -4rem;
   }
   .quotes-carousel.owl-carousel .owl-nav button.owl-next {
-    margin-right: -2rem;
-  }
-}
-
-@media screen and (min-width: 1700px) {
-  .module---quotes-slider .module-gradient {
-    width: 10%;
+    margin-right: -4rem;
   }
 }
 
