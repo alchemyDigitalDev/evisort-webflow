@@ -984,9 +984,15 @@ a.glossary-link .glossary-link__icon:before {
   font-size: 15px;
 }
 
+.quotes-carousel.owl-carousel .owl-dots .owl-dot .owl-dot__title {
+  margin-top: 0.5em;
+  padding-right: 1em;
+  display: none;
+}
+
 .quotes-carousel.owl-carousel .owl-dots .owl-dot.active {
   border-color: #4177e8 !important;
-  color: 4177e8 !important;
+  color: #4177e8 !important;
 }
 
 .module---quotes-slider .module-gradient {
@@ -1014,6 +1020,9 @@ a.glossary-link .glossary-link__icon:before {
   }
   .quotes-carousel.owl-carousel .owl-dots .owl-dot:last-child {
     margin-right: 0;
+  }
+  .quotes-carousel.owl-carousel .owl-dots .owl-dot .owl-dot__title {
+    display: block;
   }
   .quotes-carousel.owl-carousel .owl-stage-outer {
     padding-bottom: calc(3.5rem + 48px);
