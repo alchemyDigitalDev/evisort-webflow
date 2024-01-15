@@ -975,14 +975,18 @@ a.glossary-link .glossary-link__icon:before {
 
 .quotes-carousel.owl-carousel .owl-dots .owl-dot {
   width: 3em;
-  height: 4px;
-  background-color: #000000;
+  background-color: transparent;
+  border-top: 4px solid #000000;
   margin: 0 0.25em;
-  transition: background-color 200ms ease-in-out;
+  transition: border-color 200ms ease-in-out;
+  text-align: left;
+  font-weight: 600;
+  font-size: 15px;
 }
 
 .quotes-carousel.owl-carousel .owl-dots .owl-dot.active {
-  background-color: #4177e8 !important;
+  border-color: #4177e8 !important;
+  color: 4177e8 !important;
 }
 
 .module---quotes-slider .module-gradient {
@@ -1001,6 +1005,15 @@ a.glossary-link .glossary-link__icon:before {
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
+  }
+  .quotes-carousel.owl-carousel .owl-dots .owl-dot {
+    width: 25%;
+  }
+  .quotes-carousel.owl-carousel .owl-dots .owl-dot:first-child {
+    margin-left: 0;
+  }
+  .quotes-carousel.owl-carousel .owl-dots .owl-dot:last-child {
+    margin-right: 0;
   }
   .quotes-carousel.owl-carousel .owl-stage-outer {
     padding-bottom: calc(3.5rem + 48px);
