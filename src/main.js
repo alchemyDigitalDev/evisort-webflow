@@ -748,6 +748,7 @@ window.onload = function () {
   function quoteCustomPage(this_owl) {
     setTimeout(function () {
       var dots = $(this_owl).find('.owl-dot')
+      console.log(this_owl)
       $(dots).each(function (i) {
         var paginationLinks = $('.owl-dots .owl-dot')
         var owlItems = $('.owl-item')
