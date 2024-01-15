@@ -751,6 +751,10 @@ window.onload = function () {
       $(dots).each(function (i) {
         var paginationLinks = $('.owl-dots .owl-dot')
         var number = i + 1
+        var owlItems = $('owl-item')
+        var dotItem = owlItems[i]
+        var dotItemTitle = dotItem.find('.quote-item').data('title')
+        console.log(dotItemTitle)
         $(paginationLinks[i]).prop('title', 'Carousel Next Image ' + number)
       })
     }, 100)
