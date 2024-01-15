@@ -995,6 +995,26 @@ a.glossary-link .glossary-link__icon:before {
   color: #4177e8 !important;
 }
 
+.quotes-carousel.owl-carousel .owl-dots .owl-dot:nth-child(2).active {
+  border-color: #029779 !important;
+  color: #029779 !important;
+}
+
+.quotes-carousel.owl-carousel .owl-dots .owl-dot:nth-child(3).active {
+  border-color: #ff836d !important;
+  color: #ff836d !important;
+}
+
+.quotes-carousel.owl-carousel .owl-dots .owl-dot:nth-child(4).active {
+  border-color: #ffd166 !important;
+  color: #ffd166 !important;
+}
+
+.quotes-carousel.owl-carousel .owl-dots .owl-dot:nth-child(5).active {
+  border-color: #ffc1ae !important;
+  color: #ffc1ae !important;
+}
+
 @media screen and (min-width: 1280px) {
   .quotes-carousel.owl-carousel .owl-item {
     transform: scale(0.95);
