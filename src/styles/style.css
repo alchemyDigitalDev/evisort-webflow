@@ -1025,7 +1025,7 @@ a.glossary-link .glossary-link__icon:before {
     display: block;
   }
   .quotes-carousel.owl-carousel .owl-stage-outer {
-    padding-bottom: calc(1.5rem + 48px);
+    padding-bottom: calc(3.5rem + 2em);
   }
   .quotes-carousel.owl-carousel .owl-nav button.owl-prev {
     margin-left: -4rem;
