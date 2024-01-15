@@ -751,7 +751,7 @@ window.onload = function () {
       console.log(this_owl)
       $(dots).each(function (i) {
         var paginationLinks = $('.owl-dots .owl-dot')
-        var owlItems = $('.owl-item')
+        var owlItems = $('.owl-item:not(.cloned)')
         console.log(owlItems)
         var dotItem = owlItems[i]
         console.log(dotItem)
