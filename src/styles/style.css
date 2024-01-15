@@ -906,7 +906,7 @@ a.glossary-link .glossary-link__icon:before {
 /* ---- QUOTES CAROUSEL ---- */
 
 .quotes-carousel.owl-carousel .owl-stage-outer {
-  padding-bottom: calc(3.5rem + 24px);
+  padding-bottom: calc(2.5rem + 24px);
 }
 
 .quotes-carousel.owl-carousel .owl-item {
@@ -935,9 +935,9 @@ a.glossary-link .glossary-link__icon:before {
 .quotes-carousel.owl-carousel .owl-nav button.owl-prev,
 .quotes-carousel.owl-carousel .owl-nav button.owl-next {
   position: relative;
-  width: 3.5rem;
-  height: 3.5rem;
-  line-height: 3.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
   text-align: center;
   background-color: #cccccc !important;
   color: white !important;
@@ -965,7 +965,7 @@ a.glossary-link .glossary-link__icon:before {
   position: absolute;
   bottom: 0;
   z-index: 2;
-  height: 3.5rem;
+  height: 2.5rem;
   display: flex;
   width: 100%;
   align-items: center;
@@ -1029,13 +1029,6 @@ a.glossary-link .glossary-link__icon:before {
     -webkit-transform: translateY(-50%);
   }
 
-  .quotes-carousel.owl-carousel .owl-nav button.owl-prev,
-  .quotes-carousel.owl-carousel .owl-nav button.owl-next {
-    width: 2.5rem;
-    height: 2.5rem;
-    line-height: 2.5rem;
-  }
-
   .quotes-carousel.owl-carousel .owl-dots {
     align-items: flex-start;
   }
@@ -1053,7 +1046,7 @@ a.glossary-link .glossary-link__icon:before {
     display: block;
   }
   .quotes-carousel.owl-carousel .owl-stage-outer {
-    padding-bottom: calc(3.5rem + 2em);
+    padding-bottom: calc(2.5rem + 2em);
   }
   .quotes-carousel.owl-carousel .owl-nav button.owl-prev {
     margin-left: -4rem;
@@ -1065,7 +1058,7 @@ a.glossary-link .glossary-link__icon:before {
 
 @media screen and (max-width: 479px) {
   .quotes-carousel.owl-carousel .owl-dots .owl-dot {
-    width: 0.5em;
+    width: 1em;
   }
 }
 
