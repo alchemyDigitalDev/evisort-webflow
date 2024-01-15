@@ -722,8 +722,8 @@ window.onload = function () {
           margin: 48,
           nav: true,
           navText: [
-            "<span class='owl-nav__icon'></span>",
-            "<span class='owl-nav__icon'></span>",
+            "<span class='owl-nav__icon'></span>",
+            "<span class='owl-nav__icon'></span>",
           ],
           dots: true,
           loop: true,

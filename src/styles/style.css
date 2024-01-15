@@ -936,11 +936,11 @@ a.glossary-link .glossary-link__icon:before {
 .quotes-carousel.owl-carousel .owl-nav button.owl-prev,
 .quotes-carousel.owl-carousel .owl-nav button.owl-next {
   position: relative;
-  width: 3.5rem;
-  height: 3.5rem;
-  line-height: 3.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
   text-align: center;
-  background-color: black !important;
+  background-color: #cccccc !important;
   color: white !important;
   border-radius: 5px;
   transition: background-color 200ms ease-in-out;
