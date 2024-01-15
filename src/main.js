@@ -748,18 +748,14 @@ window.onload = function () {
   function quoteCustomPage(this_owl) {
     setTimeout(function () {
       var dots = $(this_owl).find('.owl-dot')
-      console.log(this_owl)
       $(dots).each(function (i) {
         var paginationLinks = $('.owl-dots .owl-dot')
         var owlItems = $('.owl-item:not(.cloned)')
-        console.log(owlItems)
         var dotItem = owlItems[i]
-        console.log(dotItem)
         var dotItemTitle = $(dotItem)
           .find('.quote-item')
           .find('.module-header .heading-2')
           .html()
-        console.log(dotItemTitle)
         $(paginationLinks[i]).prop('title', 'Carousel Next: ' + dotItemTitle)
         $(paginationLinks[i]).html(
           '<span class="owl-dot__title">' + dotItemTitle + '</span>'
