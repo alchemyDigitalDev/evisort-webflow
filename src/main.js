@@ -773,14 +773,14 @@ window.onload = function () {
 
   function startProgressBar() {
     // apply keyframe animation
-    $('.owl-dot.active .owl-dot__progress').css({
+    $('.owl-dot.active .owl-dot__progressbar').css({
       width: '100%',
       transition: 'width 10000ms',
     })
   }
 
   function resetProgressBar() {
-    $('.owl-dot.active .owl-dot__progress').css({
+    $('.owl-dot.active .owl-dot__progressbar').css({
       width: '0',
       transition: 'width 0ms',
     })
