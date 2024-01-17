@@ -729,7 +729,10 @@ window.onload = function () {
           loop: true,
           autoHeight: true,
           autoplay: true,
-          onInitialized: quoteCustomPage($(this)),
+          autoplayTimeout: 10000,
+          onInitialized: startProgressBar,
+          onTranslate: resetProgressBar,
+          onTranslated: quoteCustomPage($(this)),
           responsive: {
             0: {
               margin: 16,
@@ -759,10 +762,28 @@ window.onload = function () {
           .html()
         $(paginationLinks[i]).prop('title', 'Carousel Next: ' + dotItemTitle)
         $(paginationLinks[i]).html(
-          '<span class="owl-dot__title">' + dotItemTitle + '</span>'
+          '<span class="owl-dot__progress"><span class="owl-dot__progressbar"></span></span><span class="owl-dot__title">' +
+            dotItemTitle +
+            '</span>'
         )
       })
+      startProgressBar()
     }, 100)
+  }
+
+  function startProgressBar() {
+    // apply keyframe animation
+    $('.owl-dot.active .owl-dot__progress').css({
+      width: '100%',
+      transition: 'width 10000ms',
+    })
+  }
+
+  function resetProgressBar() {
+    $('.owl-dot.active .owl-dot__progress').css({
+      width: '0',
+      transition: 'width 0ms',
+    })
   }
 
   quoteCarouselsInit()
