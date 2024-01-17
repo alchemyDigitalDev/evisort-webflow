@@ -728,6 +728,7 @@ window.onload = function () {
           dots: true,
           loop: true,
           autoHeight: true,
+          autoplay: true,
           onInitialized: quoteCustomPage($(this)),
           responsive: {
             0: {
