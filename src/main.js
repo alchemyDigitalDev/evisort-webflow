@@ -730,9 +730,9 @@ window.onload = function () {
           autoHeight: true,
           autoplay: true,
           autoplayTimeout: 10000,
-          onInitialized: startProgressBar,
           onTranslate: resetProgressBar,
-          onTranslated: quoteCustomPage($(this)),
+          onInitialized: quoteCustomPage($(this)),
+          onTranslated: startProgressBar,
           responsive: {
             0: {
               margin: 16,
