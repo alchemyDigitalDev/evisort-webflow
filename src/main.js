@@ -730,8 +730,8 @@ window.onload = function () {
           autoHeight: true,
           autoplay: true,
           autoplayTimeout: 10000,
-          onTranslate: resetProgressBar,
           onInitialized: quoteCustomPage($(this)),
+          onTranslate: resetProgressBar,
           onTranslated: startProgressBar,
           responsive: {
             0: {
@@ -750,6 +750,7 @@ window.onload = function () {
   }
 
   function quoteCustomPage(this_owl) {
+    startProgressBar()
     setTimeout(function () {
       var dots = $(this_owl).find('.owl-dot')
       $(dots).each(function (i) {
@@ -767,7 +768,6 @@ window.onload = function () {
             '</span>'
         )
       })
-      startProgressBar()
     }, 100)
   }
 
