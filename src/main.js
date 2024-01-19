@@ -731,8 +731,6 @@ window.onload = function () {
           // autoplay: true,
           // autoplayTimeout: 10000,
           onInitialized: quoteCustomPage($(this)),
-          onTranslate: resetProgressBar,
-          onTranslated: startProgressBar,
           responsive: {
             0: {
               margin: 16,
@@ -760,7 +758,6 @@ window.onload = function () {
       ) {
         console.log('play carousel')
         this_owl.trigger('play.owl.autoplay', 10000)
-        startProgressBar()
         $(this_owl).addClass('playing')
       }
     })
@@ -782,20 +779,6 @@ window.onload = function () {
         )
       })
     }, 100)
-  }
-
-  function startProgressBar() {
-    // apply keyframe animation
-    $('.owl-dot.active .owl-dot__progressbar').css({
-      width: '100%',
-    })
-  }
-
-  function resetProgressBar() {
-    console.log('reset')
-    $('.owl-dot .owl-dot__progressbar').css({
-      width: '0',
-    })
   }
 
   quoteCarouselsInit()

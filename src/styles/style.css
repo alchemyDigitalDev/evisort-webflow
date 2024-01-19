@@ -1030,6 +1030,7 @@ a.glossary-link .glossary-link__icon:before {
 
 .quotes-carousel.owl-carousel .owl-dots .owl-dot.active .owl-dot__progressbar {
   transition: width 10000ms;
+  width: 100%;
 }
 
 .quotes-carousel.owl-carousel .owl-dots .owl-dot:nth-child(2).active {
