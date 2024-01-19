@@ -909,9 +909,20 @@ a.glossary-link .glossary-link__icon:before {
   padding-bottom: calc(2.5rem + 24px);
 }
 
+.quotes-carousel.owl-carousel .owl-stage {
+  display: flex;
+}
+
 .quotes-carousel.owl-carousel .owl-item {
   opacity: 0.5;
   transition: opacity 250ms ease-in-out, transform 350ms ease-in-out;
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.quotes-carousel.owl-carousel .owl-item .quote-item {
+  display: flex;
+  flex-direction: column;
 }
 
 .quotes-carousel.owl-carousel .owl-item .quote-icon {
