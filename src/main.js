@@ -761,24 +761,24 @@ window.onload = function () {
         $(this_owl).addClass('playing')
       }
     })
-    //setTimeout(function () {
-    var dots = $(this_owl).find('.owl-dot')
-    $(dots).each(function (i) {
-      var paginationLinks = $('.owl-dots .owl-dot')
-      var owlItems = $('.owl-item:not(.cloned)')
-      var dotItem = owlItems[i]
-      var dotItemTitle = $(dotItem)
-        .find('.quote-item')
-        .find('.module-header .heading-2')
-        .html()
-      $(paginationLinks[i]).prop('title', 'Carousel Next: ' + dotItemTitle)
-      $(paginationLinks[i]).html(
-        '<span class="owl-dot__progress"><span class="owl-dot__progressbar"></span></span><span class="owl-dot__title">' +
-          dotItemTitle +
-          '</span>'
-      )
-    })
-    //}, 100)
+    setTimeout(function () {
+      var dots = $(this_owl).find('.owl-dot')
+      $(dots).each(function (i) {
+        var paginationLinks = $('.owl-dots .owl-dot')
+        var owlItems = $('.owl-item:not(.cloned)')
+        var dotItem = owlItems[i]
+        var dotItemTitle = $(dotItem)
+          .find('.quote-item')
+          .find('.module-header .heading-2')
+          .html()
+        $(paginationLinks[i]).prop('title', 'Carousel Next: ' + dotItemTitle)
+        $(paginationLinks[i]).html(
+          '<span class="owl-dot__progress"><span class="owl-dot__progressbar"></span></span><span class="owl-dot__title">' +
+            dotItemTitle +
+            '</span>'
+        )
+      })
+    }, 100)
   }
 
   quoteCarouselsInit()
