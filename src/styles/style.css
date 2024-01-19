@@ -1015,7 +1015,6 @@ a.glossary-link .glossary-link__icon:before {
   width: 0;
   height: 4px;
   background-color: #4177e8;
-  transition: width 10000ms;
 }
 
 .quotes-carousel.owl-carousel .owl-dots .owl-dot .owl-dot__title {
@@ -1026,6 +1025,10 @@ a.glossary-link .glossary-link__icon:before {
 
 .quotes-carousel.owl-carousel .owl-dots .owl-dot.active {
   color: #4177e8 !important;
+}
+
+.quotes-carousel.owl-carousel .owl-dots .owl-dot.active .owl-dot__progressbar {
+  transition: width 10000ms;
 }
 
 .quotes-carousel.owl-carousel .owl-dots .owl-dot:nth-child(2).active {
