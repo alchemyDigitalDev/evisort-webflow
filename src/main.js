@@ -750,9 +750,19 @@ window.onload = function () {
   }
 
   function quoteCustomPage(this_owl) {
-    $(this_owl).on('mouseenter', function () {
-      this_owl.trigger('owl.play', 10000)
-      startProgressBar()
+    $(window).scroll(function () {
+      // Trigger carousel autoplay on scroll (e.g. once carousel is in view)
+      let carouselTop = $(this_owl).offset().top - $(window).height()
+      let carouselHeight = $(this_owl).height()
+      if (
+        $(window).scrollTop() > carouselTop + carouselHeight &&
+        !$(this_owl).hasClass('playing')
+      ) {
+        console.log('play carousel')
+        this_owl.trigger('owl.play', 10000)
+        startProgressBar()
+        $(this_owl).addClass('playing')
+      }
     })
     setTimeout(function () {
       var dots = $(this_owl).find('.owl-dot')
