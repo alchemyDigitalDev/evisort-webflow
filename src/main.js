@@ -750,8 +750,9 @@ window.onload = function () {
   }
 
   function quoteCustomPage(this_owl) {
-    $(this_owl).on('mouseenter', function (e) {
+    $(this_owl).on('mouseenter', function () {
       this_owl.trigger('owl.play', 10000)
+      startProgressBar()
     })
     setTimeout(function () {
       var dots = $(this_owl).find('.owl-dot')
@@ -770,7 +771,6 @@ window.onload = function () {
             '</span>'
         )
       })
-      startProgressBar()
     }, 100)
   }
 
