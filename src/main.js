@@ -728,8 +728,8 @@ window.onload = function () {
           dots: true,
           loop: true,
           autoHeight: false,
-          autoplay: true,
-          autoplayTimeout: 10000,
+          // autoplay: true,
+          // autoplayTimeout: 10000,
           onInitialized: quoteCustomPage($(this)),
           onTranslate: resetProgressBar,
           onTranslated: startProgressBar,
@@ -750,6 +750,9 @@ window.onload = function () {
   }
 
   function quoteCustomPage(this_owl) {
+    $(this_owl).on('mouseenter', function (e) {
+      this_owl.trigger('owl.play', 10000)
+    })
     setTimeout(function () {
       var dots = $(this_owl).find('.owl-dot')
       $(dots).each(function (i) {
