@@ -792,6 +792,7 @@ window.onload = function () {
   }
 
   function resetProgressBar() {
+    console.log('reset')
     $('.owl-dot .owl-dot__progressbar').css({
       width: '0',
     })
