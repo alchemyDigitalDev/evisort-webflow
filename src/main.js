@@ -752,14 +752,13 @@ window.onload = function () {
       // Trigger carousel autoplay on scroll (e.g. once carousel is in view)
       let carouselTop = $(this_owl).offset().top - $(window).height()
       let carouselHeight = $(this_owl).height()
-      if (
-        $(window).scrollTop() > carouselTop + carouselHeight &&
-        !$(this_owl).hasClass('playing')
-      ) {
+      if ($(window).scrollTop() > carouselTop + carouselHeight) {
         setTimeout(function () {
-          console.log('play carousel')
-          this_owl.trigger('play.owl.autoplay', 10000)
-          $(this_owl).addClass('playing')
+          if (!$(this_owl).hasClass('playing')) {
+            console.log('play carousel')
+            this_owl.trigger('play.owl.autoplay', 10000)
+            $(this_owl).addClass('playing')
+          }
         }, 200)
       }
     })
