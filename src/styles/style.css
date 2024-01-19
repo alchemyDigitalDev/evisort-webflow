@@ -923,6 +923,7 @@ a.glossary-link .glossary-link__icon:before {
 .quotes-carousel.owl-carousel .owl-item .quote-item {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .quotes-carousel.owl-carousel .owl-item .quote-item .flex-grid {
