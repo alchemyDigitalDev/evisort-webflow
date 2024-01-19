@@ -925,6 +925,10 @@ a.glossary-link .glossary-link__icon:before {
   flex-direction: column;
 }
 
+.quotes-carousel.owl-carousel .owl-item .quote-item .flex-grid {
+  flex-grow: 1;
+}
+
 .quotes-carousel.owl-carousel .owl-item .quote-icon {
   width: auto !important;
 }
