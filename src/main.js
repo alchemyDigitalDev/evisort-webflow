@@ -759,7 +759,7 @@ window.onload = function () {
         !$(this_owl).hasClass('playing')
       ) {
         console.log('play carousel')
-        this_owl.trigger('owl.play', 10000)
+        this_owl.trigger('play.owl.autoplay', 10000)
         startProgressBar()
         $(this_owl).addClass('playing')
       }
