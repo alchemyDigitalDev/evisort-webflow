@@ -756,9 +756,11 @@ window.onload = function () {
         $(window).scrollTop() > carouselTop + carouselHeight &&
         !$(this_owl).hasClass('playing')
       ) {
-        console.log('play carousel')
-        this_owl.trigger('play.owl.autoplay', 10000)
-        $(this_owl).addClass('playing')
+        setTimeout(function () {
+          console.log('play carousel')
+          this_owl.trigger('play.owl.autoplay', 10000)
+          $(this_owl).addClass('playing')
+        }, 200)
       }
     })
     setTimeout(function () {
