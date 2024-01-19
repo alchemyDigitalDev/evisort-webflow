@@ -929,6 +929,10 @@ a.glossary-link .glossary-link__icon:before {
   flex-grow: 1;
 }
 
+.quotes-carousel.owl-carousel .owl-item .quote-item .flex-grid .tile {
+  height: 100%;
+}
+
 .quotes-carousel.owl-carousel .owl-item .quote-icon {
   width: auto !important;
 }
