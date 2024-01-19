@@ -750,7 +750,6 @@ window.onload = function () {
   }
 
   function quoteCustomPage(this_owl) {
-    startProgressBar()
     setTimeout(function () {
       var dots = $(this_owl).find('.owl-dot')
       $(dots).each(function (i) {
@@ -768,12 +767,12 @@ window.onload = function () {
             '</span>'
         )
       })
+      startProgressBar()
     }, 100)
   }
 
   function startProgressBar() {
     // apply keyframe animation
-
     $('.owl-dot.active .owl-dot__progressbar').css({
       width: '100%',
       transition: 'width 10000ms',
