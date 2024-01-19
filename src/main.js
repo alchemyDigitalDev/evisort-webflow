@@ -727,7 +727,7 @@ window.onload = function () {
           ],
           dots: true,
           loop: true,
-          autoHeight: true,
+          autoHeight: false,
           autoplay: true,
           autoplayTimeout: 10000,
           onInitialized: quoteCustomPage($(this)),
