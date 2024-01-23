@@ -1106,6 +1106,14 @@ a.glossary-link .glossary-link__icon:before {
   transition: width 10000ms;
 }
 
+.quotes-carousel.owl-carousel.paused
+  .owl-dots
+  .owl-dot.active
+  .owl-dot__progressbar {
+  width: 100%;
+  transition: none !important;
+}
+
 .quotes-carousel.owl-carousel .owl-dots .owl-dot:nth-child(2).active {
   color: #029779 !important;
 }

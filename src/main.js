@@ -781,6 +781,7 @@ window.onload = function () {
         $(this).on('click', function () {
           $(this_owl).trigger('stop.owl.autoplay')
           $(this_owl).removeClass('playing')
+          $(this_owl).addClass('paused')
         })
       })
     }, 100)
