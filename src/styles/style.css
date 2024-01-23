@@ -560,6 +560,11 @@ a.glossary-link .glossary-link__icon:before {
   vertical-align: middle;
 }
 
+.marketo-form---email-only .mktoForm .mktoError {
+  position: absolute !important;
+  top: 5em !important;
+}
+
 /* Dark background forms  */
 
 .marketo-form---dark .mktoForm {
