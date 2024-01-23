@@ -754,7 +754,10 @@ window.onload = function () {
       let carouselHeight = $(this_owl).height()
       if ($(window).scrollTop() > carouselTop + carouselHeight) {
         setTimeout(function () {
-          if (!$(this_owl).hasClass('playing')) {
+          if (
+            !$(this_owl).hasClass('playing') &&
+            !$(this_owl).hasClass('paused')
+          ) {
             console.log('play carousel')
             this_owl.trigger('play.owl.autoplay', 10000)
             $(this_owl).addClass('playing')
