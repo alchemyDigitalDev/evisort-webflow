@@ -514,13 +514,13 @@ a.glossary-link .glossary-link__icon:before {
   display: none !important;
 }
 
-.marketo-form---dark .mktoForm button[type='submit'] {
+.marketo-form---email-only .mktoForm button[type='submit'] {
   background: #3b71dc !important;
   border: 1.75px solid #3b71dc !important;
   color: #ffffff !important;
 }
 
-.marketo-form---dark .mktoForm button[type='submit']:hover {
+.marketo-form---email-only .mktoForm button[type='submit']:hover {
   background: #83a8f8 !important;
   border-color: #83a8f8 !important;
   color: #ffffff !important;
