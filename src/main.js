@@ -784,6 +784,14 @@ window.onload = function () {
           $(this_owl).addClass('paused')
         })
       })
+      var nav = $(this_owl).find('.owl-nav button')
+      $(nav).each(function () {
+        $(this).on('click', function () {
+          $(this_owl).trigger('stop.owl.autoplay')
+          $(this_owl).removeClass('playing')
+          $(this_owl).addClass('paused')
+        })
+      })
     }, 100)
   }
 
