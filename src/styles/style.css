@@ -519,6 +519,7 @@ a.glossary-link .glossary-link__icon:before {
   border: 1.75px solid #3b71dc !important;
   color: #ffffff !important;
   margin: 0 !important;
+  min-height: 3.5em !important;
 }
 
 .marketo-form---email-only .mktoForm button[type='submit']:hover {
@@ -531,6 +532,10 @@ a.glossary-link .glossary-link__icon:before {
 .marketo-form---email-only .mktoForm .mktoFormCol {
   margin: 0 !important;
   padding: 0 !important;
+}
+
+.marketo-form---email-only .mktoForm input {
+  min-height: 3.5em !important;
 }
 
 .marketo-form---email-only .mktoForm .mktoFormRow {
