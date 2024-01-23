@@ -778,6 +778,10 @@ window.onload = function () {
             dotItemTitle +
             '</span>'
         )
+        $(this).on('click', function () {
+          $(this_owl).trigger('stop.owl.autoplay')
+          $(this_owl).removeClass('playing')
+        })
       })
     }, 100)
   }
