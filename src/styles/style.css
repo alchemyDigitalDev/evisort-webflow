@@ -535,7 +535,7 @@ a.glossary-link .glossary-link__icon:before {
   display: none;
 }
 
-.marketo-form---email-only .mktoForm .mktoFormRow:first-child {
+.marketo-form---email-only .mktoForm .mktoFormRow:first-of-type {
   display: inline-block;
 }
 
