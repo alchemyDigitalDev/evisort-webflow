@@ -530,6 +530,7 @@ a.glossary-link .glossary-link__icon:before {
 .marketo-form---email-only .mktoForm input,
 .marketo-form---email-only .mktoForm .mktoFormCol {
   margin: 0 !important;
+  padding: 0 !important;
 }
 
 .marketo-form---email-only .mktoForm .mktoFormRow {
