@@ -758,7 +758,6 @@ window.onload = function () {
             !$(this_owl).hasClass('playing') &&
             !$(this_owl).hasClass('paused')
           ) {
-            console.log('play carousel')
             this_owl.trigger('play.owl.autoplay', 10000)
             $(this_owl).addClass('playing')
           }
