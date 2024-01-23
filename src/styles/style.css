@@ -537,6 +537,13 @@ a.glossary-link .glossary-link__icon:before {
 
 .marketo-form---email-only .mktoForm .mktoFormRow:first-of-type {
   display: inline-block;
+  vertical-align: middle;
+  width: 300px !important;
+}
+
+.marketo-form---email-only .mktoForm .mktoButtonRow {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* Dark background forms  */
