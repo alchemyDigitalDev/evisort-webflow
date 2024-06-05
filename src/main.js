@@ -674,7 +674,7 @@ window.onload = function () {
       itemHTML += '<div>' + list[i].location + '</div>'
       itemHTML += '</div>'
       itemHTML +=
-        '<a class="button button---primary" target="_blank" href="' +
+        '<a class="button button-light" target="_blank" href="' +
         list[i].applyUrl +
         '" rel="noopener noreferrer">Apply</a>'
       itemHTML += '</div>'
