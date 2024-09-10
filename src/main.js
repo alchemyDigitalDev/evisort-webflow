@@ -112,6 +112,7 @@ window.onload = function () {
     $(accordion_items)
       .not(openItem)
       .each(function (index, accordion_item) {
+        console.log('close items')
         closeAccordionItem(accordion_item)
       })
       .promise()
@@ -183,37 +184,45 @@ window.onload = function () {
   function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
     let accordion_items = $(accordion).find('.accordion-item')
 
-    // Start animation
-    $(accordion).addClass('playing')
+    // Check if it's desktop
+    if (screenWidth >= 992) {
+      // Start animation
+      $(accordion).addClass('playing')
 
-    if (accordion_items) {
-      $(accordion_items).each(function (index, accordion_item) {
-        closeAccordionItem(accordion_item)
-        let currentTimeoutTime = accordionItemTime * index
-        if (screenWidth >= 992) {
-          itemsTimeout.push(
-            setTimeout(function () {
-              showAccordionItem(accordion_items, screenWidth, accordion_item)
-            }, currentTimeoutTime)
+      if (accordion_items) {
+        $(accordion_items).each(function (index, accordion_item) {
+          closeAccordionItem(accordion_item)
+          let currentTimeoutTime = accordionItemTime * index
+          if (screenWidth >= 992) {
+            itemsTimeout.push(
+              setTimeout(function () {
+                showAccordionItem(accordion_items, screenWidth, accordion_item)
+              }, currentTimeoutTime)
+            )
+          }
+          $(accordion_item).click(function () {
+            // Pause autoplaying timeouts
+            for (let i = 0; i < itemsTimeout.length; i++) {
+              clearTimeout(itemsTimeout[i])
+            }
+
+            showAccordionItem(
+              accordion_items,
+              screenWidth,
+              accordion_item,
+              true
+            )
+          })
+        })
+
+        if (screenWidth < 992) {
+          showAccordionItem(
+            accordion_items,
+            screenWidth,
+            accordion_items[0],
+            true
           )
         }
-        $(accordion_item).click(function () {
-          // Pause autoplaying timeouts
-          for (let i = 0; i < itemsTimeout.length; i++) {
-            clearTimeout(itemsTimeout[i])
-          }
-
-          showAccordionItem(accordion_items, screenWidth, accordion_item, true)
-        })
-      })
-
-      if (screenWidth < 992) {
-        showAccordionItem(
-          accordion_items,
-          screenWidth,
-          accordion_items[0],
-          true
-        )
       }
     }
   }
@@ -224,8 +233,9 @@ window.onload = function () {
     let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
     let accordion_items = $(accordion).find('.accordion-item')
 
-    // Check if it's in viewport
+    // Check if it's desktop
     if (screenWidth >= 992) {
+      // Check if it's in viewport
       if (
         $(window).scrollTop() > accordionTop + accordionHeight * 0.75 &&
         !$(accordion).hasClass('playing')
