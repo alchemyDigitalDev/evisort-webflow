@@ -109,6 +109,7 @@ window.onload = function () {
     userClicked = false
   ) {
     // Hide other accordion items
+    console.log(openItem)
     $(accordion_items)
       .not(openItem)
       .each(function (index, accordion_item) {
