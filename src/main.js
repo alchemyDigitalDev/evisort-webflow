@@ -184,45 +184,37 @@ window.onload = function () {
   function startAccordionAnimation(accordion, screenWidth, itemsTimeout) {
     let accordion_items = $(accordion).find('.accordion-item')
 
-    // Check if it's desktop
-    if (screenWidth >= 992) {
-      // Start animation
-      $(accordion).addClass('playing')
+    // Start animation
+    $(accordion).addClass('playing')
 
-      if (accordion_items) {
-        $(accordion_items).each(function (index, accordion_item) {
-          closeAccordionItem(accordion_item)
-          let currentTimeoutTime = accordionItemTime * index
-          if (screenWidth >= 992) {
-            itemsTimeout.push(
-              setTimeout(function () {
-                showAccordionItem(accordion_items, screenWidth, accordion_item)
-              }, currentTimeoutTime)
-            )
-          }
-          $(accordion_item).click(function () {
-            // Pause autoplaying timeouts
-            for (let i = 0; i < itemsTimeout.length; i++) {
-              clearTimeout(itemsTimeout[i])
-            }
-
-            showAccordionItem(
-              accordion_items,
-              screenWidth,
-              accordion_item,
-              true
-            )
-          })
-        })
-
-        if (screenWidth < 992) {
-          showAccordionItem(
-            accordion_items,
-            screenWidth,
-            accordion_items[0],
-            true
+    if (accordion_items) {
+      $(accordion_items).each(function (index, accordion_item) {
+        closeAccordionItem(accordion_item)
+        let currentTimeoutTime = accordionItemTime * index
+        if (screenWidth >= 992) {
+          itemsTimeout.push(
+            setTimeout(function () {
+              showAccordionItem(accordion_items, screenWidth, accordion_item)
+            }, currentTimeoutTime)
           )
         }
+        $(accordion_item).click(function () {
+          // Pause autoplaying timeouts
+          for (let i = 0; i < itemsTimeout.length; i++) {
+            clearTimeout(itemsTimeout[i])
+          }
+
+          showAccordionItem(accordion_items, screenWidth, accordion_item, true)
+        })
+      })
+
+      if (screenWidth < 992) {
+        showAccordionItem(
+          accordion_items,
+          screenWidth,
+          accordion_items[0],
+          true
+        )
       }
     }
   }
