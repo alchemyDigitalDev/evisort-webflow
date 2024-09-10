@@ -132,7 +132,7 @@ window.onload = function () {
 
         currentItemID = current_id
 
-        //$(openItem).css('backgroundColor', '#fff9f0')
+        $(openItem).css('backgroundColor', '#ffffff')
         $(current_loadingbarfill).css('display', 'block')
         if (
           $(current_loadingbar).hasClass(
