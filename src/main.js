@@ -298,7 +298,6 @@ window.onload = function () {
     $(window).on('resize', function () {
       screenWidth = window.innerWidth
       $(accordions).each(function (index, accordion) {
-        console.log(screenWidth)
         if ($(accordion).hasClass('playing') && screenWidth < 992) {
           // if resizing down to mobile, then pause animation and show current
           for (let i = 0; i < itemsTimeout.length; i++) {
@@ -310,6 +309,8 @@ window.onload = function () {
 
           let accordion_items = $(accordion).find('.accordion-item')
           console.log('test6')
+          console.log('test6width:' + screenWidth)
+
           showAccordionItem(
             accordion_items,
             accordion_items[currentItemID - 1],
