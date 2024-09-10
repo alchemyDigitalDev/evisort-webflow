@@ -226,10 +226,9 @@ window.onload = function () {
     let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
     let accordion_items = $(accordion).find('.accordion-item')
 
-    console.log(screenWidth)
-
     // Check if it's desktop
     if (screenWidth >= 992) {
+      console.log(screenWidth)
       // Check if it's in viewport
       if (
         $(window).scrollTop() > accordionTop + accordionHeight * 0.75 &&
