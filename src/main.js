@@ -102,7 +102,12 @@ window.onload = function () {
     $(accordion_arrow).css('transform', 'none')
   }
 
-  function showAccordionItem(accordion_items, openItem, userClicked = false) {
+  function showAccordionItem(
+    accordion_items,
+    screenWidth,
+    openItem,
+    userClicked = false
+  ) {
     // Hide other accordion items
     $(accordion_items)
       .not(openItem)
@@ -144,9 +149,16 @@ window.onload = function () {
           $(current_loadingbar).css('backgroundColor', '#83a8f8')
         }
 
-        $(current_loadingbar).animate({ height: '10px' }, 100)
-        $(current_content).animate({ 'max-height': '750px' }, 750)
-        $(current_quote_mobile).animate({ 'max-height': '750px' }, 750)
+        if (screenWidth < 992) {
+          $(current_loadingbar).css('height', '10px')
+          $(current_content).css('max-height', '750px')
+          $(current_quote_mobile).css('max-height', '750px')
+        } else {
+          $(current_loadingbar).animate({ height: '10px' }, 100)
+          $(current_content).animate({ 'max-height': '750px' }, 750)
+          $(current_quote_mobile).animate({ 'max-height': '750px' }, 750)
+        }
+
         $(current_arrow).css('transform', 'rotate(-180deg)')
 
         // Hide other quotes
@@ -181,7 +193,7 @@ window.onload = function () {
         if (screenWidth >= 992) {
           itemsTimeout.push(
             setTimeout(function () {
-              showAccordionItem(accordion_items, accordion_item)
+              showAccordionItem(accordion_items, screenWidth, accordion_item)
             }, currentTimeoutTime)
           )
         }
@@ -191,12 +203,17 @@ window.onload = function () {
             clearTimeout(itemsTimeout[i])
           }
 
-          showAccordionItem(accordion_items, accordion_item, true)
+          showAccordionItem(accordion_items, screenWidth, accordion_item, true)
         })
       })
 
       if (screenWidth < 992) {
-        showAccordionItem(accordion_items, accordion_items[0], true)
+        showAccordionItem(
+          accordion_items,
+          screenWidth,
+          accordion_items[0],
+          true
+        )
       }
     }
   }
