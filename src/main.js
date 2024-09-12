@@ -220,7 +220,7 @@ window.onload = function () {
   function checkAccordionAnimation(accordion, screenWidth, itemsTimeout) {
     let accordionTop = $(accordion).offset().top - $(window).height()
     let accordionHeight = $(accordion).height()
-    //let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
+    let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
     let accordion_items = $(accordion).find('.accordion-item')
 
     // Check if it's desktop
@@ -229,7 +229,7 @@ window.onload = function () {
       console.log(accordionTop)
       console.log($(window).scrollTop())
       if (
-        $(window).scrollTop() > accordionTop + accordionHeight * 0.75 &&
+        $(window).scrollTop() > accordionTop &&
         !$(accordion).hasClass('playing')
       ) {
         // Check if it's in viewport
@@ -256,7 +256,7 @@ window.onload = function () {
             })
           })
         }
-      } else {
+      } else if (!$(accordion).hasClass('stopped')) {
         console.log('stop animation')
         $(accordion).addClass('stopped')
         // Pause autoplaying timeouts
