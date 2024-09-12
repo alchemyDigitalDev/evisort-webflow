@@ -233,6 +233,7 @@ window.onload = function () {
         !$(accordion).hasClass('playing')
       ) {
         // Check if it's in viewport
+        console.log('start animation')
         // Start animation
         $(accordion).addClass('playing')
         if (accordion_items) {
@@ -259,6 +260,7 @@ window.onload = function () {
         $(window).scrollTop() > accordionBottom &&
         !$(accordion).hasClass('stopped')
       ) {
+        console.log('stop animation')
         $(accordion).addClass('stopped')
         // Pause autoplaying timeouts
         for (let i = 0; i < itemsTimeout.length; i++) {
