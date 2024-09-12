@@ -226,14 +226,11 @@ window.onload = function () {
     // Check if it's desktop
     if (screenWidth >= 992) {
       // Check if it's in viewport
-      console.log(accordionTop)
-      console.log($(window).scrollTop())
       if (
-        $(window).scrollTop() > accordionTop &&
+        $(window).scrollTop() > accordionTop + accordionHeight * 0.75 &&
         !$(accordion).hasClass('playing')
       ) {
         // Check if it's in viewport
-        console.log('start animation')
         // Start animation
         $(accordion).addClass('playing')
         if (accordion_items) {
@@ -256,8 +253,10 @@ window.onload = function () {
             })
           })
         }
-      } else if (!$(accordion).hasClass('stopped')) {
-        console.log('stop animation')
+      } else if (
+        $(window).scrollTop() > accordionBottom &&
+        !$(accordion).hasClass('stopped')
+      ) {
         $(accordion).addClass('stopped')
         // Pause autoplaying timeouts
         for (let i = 0; i < itemsTimeout.length; i++) {
