@@ -184,7 +184,7 @@ window.onload = function () {
     let accordion_items = $(accordion).find('.accordion-item')
 
     // Start animation
-    $(accordion).addClass('playing')
+    //$(accordion).addClass('playing')
 
     if (accordion_items) {
       // Show first item
@@ -230,7 +230,7 @@ window.onload = function () {
     if (screenWidth >= 992) {
       // Check if it's in viewport
       if (
-        $(window).scrollTop() > accordionTop + accordionHeight * 0.75 &&
+        $(window).scrollTop() > accordionTop - 50 &&
         !$(accordion).hasClass('playing')
       ) {
         // Check if it's in viewport
