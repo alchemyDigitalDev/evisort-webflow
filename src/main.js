@@ -222,7 +222,7 @@ window.onload = function () {
 
   function checkAccordionAnimation(accordion, screenWidth, itemsTimeout) {
     let accordionTop = $(accordion).offset().top - $(window).height()
-    let accordionHeight = $(accordion).height()
+    //let accordionHeight = $(accordion).height()
     let accordionBottom = $(accordion).offset().top + $(accordion).outerHeight()
     let accordion_items = $(accordion).find('.accordion-item')
 
