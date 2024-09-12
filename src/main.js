@@ -235,6 +235,7 @@ window.onload = function () {
       ) {
         // Check if it's in viewport
         // Start animation
+        console.log('play')
         $(accordion).addClass('playing')
         if (accordion_items) {
           $(accordion_items).each(function (index, accordion_item) {
