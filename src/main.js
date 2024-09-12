@@ -241,19 +241,23 @@ window.onload = function () {
           $(accordion_items).each(function (index, accordion_item) {
             closeAccordionItem(accordion_item)
             let currentTimeoutTime = accordionItemTime * index
-            if (screenWidth >= 992) {
-              itemsTimeout.push(
-                setTimeout(function () {
-                  showAccordionItem(accordion_items, accordion_item)
-                }, currentTimeoutTime)
-              )
-            }
+            itemsTimeout.push(
+              setTimeout(function () {
+                showAccordionItem(accordion_items, screenWidth, accordion_item)
+                console.log('show')
+              }, currentTimeoutTime)
+            )
             $(accordion_item).click(function () {
               // Pause autoplaying timeouts
               for (let i = 0; i < itemsTimeout.length; i++) {
                 clearTimeout(itemsTimeout[i])
               }
-              showAccordionItem(accordion_items, accordion_item, true)
+              showAccordionItem(
+                accordion_items,
+                screenWidth,
+                accordion_item,
+                true
+              )
             })
           })
         }
