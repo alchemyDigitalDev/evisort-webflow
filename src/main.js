@@ -256,10 +256,7 @@ window.onload = function () {
             })
           })
         }
-      } else if (
-        $(window).scrollTop() > accordionBottom &&
-        !$(accordion).hasClass('stopped')
-      ) {
+      } else {
         console.log('stop animation')
         $(accordion).addClass('stopped')
         // Pause autoplaying timeouts
