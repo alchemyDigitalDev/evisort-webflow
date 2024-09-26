@@ -1376,7 +1376,7 @@ function closeManualAccordionItem(closeItem) {
 
   // Set all loading bar fills to 0
   $(closeItem).css('borderColor', 'var(--0-2-black)')
-  $(closeItem).css('color', 'var(--0-2-black)')
+  $(closeItem).find('.accordion-item-heading').css('color', 'var(--0-2-black)')
   $(accordion_content).css('max-height', '0px')
   $(accordion_mobilequote).css('max-height', '0px')
   $(accordion_arrow).css('transform', 'none')
