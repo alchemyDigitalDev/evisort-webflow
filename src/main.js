@@ -1410,8 +1410,23 @@ function showManualAccordionItem(accordion_items, openItem) {
 
       currentItemID = current_id
 
-      $(openItem).css('borderColor', '#4177E8')
-      $(openItem).css('color', '#4177E8')
+      if ($(openItem).hasClass('accordion-item---green')) {
+        $(openItem).css('borderColor', '#029779')
+        $(openItem).find('.accordion-item-heading').css('color', '#029779')
+      } else if ($(openItem).hasClass('accordion-item---red')) {
+        $(openItem).css('borderColor', '#ff836d')
+        $(openItem).find('.accordion-item-heading').css('color', '#ff836d')
+      } else if ($(openItem).hasClass('accordion-item---yellow')) {
+        $(openItem).css('borderColor', '#ffd166')
+        $(openItem).find('.accordion-item-heading').css('color', '#ffd166')
+      } else if ($(openItem).hasClass('accordion-item---light-red')) {
+        $(openItem).css('borderColor', '#f6c3b1')
+        $(openItem).find('.accordion-item-heading').css('color', '#f6c3b1')
+      } else {
+        $(openItem).css('borderColor', '#4177E8')
+        $(openItem).find('.accordion-item-heading').css('color', '#4177E8')
+      }
+
       $(current_content).animate({ 'max-height': '750px' }, 750)
       $(current_quote_mobile).animate({ 'max-height': '750px' }, 750)
       $(current_arrow).css('transform', 'rotate(-180deg)')
