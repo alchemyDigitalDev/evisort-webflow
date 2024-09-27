@@ -939,6 +939,14 @@ a.glossary-link .glossary-link__icon:before {
   background-color: #3b71dc !important;
 }
 
+.module-bg---light-blue .tiles-carousel.owl-carousel .owl-dots .owl-dot {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.module-bg---light-blue .tiles-carousel.owl-carousel .owl-dots .owl-dot.active {
+  background-color: #3b71dc !important;
+}
+
 .module---tiles-slider .module-gradient {
   pointer-events: none;
 }
@@ -961,6 +969,12 @@ a.glossary-link .glossary-link__icon:before {
 @media screen and (min-width: 1700px) {
   .module---tiles-slider .module-gradient {
     width: 10%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .tiles-carousel.owl-carousel .owl-dots .owl-dot {
+    width: 1em;
   }
 }
 
