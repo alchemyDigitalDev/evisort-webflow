@@ -826,6 +826,7 @@ a.glossary-link .glossary-link__icon:before {
 
 .careers-list .career-location {
   padding-right: 1.5em;
+  flex-grow: 1;
 }
 
 .careers-list .button {
@@ -846,10 +847,6 @@ a.glossary-link .glossary-link__icon:before {
     padding-right: 0;
     justify-content: flex-start;
     flex-wrap: wrap;
-  }
-
-  .careers-list .career-location {
-    flex-grow: 1;
   }
 }
 
