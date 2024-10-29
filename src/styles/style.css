@@ -601,7 +601,7 @@ a.glossary-link .glossary-link__icon:before {
   color: #ffffff !important;
 }
 
-.marketo-form---dark .mktoForm button[type='submit']:hover {
+.marketo-form---black .mktoForm button[type='submit']:hover {
   background: #ffffff !important;
   border-color: #ffffff !important;
   color: #000000 !important;
