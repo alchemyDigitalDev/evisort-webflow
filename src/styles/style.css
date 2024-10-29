@@ -595,6 +595,18 @@ a.glossary-link .glossary-link__icon:before {
   color: #ffffff !important;
 }
 
+.marketo-form---black .mktoForm button[type='submit'] {
+  background: #000000 !important;
+  border: 1.75px solid #000000 !important;
+  color: #ffffff !important;
+}
+
+.marketo-form---dark .mktoForm button[type='submit']:hover {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #000000 !important;
+}
+
 /* Side by side form - used in call to action form module */
 
 .marketo-form---50-50 .mktoForm {
