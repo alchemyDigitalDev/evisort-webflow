@@ -609,6 +609,13 @@ a.glossary-link .glossary-link__icon:before {
 .marketo-form---black .mktoForm .mktoError .mktoErrorMsg {
   color: #ffffff !important;
 }
+.marketo-form---black .mktoForm .mktoError {
+  left: 0 !important;
+}
+
+.marketo-form---black .mktoForm .mktoError #ValidMsgEmail {
+  display: inline !important;
+}
 
 /* Side by side form - used in call to action form module */
 
