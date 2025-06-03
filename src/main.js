@@ -1567,15 +1567,12 @@ manualAccordionsInit()
 function footerLinkHiddenInit() {
   let footerHiddenLink = $('.footer-link-hide')
   if (footerHiddenLink) {
-    console.log('hidden link')
     fetch('https://ipapi.co/json/')
       .then((response) => response.json())
       .then((data) => {
         if (data.country === 'US') {
-          console.log('User is from the US')
           $('.footer-link-hide').css('display', 'inline-block')
         } else {
-          console.log('User is NOT from the US')
         }
       })
       .catch((error) => console.error('Error fetching location:', error))
