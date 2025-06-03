@@ -1573,7 +1573,7 @@ function footerLinkHiddenInit() {
       .then((data) => {
         if (data.country === 'US') {
           console.log('User is from the US')
-          $('.footer-link-hide').show()
+          $('.footer-link-hide').css('display', 'inline-block')
         } else {
           console.log('User is NOT from the US')
         }
