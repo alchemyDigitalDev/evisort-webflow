@@ -1559,3 +1559,16 @@ function manualAccordionsInit() {
 }
 //window.addEventListener('load', manualAccordionsInit)
 manualAccordionsInit()
+
+/*  ==========================================================================
+          Footer Links
+          ========================================================================== */
+
+function footerLinkHiddenInit() {
+  let footerHiddenLink = $('.footer-link-hide')
+  if (footerHiddenLink) {
+    console.log('hidden link')
+  }
+}
+
+footerLinkHiddenInit()
