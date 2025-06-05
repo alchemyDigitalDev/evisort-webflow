@@ -1579,4 +1579,4 @@ function footerLinkHiddenInit() {
   }
 }
 
-footerLinkHiddenInit()
+// footerLinkHiddenInit()
