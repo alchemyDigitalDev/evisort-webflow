@@ -1559,24 +1559,3 @@ function manualAccordionsInit() {
 }
 //window.addEventListener('load', manualAccordionsInit)
 manualAccordionsInit()
-
-/*  ==========================================================================
-          Footer Links
-          ========================================================================== */
-
-function footerLinkHiddenInit() {
-  let footerHiddenLink = $('.footer-link-hide')
-  if (footerHiddenLink) {
-    fetch('https://ipapi.co/json/')
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.country === 'US') {
-          $('.footer-link-hide').css('display', 'none')
-        } else {
-        }
-      })
-      .catch((error) => console.error('Error fetching location:', error))
-  }
-}
-
-footerLinkHiddenInit()
