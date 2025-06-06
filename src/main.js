@@ -1571,7 +1571,6 @@ function footerLinkHiddenInit() {
       .then((response) => response.json())
       .then((data) => {
         if (data.country === 'US') {
-          // $('.footer-link-hide').css('display', 'inline-block')
         } else {
         }
       })
