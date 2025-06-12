@@ -1571,8 +1571,8 @@ function footerLinkHiddenInit() {
       .then((response) => response.json())
       .then((data) => {
         if (data.country === 'US') {
-          $('.footer-link-hide').css('display', 'block')
-          $('.ot-sdk-show-settings').text('Your Privacy Choices').delay(400)
+          $('.footer-link-hide').css('display', 'inline-block')
+          $('.ot-sdk-show-settings').delay(400).text('Your Privacy Choices')
         }
       })
       .catch((error) => console.error('Error fetching location:', error))
