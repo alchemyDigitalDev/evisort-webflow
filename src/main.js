@@ -1573,7 +1573,6 @@ function footerLinkHiddenInit() {
         if (data.country === 'US') {
           $('.footer-link-hide').css('display', 'none')
           $('.ot-sdk-show-settings').text('Your Privacy Choices')
-        } else {
         }
       })
       .catch((error) => console.error('Error fetching location:', error))
